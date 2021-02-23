@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-screen dark:bg-black dark:text-white">
+  <div class="flex flex-col dark:bg-black dark:text-white">
     <header class="shadow">
       <div class="py-6 px-10">
         <h1 class="text-3xl font-bold text-center sm:text-left">
