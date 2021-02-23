@@ -2,7 +2,7 @@
   <div class="grid grid-cols-1 divide-y gap-y-16">
     <div>
       <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
-        Your top genres of all time
+        Your favorite genres of all time
       </h2>
       <div class="grid grid-cols-1 gap-y-4">
         <div v-for="(genre, index) in topGenres" :key="index">
@@ -16,7 +16,7 @@
 
     <div>
       <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
-        Your current top genres
+        Your current favorite genres
       </h2>
       <div class="grid grid-cols-1 gap-y-4">
         <div v-for="(genre, index) in currentGenres" :key="index">
@@ -30,7 +30,7 @@
 
     <div>
       <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
-        Your top artists of all time
+        Your favorite artists of all time
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div v-for="(artist, index) in topArtists" :key="index">
@@ -52,7 +52,7 @@
 
     <div>
       <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
-        Your current top artists
+        Your current favorite artists
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div v-for="(artist, index) in currentArtists" :key="index">
@@ -74,7 +74,7 @@
 
     <div>
       <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
-        Your top tracks of all time
+        Your favorite tracks of all time
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div v-for="(track, index) in topTracks" :key="index">
@@ -96,7 +96,7 @@
 
     <div>
       <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
-        Your current top tracks
+        Your current favorite tracks
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div v-for="(track, index) in currentTracks" :key="index">
