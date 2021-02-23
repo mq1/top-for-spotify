@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left" v-text="title"></h2>
+    <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left" v-text="title"></h2>
     <div class="grid grid-cols-1 gap-y-4">
       <div v-for="(genre, index) in genres" :key="index">
         <div class="box-border p-4 border-2 rounded-md">
