@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 gap-y-16">
+  <div class="grid grid-cols-1 divide-y gap-y-16">
     <div>
       <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
         Your top genres of all time
@@ -15,7 +15,7 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
+      <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
         Your current top genres
       </h2>
       <div class="grid grid-cols-1 gap-y-4">
@@ -29,7 +29,7 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
+      <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
         Your top artists of all time
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -51,7 +51,7 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
+      <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
         Your current top artists
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -73,7 +73,7 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
+      <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
         Your top tracks of all time
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -95,7 +95,7 @@
     </div>
 
     <div>
-      <h2 class="text-2xl font-semibold mb-4 text-center sm:text-left">
+      <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left">
         Your current top tracks
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
