@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold">
           TOP for Spotify
         </h1>
-        <a :href="import.meta.env.BASE_URL">
+        <a :href="baseURL">
           <!-- heroicons: logout -->
           <svg
             class="h-10 w-10"
@@ -118,9 +118,12 @@ export default defineComponent({
   setup: () => {
     const isLoggedIn = location.hash !== "";
     const headers: Headers = getHeaders();
+    const baseURL = import.meta.env.BASE_URL;
+
     return {
       isLoggedIn: isLoggedIn,
       headers: headers,
+      baseURL: baseURL,
     };
   },
 });
