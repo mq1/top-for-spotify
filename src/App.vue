@@ -1,31 +1,8 @@
 <template>
   <div class="flex flex-col">
-    <header class="shadow">
-      <div class="py-6 px-10 flex justify-between">
-        <h1 class="text-3xl font-bold">TOP for Spotify</h1>
-        <a
-          :href="baseURL"
-          v-if="isLoggedIn === true"
-          class="flex flex-col justify-center"
-        >
-          <!-- heroicons: logout -->
-          <svg
-            class="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
-        </a>
-      </div>
-    </header>
+    <Suspense>
+      <AppHeader :isLoggedIn="isLoggedIn" :headers="headers" />
+    </Suspense>
 
     <div class="mx-auto py-6">
       <div v-if="isLoggedIn === false">
@@ -134,6 +111,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import AppHeader from "./components/AppHeader.vue";
 import Login from "./components/Login.vue";
 import Obscurity from "./components/Obscurity.vue";
 import Mood from "./components/Mood.vue";
@@ -151,6 +129,7 @@ const getHeaders = () => {
 export default defineComponent({
   name: "App",
   components: {
+    AppHeader,
     Login,
     Obscurity,
     Mood,
@@ -161,12 +140,10 @@ export default defineComponent({
   setup: () => {
     const isLoggedIn = location.hash !== "";
     const headers: Headers = getHeaders();
-    const baseURL = import.meta.env.BASE_URL;
 
     return {
       isLoggedIn: isLoggedIn,
       headers: headers,
-      baseURL: baseURL,
     };
   },
 });
