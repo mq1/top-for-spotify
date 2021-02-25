@@ -138,7 +138,7 @@ import Login from "./components/Login.vue";
 import Obscurity from "./components/Obscurity.vue";
 import Mood from "./components/Mood.vue";
 import Genres from "./components/Genres.vue";
-import Artists from "./components/Genres.vue";
+import Artists from "./components/Artists.vue";
 import Tracks from "./components/Tracks.vue";
 
 const getHeaders = () => {
