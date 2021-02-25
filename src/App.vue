@@ -52,6 +52,22 @@
         </Suspense>
 
         <Suspense>
+          <Mood
+            title="Your overall mood is"
+            :headers="headers"
+            timeRange="long_term"
+          />
+        </Suspense>
+
+        <Suspense>
+          <Mood
+            title="Your current mood is"
+            :headers="headers"
+            timeRange="short_term"
+          />
+        </Suspense>
+
+        <Suspense>
           <Genres
             title="Your favorite genres of all time"
             :headers="headers"
@@ -120,6 +136,7 @@
 import { defineComponent } from "vue";
 import Login from "./components/Login.vue";
 import Obscurity from "./components/Obscurity.vue";
+import Mood from "./components/Mood.vue";
 import Genres from "./components/Genres.vue";
 import Artists from "./components/Genres.vue";
 import Tracks from "./components/Tracks.vue";
@@ -136,6 +153,7 @@ export default defineComponent({
   components: {
     Login,
     Obscurity,
+    Mood,
     Genres,
     Artists,
     Tracks,

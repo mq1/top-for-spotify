@@ -20,6 +20,7 @@ export interface RawArtists {
 
 export interface RawTracks {
   items: {
+    id: string
     name: string
     popularity: number
     album: {
@@ -27,5 +28,14 @@ export interface RawTracks {
         url: string
       }[]
     }
+  }[]
+}
+
+export interface RawAudioFeatures {
+  audio_features: {
+    acousticness: number
+    danceability: number
+    energy: number
+    valence: number
   }[]
 }
