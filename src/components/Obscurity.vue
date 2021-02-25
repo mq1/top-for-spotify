@@ -1,6 +1,6 @@
 <template>
-  <div class="text-center">
-    <h2 class="text-2xl font-semibold mb-4 mt-10" v-text="title"></h2>
+  <div class="text-center font-semibold">
+    <h2 class="text-2xl mb-4 mt-10" v-text="title"></h2>
     <div class="text-7xl" v-text="obscurityRating"></div>
   </div>
 </template>
@@ -17,7 +17,7 @@ const parseObscurityRating = (tracks: RawTracks) => {
   const sum = obscurities.reduce((a, b) => a + b, 0);
   const avg = sum / obscurities.length || 0;
 
-  return `${avg}%`;
+  return `${avg} %`;
 };
 
 export default defineComponent({
