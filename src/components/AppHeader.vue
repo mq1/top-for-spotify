@@ -6,6 +6,7 @@
         <h1 class="flex-1 text-3xl font-bold">TOP for Spotify</h1>
         <div
           class="flex-1 text-3xl text-center"
+          v-show="displayName !== undefined"
           v-text="`${displayName}'s stats`"
         ></div>
         <div class="flex-1 flex justify-between">
@@ -64,6 +65,7 @@
         </div>
         <div
           class="text-3xl text-center"
+          v-show="displayName !== undefined"
           v-text="`${displayName}'s stats`"
         ></div>
       </div>
