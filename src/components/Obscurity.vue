@@ -17,7 +17,7 @@ const parseObscurityRating = (tracks: RawTracks) => {
   const sum = obscurities.reduce((a, b) => a + b, 0);
   const avg = sum / obscurities.length || 0;
 
-  return `${avg} %`;
+  return `${Math.round(avg)} %`;
 };
 
 export default defineComponent({
