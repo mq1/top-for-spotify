@@ -4,7 +4,7 @@
       <h1 class="flex-1 text-3xl font-bold">TOP for Spotify</h1>
       <div
         class="flex-1 text-3xl text-center order-last sm:order-none hidden sm:block"
-        v-show="displayName !== undefined"
+        v-if="displayName !== undefined"
         v-text="`${displayName}'s stats`"
       />
       <div class="sm:flex-1 flex justify-between">
@@ -34,7 +34,7 @@
     </div>
     <div
       class="flex-1 text-3xl text-center order-last sm:order-none sm:hidden"
-      v-show="displayName !== undefined"
+      v-if="displayName !== undefined"
       v-text="`${displayName}'s stats`"
     />
   </header>
