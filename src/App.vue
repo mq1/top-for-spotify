@@ -3,7 +3,11 @@
     <header class="shadow">
       <div class="py-6 px-10 flex justify-between">
         <h1 class="text-3xl font-bold">TOP for Spotify</h1>
-        <a :href="baseURL" v-if="isLoggedIn === true" class="flex flex-col justify-center">
+        <a
+          :href="baseURL"
+          v-if="isLoggedIn === true"
+          class="flex flex-col justify-center"
+        >
           <!-- heroicons: logout -->
           <svg
             class="h-6 w-6"
@@ -31,6 +35,22 @@
         v-if="isLoggedIn === true"
         class="grid grid-cols-1 divide-y gap-y-16"
       >
+        <Suspense>
+          <Obscurity
+            title="Your overall obscurity rating is"
+            :headers="headers"
+            timeRange="long_term"
+          />
+        </Suspense>
+
+        <Suspense>
+          <Obscurity
+            title="Your current obscurity rating is"
+            :headers="headers"
+            timeRange="short_term"
+          />
+        </Suspense>
+
         <Suspense>
           <Genres
             title="Your favorite genres of all time"
@@ -86,7 +106,12 @@
       <p class="text-gray-500">
         Made with ViteJS, Vue3, TypeScript, TailwindCSS and HeroIcons
       </p>
-      <p class="text-gray-500">Hosted on GitHub Pages | Source code <a class="underline" href="https://github.com/mq1/top-for-spotify">here</a></p>
+      <p class="text-gray-500">
+        Hosted on GitHub Pages | Source code
+        <a class="underline" href="https://github.com/mq1/top-for-spotify"
+          >here</a
+        >
+      </p>
     </footer>
   </div>
 </template>
@@ -94,6 +119,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Login from "./components/Login.vue";
+import Obscurity from "./components/Obscurity.vue";
 import Genres from "./components/Genres.vue";
 import Artists from "./components/Genres.vue";
 import Tracks from "./components/Tracks.vue";
@@ -109,6 +135,7 @@ export default defineComponent({
   name: "App",
   components: {
     Login,
+    Obscurity,
     Genres,
     Artists,
     Tracks,

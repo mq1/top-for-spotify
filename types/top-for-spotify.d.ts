@@ -10,21 +10,22 @@ export interface CardElement {
 
 export interface RawArtists {
   items: {
-      name: string
-      genres: string[]
-      images: {
-          url: string
-      }[]
+    name: string
+    genres: string[]
+    images: {
+      url: string
+    }[]
   }[]
 }
 
 export interface RawTracks {
   items: {
-      name: string
-      album: {
-          images: {
-              url: string
-          }[]
-      }
+    name: string
+    popularity: number
+    album: {
+      images: {
+        url: string
+      }[]
+    }
   }[]
 }

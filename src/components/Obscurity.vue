@@ -1,0 +1,50 @@
+<template>
+  <div class="text-center">
+    <h2 class="text-2xl font-semibold mb-4 mt-10" v-text="title"></h2>
+    <div class="text-7xl" v-text="obscurityRating"></div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { RawTracks } from "../../types/top-for-spotify";
+
+const parseObscurityRating = (tracks: RawTracks) => {
+  const obscurities: number[] = [];
+
+  tracks.items.forEach((track) => obscurities.push(100 - track.popularity));
+
+  const sum = obscurities.reduce((a, b) => a + b, 0);
+  const avg = sum / obscurities.length || 0;
+
+  return `${avg}%`;
+};
+
+export default defineComponent({
+  name: "Obscurity",
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    timeRange: {
+      type: String,
+      required: true,
+    },
+    headers: {
+      type: Headers,
+      required: true,
+    },
+  },
+  setup: async (props) => {
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
+      { headers: props.headers }
+    );
+    const j = await response.json();
+    const obscurityRating = parseObscurityRating(j);
+
+    return { obscurityRating: obscurityRating };
+  },
+});
+</script>
