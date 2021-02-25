@@ -86,7 +86,7 @@
       <p class="text-gray-500">
         Made with ViteJS, Vue3, TypeScript, TailwindCSS and HeroIcons
       </p>
-      <p class="text-gray-500">Hosted on GitHub Pages</p>
+      <p class="text-gray-500">Hosted on GitHub Pages | Source code <a class="underline" href="https://github.com/mq1/top-for-spotify">here</a></p>
     </footer>
   </div>
 </template>
