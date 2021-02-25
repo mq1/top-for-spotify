@@ -1,7 +1,7 @@
 <template>
   <div class="text-center font-semibold">
     <h2 class="text-2xl my-10" v-text="title"></h2>
-    <div class="grid grid-cols-2 gap-4 text-lg">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
       <div
         v-for="(value, name) in avgFeatures"
         :key="name"
