@@ -23,17 +23,17 @@ const parseTrackIDs = (tracks: RawTracks) => {
 
 const parseAudioFeatures = (raw: RawAudioFeatures) => {
   const features: { [feature: string]: number[] } = {
-    Acousticness: [],
-    Danceability: [],
-    Energy: [],
-    Happiness: [],
+    "🎸 Acousticness": [],
+    "💃 Danceability": [],
+    "⚡ Energy": [],
+    "😊 Happiness": [],
   };
 
   raw.audio_features.forEach((track) => {
-    features.Acousticness.push(track.acousticness);
-    features.Danceability.push(track.acousticness);
-    features.Energy.push(track.acousticness);
-    features.Happiness.push(track.valence);
+    features["🎸 Acousticness"].push(track.acousticness);
+    features["💃 Danceability"].push(track.acousticness);
+    features["⚡ Energy"].push(track.acousticness);
+    features["😊 Happiness"].push(track.valence);
   });
 
   const avgFeatures: { [feature: string]: string } = {};
