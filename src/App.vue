@@ -1,10 +1,27 @@
 <template>
   <div class="flex flex-col">
     <header class="shadow">
-      <div class="py-6 px-10">
-        <h1 class="text-3xl font-bold text-center sm:text-left">
+      <div class="py-6 px-10 flex justify-between">
+        <h1 class="text-3xl font-bold">
           TOP for Spotify
         </h1>
+        <a href="import.meta.env.BASE_URL">
+          <!-- heroicons: logout -->
+          <svg
+            class="h-10 w-10"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            />
+          </svg>
+        </a>
       </div>
     </header>
 
@@ -69,7 +86,7 @@
     <footer class="text-center py-4 leading-loose">
       <p class="">MIT Licensed | © 2021 Manuel Quarneti</p>
       <p class="text-gray-500">
-        Made with ViteJS, Vue3, TypeScript and TailwindCSS
+        Made with ViteJS, Vue3, TypeScript and TailwindCSS and HeroIcons
       </p>
       <p class="text-gray-500">Hosted on GitHub Pages</p>
     </footer>
