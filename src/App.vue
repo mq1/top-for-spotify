@@ -64,7 +64,7 @@
     </div>
 
     <footer class="text-center py-4 leading-loose">
-      <p class="">© 2021 Manuel Quarneti</p>
+      <p class="">MIT Licensed | © 2021 Manuel Quarneti</p>
       <p class="text-gray-500">
         Made with ViteJS, Vue3, TypeScript and TailwindCSS
       </p>
