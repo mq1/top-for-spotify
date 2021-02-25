@@ -2,9 +2,7 @@
   <div class="flex flex-col">
     <header class="shadow">
       <div class="py-6 px-10 flex justify-between">
-        <h1 class="text-3xl font-bold">
-          TOP for Spotify
-        </h1>
+        <h1 class="text-3xl font-bold">TOP for Spotify</h1>
         <a :href="baseURL">
           <!-- heroicons: logout -->
           <svg
