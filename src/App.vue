@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold">
           TOP for Spotify
         </h1>
-        <a href="import.meta.env.BASE_URL">
+        <a :href="import.meta.env.BASE_URL">
           <!-- heroicons: logout -->
           <svg
             class="h-10 w-10"
