@@ -3,7 +3,7 @@
     <header class="shadow">
       <div class="py-6 px-10 flex justify-between">
         <h1 class="text-3xl font-bold">TOP for Spotify</h1>
-        <a :href="baseURL">
+        <a :href="baseURL" v-if="isLoggedIn === true">
           <!-- heroicons: logout -->
           <svg
             class="h-10 w-10"
