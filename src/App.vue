@@ -12,7 +12,10 @@
       <div v-if="isLoggedIn === false">
         <Login />
       </div>
-      <div v-if="isLoggedIn === true" class="grid grid-cols-1 divide-y gap-y-16">
+      <div
+        v-if="isLoggedIn === true"
+        class="grid grid-cols-1 divide-y gap-y-16"
+      >
         <Suspense>
           <Genres
             title="Your favorite genres of all time"
