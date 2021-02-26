@@ -1,7 +1,7 @@
 <template>
   <div class="font-semibold">
     <h2 class="text-2xl my-10" v-text="title"></h2>
-    <div class="grid grid-cols-2 gap-8 text-lg">
+    <div class="grid grid-cols-2 gap-y-12 text-lg">
       <div>
         <div class="animate-spin-slow">🎸</div>
         <div>Acousticness</div>
