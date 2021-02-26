@@ -4,93 +4,134 @@
       <AppHeader :isLoggedIn="isLoggedIn" :headers="headers" />
     </Suspense>
 
-    <div class="mx-auto py-6">
+    <div class="mx-8 sm:mx-auto py-8">
       <div v-if="isLoggedIn === false">
         <Login />
       </div>
       <div
         v-if="isLoggedIn === true"
-        class="grid grid-cols-1 divide-y gap-y-16"
+        class="grid grid-cols-1 text-center gap-y-32"
       >
-        <Suspense>
-          <Obscurity
-            title="Your overall obscurity rating is"
-            :headers="headers"
-            timeRange="long_term"
-          />
-        </Suspense>
+        <div>
+          <h2
+            class="col-span-full text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2"
+          >
+            Your obscurity
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <Suspense>
+              <Obscurity
+                title="overall"
+                :headers="headers"
+                timeRange="long_term"
+              />
+            </Suspense>
 
-        <Suspense>
-          <Obscurity
-            title="Your current obscurity rating is"
-            :headers="headers"
-            timeRange="short_term"
-          />
-        </Suspense>
+            <Suspense>
+              <Obscurity
+                title="currently"
+                :headers="headers"
+                timeRange="short_term"
+              />
+            </Suspense>
+          </div>
+        </div>
 
-        <Suspense>
-          <Mood
-            title="Your overall mood is"
-            :headers="headers"
-            timeRange="long_term"
-          />
-        </Suspense>
+        <div>
+          <h2
+            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2"
+          >
+            Your mood
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+            <Suspense>
+              <Mood title="overall" :headers="headers" timeRange="long_term" />
+            </Suspense>
 
-        <Suspense>
-          <Mood
-            title="Your current mood is"
-            :headers="headers"
-            timeRange="short_term"
-          />
-        </Suspense>
+            <Suspense>
+              <Mood
+                title="currently"
+                :headers="headers"
+                timeRange="short_term"
+              />
+            </Suspense>
+          </div>
+        </div>
 
-        <Suspense>
-          <Genres
-            title="Your favorite genres of all time"
-            :headers="headers"
-            timeRange="long_term"
-          />
-        </Suspense>
+        <div>
+          <h2
+            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2"
+          >
+            Your favorite genres
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+            <Suspense>
+              <Genres
+                title="overall"
+                :headers="headers"
+                timeRange="long_term"
+              />
+            </Suspense>
 
-        <Suspense>
-          <Genres
-            title="Your current favorite genres"
-            :headers="headers"
-            timeRange="short_term"
-          />
-        </Suspense>
+            <Suspense>
+              <Genres
+                title="currently"
+                :headers="headers"
+                timeRange="short_term"
+              />
+            </Suspense>
+          </div>
+        </div>
 
-        <Suspense>
-          <Artists
-            title="Your favorite artists of all time"
-            :headers="headers"
-            timeRange="long_term"
-          />
-        </Suspense>
+        <div>
+          <h2
+            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2"
+          >
+            Your favorite artists
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+            <Suspense>
+              <Artists
+                title="overall"
+                :headers="headers"
+                timeRange="long_term"
+              />
+            </Suspense>
 
-        <Suspense>
-          <Artists
-            title="Your current favorite artists"
-            :headers="headers"
-            timeRange="short_term"
-          />
-        </Suspense>
+            <Suspense>
+              <Artists
+                title="currently"
+                :headers="headers"
+                timeRange="short_term"
+              />
+            </Suspense>
+          </div>
+        </div>
 
-        <Suspense>
-          <Tracks
-            title="Your favorite tracks of all time"
-            :headers="headers"
-            timeRange="long_term"
-          />
-        </Suspense>
+        <div>
+          <h2
+            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2"
+          >
+            Your favorite tracks
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+            <Suspense>
+              <Tracks
+                title="overall"
+                :headers="headers"
+                timeRange="long_term"
+              />
+            </Suspense>
 
-        <Suspense>
-          <Tracks
-            title="Your current favorite tracks"
-            :headers="headers"
-            timeRange="short_term"
-          />
-        </Suspense>
+            <Suspense>
+              <Tracks
+                title="currently"
+                :headers="headers"
+                timeRange="short_term"
+              />
+            </Suspense>
+          </div>
+        </div>
       </div>
     </div>
 

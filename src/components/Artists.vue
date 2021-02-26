@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left" v-text="title"></h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <h2 class="text-2xl font-semibold mb-4 mt-10" v-text="title"></h2>
+    <div class="grid grid-cols-1 gap-6">
       <div v-for="(artist, index) in artists" :key="index">
         <div class="my-4">
           <figure>
