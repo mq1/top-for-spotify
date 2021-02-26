@@ -14,7 +14,7 @@
       >
         <div>
           <h2
-            class="col-span-full text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2"
           >
             Your obscurity
           </h2>
@@ -39,7 +39,7 @@
 
         <div>
           <h2
-            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2"
           >
             Your mood
           </h2>
@@ -60,7 +60,7 @@
 
         <div>
           <h2
-            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2"
           >
             Your favorite genres
           </h2>
@@ -85,7 +85,7 @@
 
         <div>
           <h2
-            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2"
           >
             Your favorite artists
           </h2>
@@ -110,7 +110,7 @@
 
         <div>
           <h2
-            class="col-span-full text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2"
           >
             Your favorite tracks
           </h2>
