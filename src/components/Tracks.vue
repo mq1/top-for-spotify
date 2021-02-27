@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <h2 class="text-2xl font-semibold mb-4 mt-10 text-center sm:text-left" v-text="title"></h2>
-    <div class="grid grid-cols-1 gap-6">
-      <div v-for="(track, index) in tracks" :key="index">
-        <div class="my-4">
-          <figure>
-            <img
-              class="object-cover w-full h-48 rounded-2xl shadow-md"
-              :src="track.imageURL"
-            />
-            <figcaption
-              class="text-center font-semibold mt-2"
-              v-text="index + 1 + '. ' + track.name"
-            ></figcaption>
-          </figure>
-        </div>
-      </div>
+  <div class="flex flex-col gap-12">
+    <h2 class="text-2xl font-semibold" v-text="title" />
+    <div class="flex flex-col gap-16">
+      <figure v-for="(track, index) in tracks" :key="index">
+        <img
+          class="object-cover w-full h-48 rounded-2xl shadow-md"
+          :src="track.imageURL"
+        />
+        <figcaption
+          class="text-center font-semibold mt-4"
+          v-text="index + 1 + '. ' + track.name"
+        />
+      </figure>
     </div>
   </div>
 </template>

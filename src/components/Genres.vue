@@ -1,12 +1,20 @@
 <template>
-  <div>
-    <h2 class="text-2xl font-semibold mb-4 mt-10" v-text="title"></h2>
-    <div class="grid grid-cols-1 gap-y-4">
-      <div v-for="(genre, index) in genres" :key="index">
-        <div class="box-border p-4 border-2 rounded-md">
-          <h3 class="text-xl font-bold" v-text="index + 1"></h3>
-          <p v-text="genre.name"></p>
-        </div>
+  <div class="flex flex-col gap-12">
+    <h2 class="text-2xl font-semibold" v-text="title"></h2>
+    <div class="flex flex-col gap-6">
+      <div
+        v-for="(genre, index) in genres"
+        :key="index"
+        class="grid grid-cols-3 gap-4"
+      >
+        <div
+          class="text-3xl text-right font-bold"
+          v-text="`${index + 1}.`"
+        ></div>
+        <div
+          class="text-left uppercase font-semibold col-span-2"
+          v-text="genre.name"
+        ></div>
       </div>
     </div>
   </div>
@@ -46,23 +54,26 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     timeRange: {
       type: String,
-      required: true
+      required: true,
     },
     headers: {
       type: Headers,
-      required: true
-    }
+      required: true,
+    },
   },
   setup: async (props) => {
-    const response = await fetch(`https://api.spotify.com/v1/me/top/artists?time_range=${props.timeRange}`, { headers: props.headers })
-    const j = await response.json()
-    const genres = parseGenres(j)
+    const response = await fetch(
+      `https://api.spotify.com/v1/me/top/artists?time_range=${props.timeRange}`,
+      { headers: props.headers }
+    );
+    const j = await response.json();
+    const genres = parseGenres(j);
 
-    return { genres: genres }
-  }
+    return { genres: genres };
+  },
 });
 </script>

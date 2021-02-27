@@ -4,7 +4,7 @@
       <AppHeader :isLoggedIn="isLoggedIn" :headers="headers" />
     </Suspense>
 
-    <div class="mx-8 sm:mx-auto py-8">
+    <div class="mx-8 sm:mx-auto sm:max-w-5xl py-8">
       <div v-if="isLoggedIn === false">
         <Login />
       </div>
@@ -14,11 +14,11 @@
       >
         <div>
           <h2
-            class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2 mb-8"
           >
             Your obscurity
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
             <Suspense>
               <Obscurity
                 title="overall"
@@ -39,11 +39,11 @@
 
         <div>
           <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
           >
             Your mood
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
             <Suspense>
               <Mood title="overall" :headers="headers" timeRange="long_term" />
             </Suspense>
@@ -60,11 +60,11 @@
 
         <div>
           <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
           >
             Your favorite genres
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
+          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
             <Suspense>
               <Genres
                 title="overall"
@@ -85,7 +85,7 @@
 
         <div>
           <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
           >
             Your favorite artists
           </h2>
@@ -110,7 +110,7 @@
 
         <div>
           <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2"
+            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
           >
             Your favorite tracks
           </h2>
