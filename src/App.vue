@@ -18,7 +18,7 @@
           >
             Your obscurity
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x gap-8">
             <Suspense>
               <Obscurity
                 title="overall"
@@ -43,7 +43,7 @@
           >
             Your mood
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x gap-8">
             <Suspense>
               <Mood title="overall" :headers="headers" timeRange="long_term" />
             </Suspense>
@@ -64,7 +64,7 @@
           >
             Your favorite genres
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 divide-x gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <Suspense>
               <Genres
                 title="overall"
