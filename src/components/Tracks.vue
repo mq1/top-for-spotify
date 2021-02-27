@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col gap-12">
     <h2 class="text-2xl font-semibold" v-text="title" />
-    <div class="flex flex-col gap-16">
+    <div class="grid grid-cols-3 gap-x-4 gap-y-16">
       <figure v-for="(track, index) in tracks" :key="index">
         <img
-          class="object-cover w-full h-48 rounded-2xl shadow-md"
+          class="object-cover w-32 h-32 rounded-2xl shadow-md"
           :src="track.imageURL"
         />
         <figcaption
