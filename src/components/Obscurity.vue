@@ -1,5 +1,5 @@
 <template>
-  <div class="font-semibold flex flex-col gap-12">
+  <div class="font-semibold flex flex-col">
     <h2 class="text-2xl" v-text="title"></h2>
     <div class="text-7xl" v-text="obscurityRating"></div>
   </div>
