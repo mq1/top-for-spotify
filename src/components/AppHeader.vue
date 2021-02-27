@@ -12,7 +12,7 @@
         <a
           :href="baseURL"
           v-if="isLoggedIn === true"
-          class="flex flex-col justify-center text-right"
+          class="flex flex-col justify-center"
         >
           <!-- heroicons: logout -->
           <svg
