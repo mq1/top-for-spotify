@@ -33,7 +33,7 @@
       </div>
     </div>
     <div
-      class="flex-1 text-3xl text-center order-last sm:order-none sm:hidden"
+      class="flex-1 text-3xl text-center order-last sm:order-none sm:hidden mb-2"
       v-if="displayName !== undefined"
       v-text="`${displayName}'s stats`"
     />
