@@ -21,7 +21,7 @@
           <button
             type="button"
             @click="isOpen = !isOpen"
-            class="uppercase inline-flex justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 w-36"
+            class="uppercase inline-flex justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
             id="options-menu"
             aria-haspopup="true"
             aria-expanded="true"
@@ -64,7 +64,7 @@
         >
           <div
             v-show="isOpen"
-            class="origin-top-right absolute right-0 mt-2 w-36 bg-white border-2"
+            class="origin-top-right absolute right-0 mt-2 w-36 bg-white dark:bg-black border-2"
           >
             <div
               class="py-1 uppercase font-semibold"
@@ -74,14 +74,14 @@
             >
               <button
                 @click="changeTimeRange('short_term')"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
                 currently
               </button>
               <button
                 @click="changeTimeRange('long_term')"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
                 overall
