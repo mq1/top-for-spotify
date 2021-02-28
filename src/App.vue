@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import AppHeader from "./components/AppHeader.vue";
 import Login from "./components/Login.vue";
 import Obscurity from "./components/Obscurity.vue";
@@ -84,16 +84,15 @@ export default defineComponent({
     Artists,
     Tracks,
   },
-  data: () => ({
-    timeRange: "short_term",
-  }),
   setup: () => {
     const isLoggedIn = location.hash !== "";
     const headers: Headers = getHeaders();
+    const timeRange = ref("short_term");
 
     return {
-      isLoggedIn: isLoggedIn,
-      headers: headers,
+      isLoggedIn,
+      headers,
+      timeRange,
     };
   },
   methods: {
