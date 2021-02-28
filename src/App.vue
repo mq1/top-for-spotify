@@ -96,8 +96,8 @@ export default defineComponent({
     };
   },
   methods: {
-    setTimeRange(event: string) {
-      this.timeRange = event;
+    setTimeRange(timeRange: string) {
+      this.timeRange = timeRange;
     },
   },
 });
