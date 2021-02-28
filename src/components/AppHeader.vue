@@ -7,10 +7,7 @@
     >
       TOP for Spotify
     </h1>
-    <div
-      class="text-3xl"
-      v-if="displayName !== undefined"
-    >
+    <div class="text-3xl" v-if="displayName !== undefined">
       {{ `${displayName}'s stats` }}
     </div>
     <div
@@ -21,13 +18,13 @@
         <div>
           <button
             type="button"
-            @click="isOpen = !isOpen"
+            @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
             class="uppercase inline-flex justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
             id="options-menu"
             aria-haspopup="true"
             aria-expanded="true"
           >
-            {{ timeRange === 'short_term' ? 'currently' : 'overall' }}
+            {{ timeRange === "short_term" ? "currently" : "overall" }}
             <!-- Heroicon name: solid/chevron-down -->
             <svg
               class="-mr-1 ml-2 h-5 w-5"
@@ -64,7 +61,7 @@
           leave-to-class="transform opacity-0 scale-95"
         >
           <div
-            v-show="isOpen"
+            v-show="isTimeRangeDropdownOpen"
             class="origin-top-right absolute right-0 mt-2 w-36 bg-white dark:bg-black border-2"
           >
             <div
@@ -114,6 +111,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { ref } from "vue";
 
 export default defineComponent({
   name: "AppHeader",
@@ -131,20 +129,21 @@ export default defineComponent({
       required: true,
     },
   },
-  data: () => ({
-    isOpen: false,
-  }),
   setup: async (props) => {
     const response = await fetch(`https://api.spotify.com/v1/me`, {
       headers: props.headers,
     });
     const j = await response.json();
+    const displayName = j.display_name;
 
     const baseURL = import.meta.env.BASE_URL;
 
+    const isTimeRangeDropdownOpen = ref(false);
+
     return {
-      displayName: j.display_name,
-      baseURL: baseURL,
+      displayName,
+      baseURL,
+      isTimeRangeDropdownOpen,
     };
   },
   emits: {
