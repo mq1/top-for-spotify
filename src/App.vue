@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col text-center">
     <Suspense>
       <AppHeader :isLoggedIn="isLoggedIn" :headers="headers" />
     </Suspense>
@@ -8,130 +8,26 @@
       <div v-if="isLoggedIn === false">
         <Login />
       </div>
-      <div
-        v-if="isLoggedIn === true"
-        class="grid grid-cols-1 text-center gap-y-32"
-      >
-        <div>
-          <h2
-            class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2 mb-8"
-          >
-            Your obscurity
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x gap-8">
-            <Suspense>
-              <Obscurity
-                title="overall"
-                :headers="headers"
-                timeRange="long_term"
-              />
-            </Suspense>
+      <div v-if="isLoggedIn === true" class="grid grid-cols-1 gap-y-32">
+        <Suspense>
+          <Obscurity :headers="headers" :timeRange="timeRange" :key="timeRange" />
+        </Suspense>
 
-            <Suspense>
-              <Obscurity
-                title="currently"
-                :headers="headers"
-                timeRange="short_term"
-              />
-            </Suspense>
-          </div>
-        </div>
+        <Suspense>
+          <Mood :headers="headers" :timeRange="timeRange" :key="timeRange" />
+        </Suspense>
 
-        <div>
-          <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-          >
-            Your mood
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x gap-8">
-            <Suspense>
-              <Mood title="overall" :headers="headers" timeRange="long_term" />
-            </Suspense>
+        <Suspense>
+          <Genres :headers="headers" :timeRange="timeRange" :key="timeRange" />
+        </Suspense>
 
-            <Suspense>
-              <Mood
-                title="currently"
-                :headers="headers"
-                timeRange="short_term"
-              />
-            </Suspense>
-          </div>
-        </div>
+        <Suspense>
+          <Artists :headers="headers" :timeRange="timeRange" :key="timeRange" />
+        </Suspense>
 
-        <div>
-          <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-          >
-            Your favorite genres
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <Suspense>
-              <Genres
-                title="overall"
-                :headers="headers"
-                timeRange="long_term"
-              />
-            </Suspense>
-
-            <Suspense>
-              <Genres
-                title="currently"
-                :headers="headers"
-                timeRange="short_term"
-              />
-            </Suspense>
-          </div>
-        </div>
-
-        <div>
-          <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-          >
-            Your favorite artists
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
-            <Suspense>
-              <Artists
-                title="overall"
-                :headers="headers"
-                timeRange="long_term"
-              />
-            </Suspense>
-
-            <Suspense>
-              <Artists
-                title="currently"
-                :headers="headers"
-                timeRange="short_term"
-              />
-            </Suspense>
-          </div>
-        </div>
-
-        <div>
-          <h2
-            class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-          >
-            Your favorite tracks
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-32">
-            <Suspense>
-              <Tracks
-                title="overall"
-                :headers="headers"
-                timeRange="long_term"
-              />
-            </Suspense>
-
-            <Suspense>
-              <Tracks
-                title="currently"
-                :headers="headers"
-                timeRange="short_term"
-              />
-            </Suspense>
-          </div>
-        </div>
+        <Suspense>
+          <Tracks :headers="headers" :timeRange="timeRange" :key="timeRange" />
+        </Suspense>
       </div>
     </div>
 
@@ -152,9 +48,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "./store";
 import AppHeader from "./components/AppHeader.vue";
 import Login from "./components/Login.vue";
-import Obscurity from "./components/Obscurity.vue";
+import Obscurity from "./components/Obscurity.vue"
 import Mood from "./components/Mood.vue";
 import Genres from "./components/Genres.vue";
 import Artists from "./components/Artists.vue";
@@ -186,6 +83,11 @@ export default defineComponent({
       isLoggedIn: isLoggedIn,
       headers: headers,
     };
+  },
+  computed: {
+    timeRange() {
+      return useStore().state.timeRange;
+    },
   },
 });
 </script>

@@ -1,7 +1,11 @@
 <template>
   <div class="font-semibold flex flex-col gap-12">
-    <h2 class="text-2xl" v-text="title"></h2>
-    <div class="grid grid-cols-2 gap-y-12 text-lg">
+    <h2
+      class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
+    >
+      Your mood
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-12 text-lg">
       <div>
         <div class="animate-spin-slow">🎸</div>
         <div>Acousticness</div>
@@ -64,10 +68,6 @@ const parseAudioFeatures = (raw: RawAudioFeatures) => {
 export default defineComponent({
   name: "Mood",
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
     timeRange: {
       type: String,
       required: true,

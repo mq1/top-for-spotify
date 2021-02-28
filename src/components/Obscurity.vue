@@ -1,7 +1,11 @@
 <template>
   <div class="font-semibold flex flex-col">
-    <h2 class="text-2xl" v-text="title"></h2>
-    <div class="text-7xl" v-text="obscurityRating"></div>
+    <h2
+      class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2 mb-8"
+    >
+      Your obscurity
+    </h2>
+    <div class="text-9xl">{{ obscurityRating }}</div>
   </div>
 </template>
 
@@ -23,10 +27,6 @@ const parseObscurityRating = (tracks: RawTracks) => {
 export default defineComponent({
   name: "Obscurity",
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
     timeRange: {
       type: String,
       required: true,

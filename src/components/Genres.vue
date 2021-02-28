@@ -1,20 +1,17 @@
 <template>
   <div class="flex flex-col gap-12">
-    <h2 class="text-2xl font-semibold" v-text="title"></h2>
-    <div class="flex flex-col gap-6">
+    <h2
+      class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
+    >
+      Your favorite genres
+    </h2>
+    <div class="flex flex-col gap-4 text-left text-xl uppercase">
       <div
         v-for="(genre, index) in genres"
         :key="index"
-        class="grid grid-cols-3 gap-4"
+        class="border-2 py-2 px-4"
       >
-        <div
-          class="text-3xl text-right font-bold"
-          v-text="`${index + 1}.`"
-        ></div>
-        <div
-          class="text-left uppercase font-semibold col-span-2"
-          v-text="genre.name"
-        ></div>
+        <span class="font-bold">{{ index + 1 }}.</span> {{ genre.name }}
       </div>
     </div>
   </div>
@@ -52,10 +49,6 @@ const parseGenres = (artists: RawArtists) => {
 export default defineComponent({
   name: "Genres",
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
     timeRange: {
       type: String,
       required: true,

@@ -1,10 +1,14 @@
 <template>
   <div class="flex flex-col gap-12">
-    <h2 class="text-2xl font-semibold" v-text="title" />
+    <h2
+      class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
+    >
+      Your favorite artists
+    </h2>
     <div class="grid grid-cols-3 gap-x-4 gap-y-16">
       <figure v-for="(artist, index) in artists" :key="index">
         <img
-          class="object-cover w-32 h-32 rounded-2xl shadow-md"
+          class="object-cover w-full h-20 sm:h-48 rounded-2xl shadow-md"
           :src="artist.imageURL"
         />
         <figcaption
@@ -36,10 +40,6 @@ const parseArtists = (artists: RawArtists) => {
 export default defineComponent({
   name: "Artists",
   props: {
-    title: {
-      type: String,
-      required: true,
-    },
     timeRange: {
       type: String,
       required: true,
