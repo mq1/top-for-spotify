@@ -71,14 +71,14 @@
               aria-labelledby="options-menu"
             >
               <button
-                @click="$emit('setTimeRange', 'short_term')"
+                @click="setTimeRange('short_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
                 currently
               </button>
               <button
-                @click="$emit('setTimeRange', 'long_term')"
+                @click="setTimeRange('long_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
@@ -151,5 +151,11 @@ export default defineComponent({
       return payload;
     },
   },
+  methods: {
+    setTimeRange(timeRange: string) {
+      this.$emit('setTimeRange', timeRange)
+      this.isTimeRangeDropdownOpen = false
+    }
+  }
 });
 </script>
