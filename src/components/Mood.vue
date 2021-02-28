@@ -7,24 +7,24 @@
     </h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-12 text-lg">
       <div>
-        <div class="animate-spin-slow">🎸</div>
+        <div class="animate-spin-slow text-4xl mb-2">🎸</div>
         <div>Acousticness</div>
-        <div v-text="avgFeatures.Acousticness"></div>
+        <div>{{ avgFeatures.Acousticness }}</div>
       </div>
       <div>
-        <div class="animate-bounce">💃</div>
+        <div class="animate-bounce text-4xl mb-2">💃</div>
         <div>Danceability</div>
-        <div v-text="avgFeatures.Danceability"></div>
+        <div>{{ avgFeatures.Danceability }}</div>
       </div>
       <div>
-        <div class="animate-ping-alt">⚡</div>
+        <div class="animate-ping-alt text-4xl mb-2">⚡</div>
         <div>Energy</div>
-        <div v-text="avgFeatures.Energy"></div>
+        <div>{{ avgFeatures.Energy }}</div>
       </div>
       <div>
-        <div class="animate-wiggle">😊</div>
+        <div class="animate-wiggle text-4xl mb-2">😊</div>
         <div>Happiness</div>
-        <div v-text="avgFeatures.Happiness"></div>
+        <div>{{ avgFeatures.Happiness }}</div>
       </div>
     </div>
   </div>

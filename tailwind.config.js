@@ -9,8 +9,8 @@ module.exports = {
           '50%': { transform: 'rotate(30deg)' },
         },
         'ping-alt': {
-          '50%': { transform: 'scale(1.5)' },
-          '100%': { transform: 'scale(1)' },
+          '0, 100%': { transform: 'scale(1.25)' },
+          '50%': { transform: 'scale(0.75)' },
         },
       },
       animation: {
