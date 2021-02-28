@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col text-center">
     <Suspense>
-      <AppHeader :isLoggedIn="isLoggedIn" :headers="headers" />
+      <AppHeader :isLoggedIn="isLoggedIn" :timeRange="timeRange" :headers="headers" @setTimeRange="setTimeRange" />
     </Suspense>
 
     <div class="mx-8 sm:mx-auto sm:max-w-5xl py-8">
@@ -48,7 +48,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useStore } from "./store";
 import AppHeader from "./components/AppHeader.vue";
 import Login from "./components/Login.vue";
 import Obscurity from "./components/Obscurity.vue"
@@ -76,6 +75,9 @@ export default defineComponent({
     Artists,
     Tracks,
   },
+  data: () => ({
+    timeRange: 'short_term'
+  }),
   setup: () => {
     const isLoggedIn = location.hash !== "";
     const headers: Headers = getHeaders();
@@ -85,10 +87,10 @@ export default defineComponent({
       headers: headers,
     };
   },
-  computed: {
-    timeRange() {
-      return useStore().state.timeRange;
-    },
-  },
+  methods: {
+    setTimeRange(event: string) {
+      this.timeRange = event;
+    }
+  }
 });
 </script>

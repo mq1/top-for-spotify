@@ -10,8 +10,9 @@
     <div
       class="text-3xl"
       v-if="displayName !== undefined"
-      v-text="`${displayName}'s stats`"
-    />
+    >
+      {{ `${displayName}'s stats` }}
+    </div>
     <div
       class="inline-flex justify-center sm:justify-center gap-4"
       v-if="isLoggedIn === true"
@@ -26,7 +27,7 @@
             aria-haspopup="true"
             aria-expanded="true"
           >
-            <span v-text="timeRange" />
+            {{ timeRange === 'short_term' ? 'currently' : 'overall' }}
             <!-- Heroicon name: solid/chevron-down -->
             <svg
               class="-mr-1 ml-2 h-5 w-5"
@@ -73,14 +74,14 @@
               aria-labelledby="options-menu"
             >
               <button
-                @click="changeTimeRange('short_term')"
+                @click="$emit('setTimeRange', 'short_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
                 currently
               </button>
               <button
-                @click="changeTimeRange('long_term')"
+                @click="$emit('setTimeRange', 'long_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
               >
@@ -113,13 +114,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useStore } from "../store";
 
 export default defineComponent({
   name: "AppHeader",
   props: {
     isLoggedIn: {
       type: Boolean,
+      required: true,
+    },
+    timeRange: {
+      type: String,
       required: true,
     },
     headers: {
@@ -131,8 +135,6 @@ export default defineComponent({
     isOpen: false,
   }),
   setup: async (props) => {
-    const store = useStore();
-
     const response = await fetch(`https://api.spotify.com/v1/me`, {
       headers: props.headers,
     });
@@ -143,14 +145,12 @@ export default defineComponent({
     return {
       displayName: j.display_name,
       baseURL: baseURL,
-      changeTimeRange: (newTimeRange: string) =>
-        store.commit("changeTimeRange", newTimeRange),
     };
   },
-  computed: {
-    timeRange() {
-      return useStore().state.timeRange === "short_term" ? "currently" : "overall"
-    }
-  }
+  emits: {
+    setTimeRange(payload: string) {
+      return payload;
+    },
+  },
 });
 </script>
