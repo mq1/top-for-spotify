@@ -2,16 +2,14 @@
   <div class="font-semibold flex flex-col">
     <h2
       class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2 mb-8"
-    >
-      Your obscurity
-    </h2>
+    >Your obscurity</h2>
     <div class="text-9xl">{{ obscurityRating }}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { RawTracks } from "../../types/top-for-spotify";
+import type { RawTracks } from "../../types/top-for-spotify";
+import { defineComponent, onMounted, ref, toRefs, watch } from "vue";
 
 const parseObscurityRating = (tracks: RawTracks) => {
   const obscurities: number[] = [];
@@ -36,15 +34,24 @@ export default defineComponent({
       required: true,
     },
   },
-  setup: async (props) => {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
-      { headers: props.headers }
-    );
-    const j = await response.json();
-    const obscurityRating = parseObscurityRating(j);
+  setup(props) {
+    const { timeRange } = toRefs(props);
 
-    return { obscurityRating: obscurityRating };
+    const obscurityRating = ref('? %');
+    const getObscurityRating = async () => {
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
+        { headers: props.headers }
+      );
+      const j = await response.json();
+      obscurityRating.value = parseObscurityRating(j);
+    }
+
+    onMounted(getObscurityRating);
+
+    watch(timeRange, getObscurityRating);
+
+    return { obscurityRating };
   },
 });
 </script>

@@ -2,24 +2,19 @@
   <div class="flex flex-col gap-12">
     <h2
       class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-    >
-      Your favorite genres
-    </h2>
+    >Your favorite genres</h2>
     <div class="flex flex-col gap-4 text-left text-xl uppercase">
-      <div
-        v-for="(genre, index) in genres"
-        :key="index"
-        class="border-2 py-2 px-4"
-      >
-        <span class="font-bold">{{ index + 1 }}.</span> {{ genre.name }}
+      <div v-for="(genre, index) in genres" :key="index" class="border-2 py-2 px-4">
+        <span class="font-bold">{{ index + 1 }}.</span>
+        {{ genre.name }}
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { RawArtists, ScoreBoardElement } from "../../types/top-for-spotify";
+import type { RawArtists, ScoreBoardElement } from "../../types/top-for-spotify";
+import { ref, defineComponent, toRefs, onMounted, watch } from "vue";
 
 const parseGenres = (artists: RawArtists) => {
   let genres: ScoreBoardElement[] = [];
@@ -58,15 +53,24 @@ export default defineComponent({
       required: true,
     },
   },
-  setup: async (props) => {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/top/artists?time_range=${props.timeRange}`,
-      { headers: props.headers }
-    );
-    const j = await response.json();
-    const genres = parseGenres(j);
+  setup(props) {
+    const { timeRange } = toRefs(props);
 
-    return { genres: genres };
+    const genres = ref<ScoreBoardElement[]>([]);
+    const getGenres = async () => {
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/top/artists?time_range=${props.timeRange}`,
+        { headers: props.headers }
+      );
+      const j = await response.json();
+      genres.value = parseGenres(j);
+    }
+
+    onMounted(getGenres);
+
+    watch(timeRange, getGenres);
+
+    return { genres };
   },
 });
 </script>

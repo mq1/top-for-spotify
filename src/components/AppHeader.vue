@@ -1,19 +1,11 @@
 <template>
   <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4">
     <h1
-      :class="`text-3xl font-bold ${
-        displayName === undefined ? 'col-span-full' : ''
+      :class="`text-3xl font-bold ${displayName === undefined ? 'col-span-full' : ''
       }`"
-    >
-      TOP for Spotify
-    </h1>
-    <div class="text-3xl" v-if="displayName !== undefined">
-      {{ `${displayName}'s stats` }}
-    </div>
-    <div
-      class="inline-flex justify-center sm:justify-center gap-4"
-      v-if="isLoggedIn === true"
-    >
+    >TOP for Spotify</h1>
+    <div class="text-3xl" v-if="displayName !== undefined">{{ `${displayName}'s stats` }}</div>
+    <div class="inline-flex justify-center sm:justify-center gap-4" v-if="isLoggedIn === true">
       <div class="relative">
         <div>
           <button
@@ -74,16 +66,12 @@
                 @click="setTimeRange('short_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
-              >
-                currently
-              </button>
+              >currently</button>
               <button
                 @click="setTimeRange('long_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
-              >
-                overall
-              </button>
+              >overall</button>
             </div>
           </div>
         </transition>
@@ -110,8 +98,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { ref } from "vue";
+import { ref, defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "AppHeader",
@@ -129,33 +116,31 @@ export default defineComponent({
       required: true,
     },
   },
-  setup: async (props) => {
-    const response = await fetch(`https://api.spotify.com/v1/me`, {
-      headers: props.headers,
-    });
-    const j = await response.json();
-    const displayName = j.display_name;
+  setup(props, { emit }) {
+    const displayName = ref('');
 
+    const getDisplayName = async () => {
+      const response = await fetch(`https://api.spotify.com/v1/me`, {
+        headers: props.headers,
+      });
+      const j = await response.json();
+      displayName.value = j.display_name;
+    }
     const baseURL = import.meta.env.BASE_URL;
-
     const isTimeRangeDropdownOpen = ref(false);
+    const setTimeRange = (timeRange: string) => {
+      emit('setTimeRange', timeRange);
+      isTimeRangeDropdownOpen.value = false;
+    }
+
+    onMounted(getDisplayName);
 
     return {
       displayName,
       baseURL,
       isTimeRangeDropdownOpen,
+      setTimeRange,
     };
   },
-  emits: {
-    setTimeRange(payload: string) {
-      return payload;
-    },
-  },
-  methods: {
-    setTimeRange(timeRange: string) {
-      this.$emit('setTimeRange', timeRange)
-      this.isTimeRangeDropdownOpen = false
-    }
-  }
 });
 </script>

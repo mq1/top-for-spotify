@@ -2,9 +2,7 @@
   <div class="font-semibold flex flex-col gap-12">
     <h2
       class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
-    >
-      Your mood
-    </h2>
+    >Your mood</h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-12 text-lg">
       <div>
         <div class="animate-spin-slow text-4xl mb-2">🎸</div>
@@ -31,8 +29,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { RawAudioFeatures, RawTracks } from "../../types/top-for-spotify";
+import type { RawAudioFeatures, RawTracks } from "../../types/top-for-spotify";
+import { ref, defineComponent, toRefs, onMounted, watch } from "vue";
 
 const parseTrackIDs = (tracks: RawTracks) => {
   const ids: string[] = [];
@@ -77,23 +75,32 @@ export default defineComponent({
       required: true,
     },
   },
-  setup: async (props) => {
-    const response = await fetch(
-      `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
-      { headers: props.headers }
-    );
-    const j = await response.json();
-    const trackIDs = parseTrackIDs(j);
+  setup(props) {
+    const { timeRange } = toRefs(props);
 
-    const response2 = await fetch(
-      `https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`,
-      { headers: props.headers }
-    );
+    const avgFeatures = ref<{ [feature: string]: string }>({});
+    const getAvgFeatures = async () => {
+      const response = await fetch(
+        `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
+        { headers: props.headers }
+      );
+      const j = await response.json();
+      const trackIDs = parseTrackIDs(j);
 
-    const j2 = await response2.json();
-    const avgFeatures = parseAudioFeatures(j2);
+      const response2 = await fetch(
+        `https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`,
+        { headers: props.headers }
+      );
 
-    return { avgFeatures: avgFeatures };
+      const j2 = await response2.json();
+      avgFeatures.value = parseAudioFeatures(j2);
+    }
+
+    onMounted(getAvgFeatures);
+
+    watch(timeRange, getAvgFeatures);
+
+    return { avgFeatures };
   },
 });
 </script>
