@@ -22,7 +22,7 @@
 
     <footer class="text-center py-4 leading-loose">
       <p class>MIT Licensed | © 2021 Manuel Quarneti</p>
-      <p class="text-gray-500">Made with ViteJS, Vue3, TypeScript, TailwindCSS and HeroIcons</p>
+      <p class="text-gray-500">Made with ViteJS, Vue3, TypeScript, TailwindCSS, HeroIcons and Inter Font</p>
       <p class="text-gray-500">
         Hosted on GitHub Pages | Source code
         <a

@@ -1,11 +1,11 @@
 <template>
-  <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4">
+  <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4 items-center">
     <h1
       :class="`text-3xl font-bold ${displayName === undefined ? 'col-span-full' : ''
       }`"
     >TOP for Spotify</h1>
-    <div class="text-3xl" v-if="displayName !== undefined">{{ `${displayName}'s stats` }}</div>
-    <div class="inline-flex justify-center sm:justify-center gap-4" v-if="isLoggedIn === true">
+    <div class="text-xl" v-if="displayName !== undefined">{{ `${displayName}'s stats` }}</div>
+    <div class="inline-flex items-center justify-center gap-4" v-if="isLoggedIn === true">
       <div class="relative">
         <div>
           <button
@@ -76,7 +76,7 @@
           </div>
         </transition>
       </div>
-      <a :href="baseURL" class="flex flex-col justify-center">
+      <a :href="baseURL">
         <!-- heroicons: logout -->
         <svg
           class="h-6 w-6"
