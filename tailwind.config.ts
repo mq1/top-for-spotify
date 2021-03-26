@@ -3,10 +3,10 @@ import { defineConfig } from 'vite-plugin-windicss'
 export default defineConfig({
   darkMode: 'media',
   theme: {
+    fontFamily: {
+      sans: ['Inter var', 'sans-serif'],
+    },
     extend: {
-      fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
-      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-30deg)' },
