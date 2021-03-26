@@ -1,12 +1,11 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import { defineConfig } from 'vite-plugin-windicss'
 
-module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+export default defineConfig({
   darkMode: 'media',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var', 'sans-serif'],
       },
       keyframes: {
         wiggle: {
@@ -25,8 +24,4 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-}
+})
