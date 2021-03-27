@@ -15,7 +15,7 @@
         <div>{{ avgFeatures.Danceability }}</div>
       </div>
       <div>
-        <div class="animate-ping-alt text-4xl mb-2">⚡</div>
+        <div class="animate-zoomzoom text-4xl mb-2">⚡</div>
         <div>Energy</div>
         <div>{{ avgFeatures.Energy }}</div>
       </div>
