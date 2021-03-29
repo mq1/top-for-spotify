@@ -27,7 +27,7 @@ watch(timeRange, updateArtists);
     <div class="grid grid-cols-3 gap-x-4 gap-y-16">
       <figure v-for="(artist, index) in artists" :key="index">
         <img class="object-cover w-full h-20 sm:h-48 rounded-2xl shadow-md" :src="artist.imageURL" />
-        <figcaption class="text-center font-semibold mt-4" v-text="index + 1 + '. ' + artist.name" />
+        <figcaption class="text-center font-semibold mt-4">{{ index + 1 }}. {{ artist.name }}</figcaption>
       </figure>
     </div>
   </div>
