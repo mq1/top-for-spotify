@@ -1,3 +1,49 @@
+<script setup lang="ts">
+import { defineProps, defineEmit, ref, onMounted } from 'vue';
+import { getDisplayName } from '../api';
+
+const props = defineProps({
+  isLoggedIn: {
+    type: Boolean,
+    required: true,
+  },
+  timeRange: {
+    type: String,
+    required: true,
+  },
+  headers: {
+    type: Headers,
+    required: true,
+  },
+});
+
+const emit = defineEmit(['setTimeRange']);
+
+const displayName = ref('');
+const updateDisplayName = () => getDisplayName(props.headers).then(dn => displayName.value = dn);
+const baseURL = import.meta.env.BASE_URL;
+const isTimeRangeDropdownOpen = ref(false);
+const setTimeRange = (timeRange: string) => {
+  emit('setTimeRange', timeRange);
+  isTimeRangeDropdownOpen.value = false;
+}
+const shareURL = () => {
+  if (navigator.share) {
+    navigator.share({
+      title: 'top-for-spotify',
+      text: `${displayName.value}'s Spotify stats`,
+      url: window.location.toString(),
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.toString());
+    window.alert("URL copied to clipboard");
+  }
+}
+
+onMounted(updateDisplayName);
+</script>
+
+
 <template>
   <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4 items-center">
     <h1
@@ -111,64 +157,3 @@
     </div>
   </header>
 </template>
-
-<script lang="ts">
-import { ref, defineComponent, onMounted } from "vue";
-
-export default defineComponent({
-  name: "AppHeader",
-  props: {
-    isLoggedIn: {
-      type: Boolean,
-      required: true,
-    },
-    timeRange: {
-      type: String,
-      required: true,
-    },
-    headers: {
-      type: Headers,
-      required: true,
-    },
-  },
-  setup(props, { emit }) {
-    const displayName = ref('');
-
-    const getDisplayName = async () => {
-      const response = await fetch(`https://api.spotify.com/v1/me`, {
-        headers: props.headers,
-      });
-      const j = await response.json();
-      displayName.value = j.display_name;
-    }
-    const baseURL = import.meta.env.BASE_URL;
-    const isTimeRangeDropdownOpen = ref(false);
-    const setTimeRange = (timeRange: string) => {
-      emit('setTimeRange', timeRange);
-      isTimeRangeDropdownOpen.value = false;
-    }
-    const shareURL = () => {
-      if (navigator.share) {
-        navigator.share({
-          title: 'top-for-spotify',
-          text: `${displayName.value}'s Spotify stats`,
-          url: window.location.toString(),
-        });
-      } else {
-        navigator.clipboard.writeText(window.location.toString());
-        window.alert("URL copied to clipboard");
-      }
-    }
-
-    onMounted(getDisplayName);
-
-    return {
-      displayName,
-      baseURL,
-      isTimeRangeDropdownOpen,
-      setTimeRange,
-      shareURL,
-    };
-  },
-});
-</script>
