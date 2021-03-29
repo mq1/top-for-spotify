@@ -22,7 +22,7 @@ watch(timeRange, updateObscurityRating);
 <template>
   <div class="font-semibold flex flex-col">
     <h2
-      class="text-4xl sm:text-7xl uppercase bg-black dark:bg-white text-white dark:text-black font-mono font-extrabold tracking-wider p-2 mb-8"
+      class="text-4xl sm:text-6xl uppercase bg-black dark:bg-white text-white dark:text-black font-extrabold tracking-wider p-4 mb-10"
     >Your obscurity</h2>
     <div class="text-9xl">{{ obscurityRating }}</div>
   </div>

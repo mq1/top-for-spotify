@@ -22,7 +22,7 @@ watch(timeRange, updateGenres);
 <template>
   <div class="flex flex-col gap-12">
     <h2
-      class="text-4xl sm:text-7xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-mono font-extrabold tracking-wider p-2 mb-8"
+      class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-extrabold tracking-wider p-4"
     >Your favorite genres</h2>
     <div class="flex flex-col gap-4 text-left text-xl uppercase">
       <div v-for="(genre, index) in genres" :key="index" class="border-2 py-2 px-4">
