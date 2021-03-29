@@ -10,27 +10,22 @@ const setTimeRange = (newTimeRange: string) => {
 </script>
 
 <template>
-  <div class="flex flex-col text-center">
-    <AppHeader
-      :isLoggedIn="isLoggedIn"
-      :timeRange="timeRange"
-      @setTimeRange="setTimeRange"
-    />
+  <main
+    class="flex flex-col justify-between min-h-screen text-center dark:bg-black dark:text-white"
+  >
+    <AppHeader :isLoggedIn="isLoggedIn" :timeRange="timeRange" @setTimeRange="setTimeRange" />
 
-    <div class="mx-8 sm:mx-auto sm:max-w-5xl py-8">
-      <div v-if="isLoggedIn === false">
-        <Login />
-      </div>
-      <div v-if="isLoggedIn === true" class="grid grid-cols-1 gap-y-32">
-        <Obscurity :timeRange="timeRange" />
-        <Mood :timeRange="timeRange" />
-        <Genres :timeRange="timeRange" />
-        <Artists :timeRange="timeRange" />
-        <Tracks :timeRange="timeRange" />
-      </div>
+    <Login v-if="isLoggedIn === false" />
+
+    <div v-if="isLoggedIn === true" class="p-8 grid grid-cols-1 gap-y-32 mx-auto">
+      <Obscurity :timeRange="timeRange" />
+      <Mood :timeRange="timeRange" />
+      <Genres :timeRange="timeRange" />
+      <Artists :timeRange="timeRange" />
+      <Tracks :timeRange="timeRange" />
     </div>
 
-    <footer class="text-center py-4 leading-loose">
+    <footer class="text-center p-4 leading-loose">
       <p class>MIT Licensed | © 2021 Manuel Quarneti</p>
       <p
         class="text-gray-500"
@@ -43,5 +38,5 @@ const setTimeRange = (newTimeRange: string) => {
         >here</a>
       </p>
     </footer>
-  </div>
+  </main>
 </template>
