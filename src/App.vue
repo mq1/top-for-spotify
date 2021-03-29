@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { getHeaders } from "./api";
 
 const isLoggedIn = location.hash !== "";
-const headers: Headers = getHeaders();
 const timeRange = ref("short_term");
 
 const setTimeRange = (newTimeRange: string) => {
@@ -16,7 +14,6 @@ const setTimeRange = (newTimeRange: string) => {
     <AppHeader
       :isLoggedIn="isLoggedIn"
       :timeRange="timeRange"
-      :headers="headers"
       @setTimeRange="setTimeRange"
     />
 
@@ -25,7 +22,7 @@ const setTimeRange = (newTimeRange: string) => {
         <Login />
       </div>
       <div v-if="isLoggedIn === true" class="grid grid-cols-1 gap-y-32">
-        <Obscurity :headers="headers" :timeRange="timeRange" />
+        <Obscurity :timeRange="timeRange" />
         <Mood :headers="headers" :timeRange="timeRange" />
         <Genres :headers="headers" :timeRange="timeRange" />
         <Artists :headers="headers" :timeRange="timeRange" />

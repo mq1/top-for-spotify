@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import { defineProps, ref, toRefs, onMounted, watch } from 'vue';
+import { getTracks } from "../api";
+
+const props = defineProps({
+  timeRange: {
+    type: String,
+    required: true,
+  },
+});
+
+const { timeRange } = toRefs(props);
+
+const tracks = ref<any[]>([]);
+const updateTracks = () => getTracks(props.timeRange).then(t => tracks.value = t);
+
+onMounted(updateTracks);
+
+watch(timeRange, updateTracks);
+</script>
+
 <template>
   <div class="flex flex-col gap-12">
     <h2
@@ -11,54 +32,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import type { RawTracks, CardElement } from "../../types/top-for-spotify";
-import { ref, defineComponent, toRefs, onMounted, watch } from "vue";
-
-const parseTracks = (tracks: RawTracks) => {
-  const parsedTracks: CardElement[] = [];
-
-  tracks.items.forEach((track) =>
-    parsedTracks.push({
-      name: track.name,
-      imageURL: track.album.images[0].url,
-    })
-  );
-
-  return parsedTracks;
-};
-
-export default defineComponent({
-  name: "Tracks",
-  props: {
-    timeRange: {
-      type: String,
-      required: true,
-    },
-    headers: {
-      type: Headers,
-      required: true,
-    },
-  },
-  setup(props) {
-    const { timeRange } = toRefs(props);
-
-    const tracks = ref<CardElement[]>([]);
-    const getTracks = async () => {
-      const response = await fetch(
-        `https://api.spotify.com/v1/me/top/tracks?limit=9&time_range=${props.timeRange}`,
-        { headers: props.headers }
-      );
-      const j = await response.json();
-      tracks.value = parseTracks(j);
-    };
-
-    onMounted(getTracks);
-
-    watch(timeRange, getTracks);
-
-    return { tracks };
-  },
-});
-</script>

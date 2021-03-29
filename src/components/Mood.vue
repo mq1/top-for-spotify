@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import { defineProps, ref, toRefs, onMounted, watch } from 'vue';
+import { getAvgFeatures } from "../api";
+
+const props = defineProps({
+  timeRange: {
+    type: String,
+    required: true,
+  },
+});
+
+const { timeRange } = toRefs(props);
+
+const avgFeatures = ref<{ [feature: string]: string }>({});
+const updateAvgFeatures = () => getAvgFeatures(props.timeRange).then(avg => avgFeatures.value = avg);
+
+onMounted(updateAvgFeatures);
+
+watch(timeRange, updateAvgFeatures);
+</script>
+
 <template>
   <div class="font-semibold flex flex-col gap-12">
     <h2
@@ -27,80 +48,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import type { RawAudioFeatures, RawTracks } from "../../types/top-for-spotify";
-import { ref, defineComponent, toRefs, onMounted, watch } from "vue";
-
-const parseTrackIDs = (tracks: RawTracks) => {
-  const ids: string[] = [];
-  tracks.items.forEach((track) => ids.push(track.id));
-  return ids;
-};
-
-const parseAudioFeatures = (raw: RawAudioFeatures) => {
-  const features: { [feature: string]: number[] } = {
-    Acousticness: [],
-    Danceability: [],
-    Energy: [],
-    Happiness: [],
-  };
-
-  raw.audio_features.forEach((track) => {
-    features.Acousticness.push(track.acousticness);
-    features.Danceability.push(track.acousticness);
-    features.Energy.push(track.acousticness);
-    features.Happiness.push(track.valence);
-  });
-
-  const avgFeatures: { [feature: string]: string } = {};
-  Object.entries(features).forEach(([key, val]) => {
-    const sum = val.reduce((a, b) => a + b, 0);
-    const avg = sum / val.length || 0;
-    avgFeatures[key] = `${Math.round(avg * 100)} %`;
-  });
-
-  return avgFeatures;
-};
-
-export default defineComponent({
-  name: "Mood",
-  props: {
-    timeRange: {
-      type: String,
-      required: true,
-    },
-    headers: {
-      type: Headers,
-      required: true,
-    },
-  },
-  setup(props) {
-    const { timeRange } = toRefs(props);
-
-    const avgFeatures = ref<{ [feature: string]: string }>({});
-    const getAvgFeatures = async () => {
-      const response = await fetch(
-        `https://api.spotify.com/v1/me/top/tracks?time_range=${props.timeRange}`,
-        { headers: props.headers }
-      );
-      const j = await response.json();
-      const trackIDs = parseTrackIDs(j);
-
-      const response2 = await fetch(
-        `https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`,
-        { headers: props.headers }
-      );
-
-      const j2 = await response2.json();
-      avgFeatures.value = parseAudioFeatures(j2);
-    }
-
-    onMounted(getAvgFeatures);
-
-    watch(timeRange, getAvgFeatures);
-
-    return { avgFeatures };
-  },
-});
-</script>

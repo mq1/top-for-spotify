@@ -7,16 +7,12 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  headers: {
-    type: Headers,
-    required: true,
-  },
 });
 
 const { timeRange } = toRefs(props);
 
 const obscurityRating = ref('? %');
-const updateObscurityRating = () => getObscurityRating(props.headers, props.timeRange).then(r => obscurityRating.value = r);
+const updateObscurityRating = () => getObscurityRating(props.timeRange).then(r => obscurityRating.value = r);
 
 onMounted(updateObscurityRating);
 

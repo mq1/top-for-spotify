@@ -11,16 +11,12 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  headers: {
-    type: Headers,
-    required: true,
-  },
 });
 
 const emit = defineEmit(['setTimeRange']);
 
 const displayName = ref('');
-const updateDisplayName = () => getDisplayName(props.headers).then(dn => displayName.value = dn);
+const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn);
 const baseURL = import.meta.env.BASE_URL;
 const isTimeRangeDropdownOpen = ref(false);
 const setTimeRange = (timeRange: string) => {
