@@ -23,10 +23,10 @@ const setTimeRange = (newTimeRange: string) => {
       </div>
       <div v-if="isLoggedIn === true" class="grid grid-cols-1 gap-y-32">
         <Obscurity :timeRange="timeRange" />
-        <Mood :headers="headers" :timeRange="timeRange" />
-        <Genres :headers="headers" :timeRange="timeRange" />
-        <Artists :headers="headers" :timeRange="timeRange" />
-        <Tracks :headers="headers" :timeRange="timeRange" />
+        <Mood :timeRange="timeRange" />
+        <Genres :timeRange="timeRange" />
+        <Artists :timeRange="timeRange" />
+        <Tracks :timeRange="timeRange" />
       </div>
     </div>
 
