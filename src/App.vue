@@ -15,7 +15,9 @@ const setTimeRange = (newTimeRange: string) => {
   >
     <AppHeader :is-logged-in="isLoggedIn" :time-range="timeRange" @setTimeRange="setTimeRange" />
 
-    <main class="max-w-5xl mx-auto">
+    <div />
+
+    <main class="max-w-5xl mx-auto mt-32">
       <Login v-if="isLoggedIn === false" />
 
       <div v-if="isLoggedIn === true" class="mx-8 sm:mx-0 flex flex-col gap-y-32">

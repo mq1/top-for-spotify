@@ -41,7 +41,7 @@ onMounted(updateDisplayName)
 </script>
 
 <template>
-  <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4 items-center">
+  <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4 items-center bg-white dark:bg-black w-full fixed z-10">
     <h1
       :class="`text-3xl font-bold ${displayName === undefined ? 'col-span-full' : ''
       }`"
