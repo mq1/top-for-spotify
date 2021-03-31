@@ -8,11 +8,11 @@ export default defineConfig({
   plugins: [
     vue(),
     ViteComponents(),
-    WindiCSS()
+    WindiCSS(),
   ],
   base: '/top-for-spotify/',
   server: {
     host: 'localhost',
-    port: 3000
-  }
+    port: 3000,
+  },
 })
