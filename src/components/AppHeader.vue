@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, onMounted } from 'vue';
-import { getDisplayName } from '../api';
+import { defineProps, defineEmit, ref, onMounted } from 'vue'
+import { getDisplayName } from '../api'
 
 const props = defineProps({
   isLoggedIn: {
@@ -11,17 +11,17 @@ const props = defineProps({
     type: String,
     required: true,
   },
-});
+})
 
-const emit = defineEmit(['setTimeRange']);
+const emit = defineEmit(['setTimeRange'])
 
-const displayName = ref('');
-const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn);
-const baseURL = import.meta.env.BASE_URL;
-const isTimeRangeDropdownOpen = ref(false);
+const displayName = ref('')
+const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn)
+const baseURL = import.meta.env.BASE_URL
+const isTimeRangeDropdownOpen = ref(false)
 const setTimeRange = (timeRange: string) => {
-  emit('setTimeRange', timeRange);
-  isTimeRangeDropdownOpen.value = false;
+  emit('setTimeRange', timeRange)
+  isTimeRangeDropdownOpen.value = false
 }
 const shareURL = () => {
   if (navigator.share) {
@@ -29,34 +29,38 @@ const shareURL = () => {
       title: 'top-for-spotify',
       text: `${displayName.value}'s Spotify stats`,
       url: window.location.toString(),
-    });
-  } else {
-    navigator.clipboard.writeText(window.location.toString());
-    window.alert("URL copied to clipboard");
+    })
+  }
+  else {
+    navigator.clipboard.writeText(window.location.toString())
+    window.alert('URL copied to clipboard')
   }
 }
 
-onMounted(updateDisplayName);
+onMounted(updateDisplayName)
 </script>
-
 
 <template>
   <header class="border-b-2 py-4 px-8 grid grid-cols-1 sm:grid-cols-3 gap-y-4 items-center">
     <h1
       :class="`text-3xl font-bold ${displayName === undefined ? 'col-span-full' : ''
       }`"
-    >TOP for Spotify</h1>
-    <div class="text-xl" v-if="displayName !== undefined">{{ `${displayName}'s stats` }}</div>
-    <div class="inline-flex items-center justify-center gap-4" v-if="isLoggedIn === true">
+    >
+      TOP for Spotify
+    </h1>
+    <div v-if="displayName !== undefined" class="text-xl">
+      {{ `${displayName}'s stats` }}
+    </div>
+    <div v-if="isLoggedIn === true" class="inline-flex items-center justify-center gap-4">
       <div class="relative">
         <div>
           <button
-            type="button"
-            @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
-            class="uppercase inline-flex justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
             id="options-menu"
+            type="button"
+            class="uppercase inline-flex justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
             aria-haspopup="true"
             aria-expanded="true"
+            @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
           >
             {{ timeRange === "short_term" ? "currently" : "overall" }}
             <!-- Heroicon name: solid/chevron-down -->
@@ -105,20 +109,24 @@ onMounted(updateDisplayName);
               aria-labelledby="options-menu"
             >
               <button
+                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
+                role="menuitem"
                 @click="setTimeRange('short_term')"
-                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
-                role="menuitem"
-              >currently</button>
+              >
+                currently
+              </button>
               <button
-                @click="setTimeRange('long_term')"
                 class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
                 role="menuitem"
-              >overall</button>
+                @click="setTimeRange('long_term')"
+              >
+                overall
+              </button>
             </div>
           </div>
         </transition>
       </div>
-      <button @click="shareURL()" class="h-6 w-6">
+      <button class="h-6 w-6" @click="shareURL()">
         <!-- heroicons: share -->
         <svg
           xmlns="http://www.w3.org/2000/svg"

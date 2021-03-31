@@ -1,5 +1,7 @@
 {
     "editor.tabSize": 2,
-    "vetur.experimental.templateInterpolationService": true,
-    "volar.tsPlugin": true
+    "volar.tsPlugin": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+    },
 }
