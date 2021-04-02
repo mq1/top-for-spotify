@@ -33,17 +33,8 @@ const setTimeRange = (newTimeRange: string) => {
       <p class>
         MIT Licensed | © 2021 Manuel Quarneti
       </p>
-      <p
-        class="text-gray-500"
-      >
-        Made with ViteJS, Vue3, TypeScript, Windi CSS, HeroIcons and Inter Font
-      </p>
       <p class="text-gray-500">
-        Hosted on GitHub Pages | Source code
-        <a
-          class="underline"
-          href="https://github.com/mq1/top-for-spotify"
-        >here</a>
+        Hosted on Netlify | Source code <a class="underline" href="https://github.com/mq1/top-for-spotify">here</a>
       </p>
     </footer>
   </div>
