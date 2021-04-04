@@ -23,7 +23,7 @@ const parseObscurityRating = (tracks: RawTracks) => {
   const sum = obscurities.reduce((a, b) => a + b, 0)
   const avg = sum / obscurities.length || 0
 
-  return `${Math.round(avg)} %`
+  return Math.round(avg)
 }
 
 export const getObscurityRating = async(timeRange: string) => {
@@ -112,11 +112,11 @@ const parseAudioFeatures = (raw: RawAudioFeatures) => {
     features.Happiness.push(track.valence)
   })
 
-  const avgFeatures: { [feature: string]: string } = {}
+  const avgFeatures: { [feature: string]: number } = {}
   Object.entries(features).forEach(([key, val]) => {
     const sum = val.reduce((a, b) => a + b, 0)
     const avg = sum / val.length || 0
-    avgFeatures[key] = `${Math.round(avg * 100)} %`
+    avgFeatures[key] = Math.round(avg * 100)
   })
 
   return avgFeatures

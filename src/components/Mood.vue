@@ -11,7 +11,7 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const avgFeatures = ref<{ [feature: string]: string }>({})
+const avgFeatures = ref<{ [feature: string]: number }>({})
 const updateAvgFeatures = () => getAvgFeatures(props.timeRange).then(avg => avgFeatures.value = avg)
 
 onMounted(updateAvgFeatures)
@@ -32,28 +32,28 @@ watch(timeRange, updateAvgFeatures)
           🎸
         </div>
         <div>Acousticness</div>
-        <div>{{ avgFeatures.Acousticness }}</div>
+        <div>{{ avgFeatures.Acousticness }} %</div>
       </div>
       <div>
         <div class="animate-bounce text-4xl mb-2">
           💃
         </div>
         <div>Danceability</div>
-        <div>{{ avgFeatures.Danceability }}</div>
+        <div>{{ avgFeatures.Danceability }} %</div>
       </div>
       <div>
         <div class="animate-zoomzoom text-4xl mb-2">
           ⚡
         </div>
         <div>Energy</div>
-        <div>{{ avgFeatures.Energy }}</div>
+        <div>{{ avgFeatures.Energy }} %</div>
       </div>
       <div>
         <div class="animate-wiggle text-4xl mb-2">
           😊
         </div>
         <div>Happiness</div>
-        <div>{{ avgFeatures.Happiness }}</div>
+        <div>{{ avgFeatures.Happiness }} %</div>
       </div>
     </div>
   </div>

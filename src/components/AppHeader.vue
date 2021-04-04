@@ -49,9 +49,9 @@ onMounted(updateDisplayName)
       TOP for Spotify
     </h1>
     <div v-if="displayName !== undefined" class="text-sm sm:text-xl">
-      {{ `${displayName}'s stats` }}
+      {{ displayName }}'s stats
     </div>
-    <div v-if="isLoggedIn === true" class="flex justify-center items-center gap-4 col-span-full sm:col-span-1">
+    <div v-if="props.isLoggedIn === true" class="flex justify-center items-center gap-4 col-span-full sm:col-span-1">
       <div>
         <button
           id="options-menu"
@@ -61,7 +61,7 @@ onMounted(updateDisplayName)
           aria-expanded="true"
           @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
         >
-          {{ timeRange === "short_term" ? "currently" : "overall" }}
+          {{ props.timeRange === "short_term" ? "currently" : "overall" }}
           <heroicons-outline-chevron-down />
         </button>
 

@@ -11,7 +11,7 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const obscurityRating = ref('? %')
+const obscurityRating = ref('?' as any)
 const updateObscurityRating = () => getObscurityRating(props.timeRange).then(r => obscurityRating.value = r)
 
 onMounted(updateObscurityRating)
@@ -27,7 +27,7 @@ watch(timeRange, updateObscurityRating)
       Your obscurity
     </h2>
     <div class="text-9xl">
-      {{ obscurityRating }}
+      {{ obscurityRating }} %
     </div>
   </div>
 </template>
