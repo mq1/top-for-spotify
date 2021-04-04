@@ -21,7 +21,6 @@ export default defineConfig({
     ViteIcons(),
     VitePWA({
       registerType: 'autoUpdate',
-      mode: 'development',
       base: '/top-for-spotify/',
       manifest: {
         name: 'Top for Spotify',
