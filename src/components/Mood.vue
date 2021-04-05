@@ -22,7 +22,7 @@ watch(timeRange, updateAvgFeatures)
 <template>
   <div class="font-semibold flex flex-col gap-12">
     <h2
-      class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-extrabold tracking-wider p-4 mb-10"
+      class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-extrabold tracking-wider rounded-full py-4 px-6 mb-10"
     >
       Your mood
     </h2>

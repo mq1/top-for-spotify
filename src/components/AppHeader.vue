@@ -56,7 +56,7 @@ onMounted(updateDisplayName)
         <button
           id="options-menu"
           type="button"
-          class="uppercase flex items-center justify-between border-2 px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
+          class="uppercase flex items-center justify-between border-2 rounded-full px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
           aria-haspopup="true"
           aria-expanded="true"
           @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
@@ -85,7 +85,7 @@ onMounted(updateDisplayName)
         >
           <div
             v-show="isTimeRangeDropdownOpen"
-            class="absolute mt-2 w-36 bg-white dark:bg-black border-2"
+            class="absolute mt-2 w-36 bg-white dark:bg-black border-2 rounded-xl"
           >
             <div
               class="py-1 uppercase font-semibold"
