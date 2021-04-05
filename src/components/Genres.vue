@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
-import { getGenres } from '../api'
+import { getGenres } from '~/api'
 
 const props = defineProps({
   timeRange: {

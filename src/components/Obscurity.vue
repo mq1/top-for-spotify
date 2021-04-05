@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, toRefs, watch } from 'vue'
-import { getObscurityRating } from '../api'
+import { getObscurityRating } from '~/api'
 
 const props = defineProps({
   timeRange: {

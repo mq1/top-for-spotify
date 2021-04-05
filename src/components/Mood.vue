@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
-import { getAvgFeatures } from '../api'
+import { getAvgFeatures } from '~/api'
 
 const props = defineProps({
   timeRange: {

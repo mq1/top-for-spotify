@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmit, ref, onMounted } from 'vue'
-import { getDisplayName } from '../api'
+import { getDisplayName } from '~/api'
 
 const props = defineProps({
   isLoggedIn: {

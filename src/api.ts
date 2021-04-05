@@ -1,4 +1,4 @@
-import { CardElement, RawArtists, RawAudioFeatures, RawTracks, ScoreBoardElement } from '../types/top-for-spotify'
+import { CardElement, RawArtists, RawAudioFeatures, RawTracks, ScoreBoardElement } from '~/types'
 
 const getHeaders = () => {
   const matches = /#access_token=(.*?)&/.exec(location.hash)

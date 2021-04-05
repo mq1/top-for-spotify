@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
-import { getArtists } from '../api'
+import { getArtists } from '~/api'
 
 const props = defineProps({
   timeRange: {
