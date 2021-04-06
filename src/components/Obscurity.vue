@@ -11,7 +11,7 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const obscurityRating = ref('?' as any)
+const obscurityRating = ref<string | number>('?')
 const updateObscurityRating = () => getObscurityRating(props.timeRange).then(r => obscurityRating.value = r)
 
 onMounted(updateObscurityRating)
