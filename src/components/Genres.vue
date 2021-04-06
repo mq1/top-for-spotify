@@ -27,7 +27,7 @@ watch(timeRange, updateGenres)
       Your favorite genres
     </h2>
     <div class="flex flex-col gap-4 text-left text-xl uppercase">
-      <div v-for="(genre, index) in genres" :key="index" class="border-2 py-2 px-4">
+      <div v-for="(genre, index) in genres" :key="index" class="border-2 rounded-full py-2 px-4">
         <span class="font-bold">{{ index + 1 }}.</span>
         {{ genre.name }}
       </div>
