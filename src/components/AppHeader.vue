@@ -33,6 +33,7 @@ const shareURL = () => {
   }
   else {
     navigator.clipboard.writeText(window.location.toString())
+    // eslint-disable-next-line no-alert
     window.alert('URL copied to clipboard')
   }
 }
