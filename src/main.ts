@@ -5,6 +5,7 @@ import generatedRoutes from 'pages-generated'
 import { registerSW } from 'virtual:pwa-register'
 import App from './App.vue'
 import 'virtual:windi.css'
+import 'inter-ui/inter.css'
 
 const routes = setupLayouts(generatedRoutes)
 
