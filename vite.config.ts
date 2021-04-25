@@ -1,10 +1,12 @@
 import path from 'path'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 import ViteComponents from 'vite-plugin-components'
 import WindiCSS from 'vite-plugin-windicss'
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import { VitePWA } from 'vite-plugin-pwa'
+import Pages from 'vite-plugin-pages'
+import Layouts from 'vite-plugin-vue-layouts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +16,13 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
+    Vue(),
+    Pages({
+      pagesDir: [
+        { dir: 'src/pages', baseRoute: '/top-for-spotify/' },
+      ],
+    }),
+    Layouts(),
     ViteComponents({
       customComponentResolvers: [
         ViteIconsResolver({
