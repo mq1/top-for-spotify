@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, onMounted } from 'vue'
+import { defineProps, defineEmit, ref, onMounted, toRefs } from 'vue'
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { getDisplayName } from '~/api'
 
 const props = defineProps({
@@ -13,16 +14,18 @@ const props = defineProps({
   },
 })
 
+const { timeRange } = toRefs(props)
+
+const timeRangeInfos = {
+  currently: 'short_term',
+  overall: 'long_term',
+}
+
 const emit = defineEmit(['setTimeRange'])
 
 const displayName = ref('')
 const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn)
 const baseURL = import.meta.env.BASE_URL
-const isTimeRangeDropdownOpen = ref(false)
-const setTimeRange = (timeRange: string) => {
-  emit('setTimeRange', timeRange)
-  isTimeRangeDropdownOpen.value = false
-}
 const shareURL = () => {
   if (navigator.share) {
     navigator.share({
@@ -53,65 +56,17 @@ onMounted(updateDisplayName)
       {{ displayName }}'s stats
     </div>
     <div v-if="props.isLoggedIn === true" class="flex justify-center items-center gap-4 col-span-full sm:col-span-1">
-      <div>
-        <button
-          id="options-menu"
-          type="button"
-          class="uppercase flex items-center justify-between border-2 rounded-full px-4 py-2 text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-800 w-36"
-          aria-haspopup="true"
-          aria-expanded="true"
-          @click="isTimeRangeDropdownOpen = !isTimeRangeDropdownOpen"
-        >
-          {{ props.timeRange === "short_term" ? "currently" : "overall" }}
-          <heroicons-outline-chevron-down />
-        </button>
-
-        <!--
-          Dropdown panel, show/hide based on dropdown state.
-
-          Entering: "transition ease-out duration-100"
-            From: "transform opacity-0 scale-95"
-            To: "transform opacity-100 scale-100"
-          Leaving: "transition ease-in duration-75"
-            From: "transform opacity-100 scale-100"
-            To: "transform opacity-0 scale-95"
-        -->
-        <transition
-          enter-active-class="transition ease-out duration-100"
-          enter-from-class="transform opacity-0 scale-95"
-          enter-to-class="transform opacity-100 scale-100"
-          leave-active-class="transition ease-in duration-75"
-          leave-from-class="transform opacity-100 scale-100"
-          leave-to-class="transform opacity-0 scale-95"
-        >
-          <div
-            v-show="isTimeRangeDropdownOpen"
-            class="absolute mt-2 w-36 bg-white dark:bg-black border-2 rounded-xl"
-          >
-            <div
-              class="py-1 uppercase font-semibold"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="options-menu"
-            >
-              <button
-                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
-                role="menuitem"
-                @click="setTimeRange('short_term')"
-              >
-                currently
-              </button>
-              <button
-                class="block px-4 py-2 text-sm hover:bg-gray-200 uppercase w-full text-left dark:hover:bg-gray-800"
-                role="menuitem"
-                @click="setTimeRange('long_term')"
-              >
-                overall
-              </button>
-            </div>
-          </div>
-        </transition>
-      </div>
+      <Listbox v-model="timeRange" as="div" class="relative">
+        <ListboxButton class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-40">
+          <span class="uppercase">{{ timeRange === 'short_term' ? 'currently' : 'overall' }}</span>
+          <heroicons-outline-selector />
+        </ListboxButton>
+        <ListboxOptions as="div" class="absolute bg-white dark:bg-black border-2 rounded-xl list-none mt-2 w-40 flex flex-col divide-y-2 py-2">
+          <ListboxOption v-for="(value, name) in timeRangeInfos" :key="name" :value="value" class="py-2 px-4 cursor-pointer uppercase hover:bg-gray-200 dark:hover:bg-gray-800 overflow-hidden" @click="emit('setTimeRange', value)">
+            {{ name }}
+          </ListboxOption>
+        </ListboxOptions>
+      </Listbox>
 
       <button @click="shareURL()">
         <heroicons-outline-share class="h-6 w-6" />
