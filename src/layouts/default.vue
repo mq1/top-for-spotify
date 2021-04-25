@@ -22,11 +22,11 @@ const shareURL = () => {
     navigator.share({
       title: 'top-for-spotify',
       text: `${displayName.value}'s Spotify stats`,
-      url: location.toString(),
+      url: location.value.href,
     })
   }
   else {
-    navigator.clipboard.writeText(location.toString())
+    navigator.clipboard.writeText(location.value.href!)
     // eslint-disable-next-line no-alert
     window.alert('URL copied to clipboard')
   }
