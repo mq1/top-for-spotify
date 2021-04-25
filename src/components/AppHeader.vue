@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmit, ref, onMounted, toRefs } from 'vue'
+import { defineProps, defineEmit, ref, onMounted } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { getDisplayName } from '~/api'
 
@@ -13,8 +13,6 @@ const props = defineProps({
     required: true,
   },
 })
-
-const { timeRange } = toRefs(props)
 
 const timeRangeInfos = {
   currently: 'short_term',
@@ -56,9 +54,9 @@ onMounted(updateDisplayName)
       {{ displayName }}'s stats
     </div>
     <div v-if="props.isLoggedIn === true" class="flex justify-center items-center gap-4 col-span-full sm:col-span-1">
-      <Listbox v-model="timeRange" as="div" class="relative">
+      <Listbox v-model="props.timeRange" as="div" class="relative">
         <ListboxButton class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-40 focus:outline-none">
-          <span class="uppercase">{{ timeRange === 'short_term' ? 'currently' : 'overall' }}</span>
+          <span class="uppercase">{{ props.timeRange === 'short_term' ? 'currently' : 'overall' }}</span>
           <heroicons-outline-selector />
         </ListboxButton>
         <transition
@@ -70,7 +68,13 @@ onMounted(updateDisplayName)
           leave-to-class="transform scale-95 opacity-0"
         >
           <ListboxOptions as="div" class="absolute bg-white dark:bg-black border-2 rounded-xl list-none mt-2 w-40 flex flex-col divide-y-2 py-2">
-            <ListboxOption v-for="(value, name) in timeRangeInfos" :key="name" :value="value" class="py-2 px-4 cursor-pointer uppercase hover:bg-gray-200 dark:hover:bg-gray-800 overflow-hidden" @click="emit('setTimeRange', value)">
+            <ListboxOption
+              v-for="(value, name) in timeRangeInfos"
+              :key="name"
+              :value="value"
+              class="py-2 px-4 cursor-pointer uppercase hover:bg-gray-200 dark:hover:bg-gray-800 overflow-hidden"
+              @click="emit('setTimeRange', value)"
+            >
               {{ name }}
             </ListboxOption>
           </ListboxOptions>
