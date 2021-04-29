@@ -10,6 +10,7 @@ specifiers:
   '@vueuse/core': 4.9.1
   '@vueuse/head': 0.5.1
   eslint: 7.25.0
+  inter-ui: 3.18.1
   typescript: 4.2.4
   vite: 2.2.3
   vite-plugin-components: 0.8.4
@@ -27,6 +28,7 @@ dependencies:
   '@headlessui/vue': 1.1.1_vue@3.0.11
   '@vueuse/core': 4.9.1_vue@3.0.11
   '@vueuse/head': 0.5.1_vue@3.0.11
+  inter-ui: 3.18.1
   vue: 3.0.11
   vue-router: 4.0.6_vue@3.0.11
 
@@ -3019,6 +3021,10 @@ packages:
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
+
+  /inter-ui/3.18.1:
+    resolution: {integrity: sha512-W3LnAirp6a1ixpAHZwr9gH52KlOQOAp0oqbmIoGi2dAIlcIB7auJgLr9XFHUzYy2FoZ0Nf7aPe/nHMZB4/Zvdg==}
+    dev: false
 
   /internal-slot/1.0.3:
     resolution: {integrity: sha512-O0DB1JC/sPyZl7cIo78n5dR7eUSwwpYPiXRhTzNxZVAMUuB8vlnRFyLxdrVToks6XPLVnFfbzaVd5WLjhgg+vA==}
