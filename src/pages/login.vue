@@ -3,7 +3,7 @@ import { useBrowserLocation } from '@vueuse/core'
 
 const location = useBrowserLocation()
 
-const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta.env.VITE_SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(location.origin + import.meta.env.BASE_URL)}&scope=user-top-read&show_dialog=true`
+const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta.env.VITE_SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(location.value.origin + import.meta.env.BASE_URL)}&scope=user-top-read&show_dialog=true`
 </script>
 
 <template>
