@@ -19,7 +19,7 @@ export default defineConfig({
     Vue(),
     Pages({
       pagesDir: [
-        { dir: 'src/pages', baseRoute: '/top-for-spotify/' },
+        { dir: 'src/pages', baseRoute: 'top-for-spotify' },
       ],
     }),
     Layouts(),
