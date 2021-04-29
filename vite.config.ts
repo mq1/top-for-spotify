@@ -47,4 +47,9 @@ export default defineConfig({
     host: 'localhost',
     port: 3000,
   },
+  // https://github.com/antfu/vite-ssg
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+  },
 })
