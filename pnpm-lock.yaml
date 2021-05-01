@@ -22,7 +22,7 @@ specifiers:
   vite-ssg: 0.9.3
   vue: 3.0.11
   vue-router: 4.0.6
-  vue-tsc: 0.0.25
+  vue-tsc: 0.0.26
 
 dependencies:
   '@headlessui/vue': 1.1.1_vue@3.0.11
@@ -48,7 +48,7 @@ devDependencies:
   vite-plugin-vue-layouts: 0.2.2_vite@2.2.3
   vite-plugin-windicss: 0.15.10_vite@2.2.3
   vite-ssg: 0.9.3_9095378e3867e0ae7932f9889ee838bc
-  vue-tsc: 0.0.25
+  vue-tsc: 0.0.26
 
 packages:
 
@@ -4965,8 +4965,8 @@ packages:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
     dev: true
 
-  /vue-tsc/0.0.25:
-    resolution: {integrity: sha512-9cWIQxjoviLQE2o+8NVfycKeI6nlfPndTDvH9hhG2/5mQhixPYWzXgAjszLXa8pzLKnF3ZiAr/hrTxjIAai5+A==}
+  /vue-tsc/0.0.26:
+    resolution: {integrity: sha512-UtHrHPBp7mAFN0GfsPYUPWROCGAQMl/HYTGOJy5ufPzCMt5h0kS2HOgfj4qbLSUzuYsfBqTxEj2unuNrlbbvxA==}
     hasBin: true
     dependencies:
       unzipper: 0.10.11
