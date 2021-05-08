@@ -19,7 +19,7 @@ specifiers:
   vite-plugin-pwa: 0.7.3
   vite-plugin-vue-layouts: 0.3.1
   vite-plugin-windicss: 0.15.10
-  vite-ssg: 0.9.3
+  vite-ssg: 0.10.0
   vue: 3.0.11
   vue-router: 4.0.6
   vue-tsc: 0.1.2
@@ -47,7 +47,7 @@ devDependencies:
   vite-plugin-pwa: 0.7.3_vite@2.2.4
   vite-plugin-vue-layouts: 0.3.1_vite@2.2.4
   vite-plugin-windicss: 0.15.10_vite@2.2.4
-  vite-ssg: 0.9.3_a2a93fdf23333c5f8bdb1d4ae8e84ae2
+  vite-ssg: 0.10.0_a2a93fdf23333c5f8bdb1d4ae8e84ae2
   vue-tsc: 0.1.2_vue@3.0.11
 
 packages:
@@ -3176,6 +3176,15 @@ packages:
     engines: {node: '>=0.4.x'}
     dev: true
 
+  /fs-extra/10.0.0:
+    resolution: {integrity: sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.6
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
   /fs-extra/9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
     engines: {node: '>=10'}
@@ -6217,8 +6226,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-ssg/0.9.3_a2a93fdf23333c5f8bdb1d4ae8e84ae2:
-    resolution: {integrity: sha512-v0UvHwPbw/XkFGhoKtROCazjxoR4COTWYFWhSGCgvcyjcT82jTowyuKVAuY7Ic9VwTZUNe0SBBcOxN4nGS+tpg==}
+  /vite-ssg/0.10.0_a2a93fdf23333c5f8bdb1d4ae8e84ae2:
+    resolution: {integrity: sha512-8QWEwkzX5Q9o2FVKzJ1tMQqphCYztUdkvQjNiXW6dxePwLPfBPoU7y3rE/1v/w02p/sJU0hrkn8q9OztwkqAkA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
@@ -6233,14 +6242,14 @@ packages:
       '@vue/server-renderer': 3.0.11_vue@3.0.11
       '@vueuse/head': 0.5.1_vue@3.0.11
       chalk: 4.1.1
-      fs-extra: 9.1.0
+      fs-extra: 10.0.0
       html-minifier: 4.0.0
       jsdom: 16.5.3
       prettier: 2.2.1
       vite: 2.2.4
       vue: 3.0.11
       vue-router: 4.0.6_vue@3.0.11
-      yargs: 16.2.0
+      yargs: 17.0.1
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -6822,9 +6831,9 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /yargs/16.2.0:
-    resolution: {integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==}
-    engines: {node: '>=10'}
+  /yargs/17.0.1:
+    resolution: {integrity: sha512-xBBulfCc8Y6gLFcrPvtqKz9hz8SO0l1Ni8GgDekvBX2ro0HRQImDGnikfc33cgzcYUSncapnNcZDjVFIH3f6KQ==}
+    engines: {node: '>=12'}
     dependencies:
       cliui: 7.0.4
       escalade: 3.1.1
