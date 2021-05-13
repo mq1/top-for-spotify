@@ -12,7 +12,7 @@
     "@vueuse/head": "0.5.1",
     "inter-ui": "3.18.1",
     "vue": "3.0.11",
-    "vue-router": "4.0.6"
+    "vue-router": "4.0.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.6.5",
