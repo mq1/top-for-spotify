@@ -13,7 +13,7 @@ specifiers:
   inter-ui: 3.18.1
   typescript: 4.2.4
   vite: 2.3.2
-  vite-plugin-components: 0.9.0
+  vite-plugin-components: 0.9.1
   vite-plugin-icons: 0.5.0
   vite-plugin-pages: 0.11.3
   vite-plugin-pwa: 0.7.3
@@ -41,7 +41,7 @@ devDependencies:
   eslint: 7.26.0
   typescript: 4.2.4
   vite: 2.3.2
-  vite-plugin-components: 0.9.0_vite@2.3.2
+  vite-plugin-components: 0.9.1_vite@2.3.2
   vite-plugin-icons: 0.5.0_fb7ac752358bf681eb1cc4c52b19b118
   vite-plugin-pages: 0.11.3_vite@2.3.2+vue@3.0.11
   vite-plugin-pwa: 0.7.3_vite@2.3.2
@@ -6203,8 +6203,8 @@ packages:
       vfile-message: 2.0.4
     dev: true
 
-  /vite-plugin-components/0.9.0_vite@2.3.2:
-    resolution: {integrity: sha512-ZtJn2gt6H9Nsd77qWvqr69Wwv+XgY0OU7WpjGZ+1p22O5ImOQT5CUx364bXUpgQSDCROnLtxsKga2wbGiPMaeA==}
+  /vite-plugin-components/0.9.1_vite@2.3.2:
+    resolution: {integrity: sha512-rD7RrqrrvSGdXX1HWecE8xvDTFASYtqVgVRHfK8GZNET4wD+JeJITIOaDx4KdvYDIchUAvCNnSLXj6Ll1H+ZGQ==}
     peerDependencies:
       vite: ^2.0.0-beta.69
     dependencies:
