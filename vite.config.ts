@@ -7,6 +7,7 @@ import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import { VitePWA } from 'vite-plugin-pwa'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
       '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+
   plugins: [
     Vue(),
     Pages({
@@ -41,15 +43,32 @@ export default defineConfig({
         short_name: 'Top for Spotify',
       },
     }),
+    VueI18n({
+      include: [path.resolve(__dirname, 'locales/**')],
+    }),
   ],
+
   base: '/top-for-spotify/',
+
   server: {
     host: 'localhost',
     port: 3000,
   },
+
   // https://github.com/antfu/vite-ssg
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
+  },
+
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+    ],
+    exclude: [
+      'vue-demi',
+    ],
   },
 })
