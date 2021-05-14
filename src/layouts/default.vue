@@ -41,7 +41,7 @@ onMounted(updateDisplayName)
     <div class="flex flex-col justify-between items-center gap-y-8 min-h-screen max-w-7xl mx-auto p-4">
       <client-only>
         <header
-          class="mx-auto border-2 rounded-3xl sm:rounded-full px-4 py-2 grid grid-cols-2 sm:grid-cols-3 gap-y-4 items-center bg-white dark:bg-black fixed z-10"
+          class="mx-auto border-2 rounded-3xl sm:rounded-full p-2 sm:px-4 sm:py-2 grid grid-cols-2 sm:grid-cols-3 gap-y-4 items-center bg-white dark:bg-black fixed z-10"
         >
           <h1
             :class="`sm:text-3xl font-bold ${displayName === undefined ? 'col-span-full' : ''
