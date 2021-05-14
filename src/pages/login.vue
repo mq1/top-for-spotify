@@ -9,5 +9,5 @@ const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta
 </script>
 
 <template>
-  <a class="text-4xl mx-auto px-8 py-4 sm:px-32 sm:py-16 rounded-3xl text-white bg-blue-600 hover:bg-blue-700" :href="loginURL">{{ t('login') }}</a>
+  <a class="text-5xl mx-auto px-8 py-4 sm:px-32 sm:py-16 rounded-3xl text-white bg-blue-600 hover:bg-blue-700 uppercase font-bold" :href="loginURL">{{ t('login') }}</a>
 </template>

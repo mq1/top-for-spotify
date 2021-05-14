@@ -19,11 +19,9 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="mx-8 sm:mx-0 flex flex-col gap-y-32">
-    <Obscurity :time-range="props.timeRange" />
-    <Mood :time-range="props.timeRange" />
-    <Genres :time-range="props.timeRange" />
-    <Artists :time-range="props.timeRange" />
-    <Tracks :time-range="props.timeRange" />
-  </div>
+  <Obscurity :time-range="props.timeRange" />
+  <Mood :time-range="props.timeRange" />
+  <Genres :time-range="props.timeRange" />
+  <Artists :time-range="props.timeRange" />
+  <Tracks :time-range="props.timeRange" />
 </template>
