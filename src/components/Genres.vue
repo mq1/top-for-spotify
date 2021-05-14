@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { getGenres } from '~/api'
+
+const { t } = useI18n()
 
 const props = defineProps({
   timeRange: {
@@ -24,7 +27,7 @@ watch(timeRange, updateGenres)
     <h2
       class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-extrabold tracking-wider rounded-full py-4 px-6"
     >
-      Your favorite genres
+      {{ t('genres') }}
     </h2>
     <div class="flex flex-col gap-4 text-left text-xl uppercase">
       <div v-for="(genre, index) in genres" :key="index" class="border-2 rounded-full py-2 px-4">

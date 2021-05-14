@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { getArtists } from '~/api'
+
+const { t } = useI18n()
 
 const props = defineProps({
   timeRange: {
@@ -24,7 +27,7 @@ watch(timeRange, updateArtists)
     <h2
       class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-extrabold tracking-wider rounded-full py-4 px-6"
     >
-      Your favorite artists
+      {{ t('artists') }}
     </h2>
     <div class="grid grid-cols-3 gap-x-4 gap-y-16">
       <figure v-for="(artist, index) in artists" :key="index">

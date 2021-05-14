@@ -6,4 +6,7 @@
     },
     "vite.base": "/top-for-spotify/",
     "vite.port": 3000,
+    "i18n-ally.localesPaths": [
+        "locales"
+    ],
 }

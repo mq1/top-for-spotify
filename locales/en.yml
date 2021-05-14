@@ -1,0 +1,18 @@
+login: Login
+hi: "{name}'s stats"
+short_term: Currently
+long_term: Overall
+
+obscurity: Your obscurity
+
+mood: Your mood
+acousticness: Acousticness
+danceability: Danceability
+energy: Energy
+happiness: Happiness
+
+genres: Your favorite genres
+
+artists: Your favorite artists
+
+tracks: Your favorite tracks

@@ -2,17 +2,20 @@
 import { onMounted, ref } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { useBrowserLocation } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 import { getDisplayName } from '~/api'
+
+const { t, locale } = useI18n()
+const setLocale = (code: string) => {
+  locale.value = code
+}
 
 const location = useBrowserLocation()
 
 const isLoggedIn = location.value.hash !== ''
 
-const timeRanges = [
-  { name: 'currently', value: 'short_term' },
-  { name: 'overall', value: 'long_term' },
-]
-const timeRange = ref(timeRanges[0])
+type TimeRange = 'short_term' | 'long_term'
+const timeRange = ref<TimeRange>('short_term')
 
 const displayName = ref('')
 const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn)
@@ -52,7 +55,7 @@ onMounted(updateDisplayName)
           TOP for Spotify
         </h1>
         <div v-if="displayName !== undefined" class="text-sm sm:text-xl">
-          {{ displayName }}'s stats
+          {{ t('hi', { name: displayName }) }}
         </div>
         <div
           v-if="isLoggedIn === true"
@@ -60,9 +63,9 @@ onMounted(updateDisplayName)
         >
           <Listbox v-model="timeRange" as="div" class="relative">
             <ListboxButton
-              class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-40 focus:outline-none"
+              class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-44 focus:outline-none"
             >
-              <span class="uppercase">{{ timeRange.name }}</span>
+              <span class="uppercase">{{ t(timeRange) }}</span>
               <heroicons-outline-selector />
             </ListboxButton>
             <transition
@@ -78,12 +81,12 @@ onMounted(updateDisplayName)
                 class="absolute bg-white dark:bg-black border-2 rounded-xl list-none mt-2 w-40 flex flex-col divide-y-2 py-2"
               >
                 <ListboxOption
-                  v-for="timeRange in timeRanges"
-                  :key="timeRange.name"
+                  v-for="timeRange in [ 'short_term', 'long_term' ]"
+                  :key="timeRange"
                   :value="timeRange"
                   class="py-2 px-4 cursor-pointer uppercase hover:bg-gray-200 dark:hover:bg-gray-800 overflow-hidden"
                 >
-                  {{ timeRange.name }}
+                  {{ t(timeRange) }}
                 </ListboxOption>
               </ListboxOptions>
             </transition>
@@ -95,14 +98,23 @@ onMounted(updateDisplayName)
           <a :href="baseURL">
             <heroicons-outline-logout class="h-6 w-6" />
           </a>
+
+          <div class="flex gap-x-4">
+            <button class="underline" @click="setLocale('en')">
+              EN
+            </button>
+            <button class="underline" @click="setLocale('it')">
+              IT
+            </button>
+          </div>
         </div>
       </header>
     </client-only>
 
-    <div />
+    <div></div>
 
     <main class="max-w-5xl mx-auto mt-32">
-      <router-view :time-range="timeRange.value" />
+      <router-view :time-range="timeRange" />
     </main>
 
     <footer class="m-4 leading-loose">
