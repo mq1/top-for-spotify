@@ -54,7 +54,7 @@ onMounted(updateDisplayName)
           </div>
           <div
             v-if="isLoggedIn === true"
-            class="flex justify-center items-center gap-4 col-span-full sm:col-span-1"
+            class="flex justify-center items-center gap-2 col-span-full sm:col-span-1"
           >
             <Listbox v-model="timeRange" as="div" class="relative">
               <ListboxButton
@@ -87,13 +87,6 @@ onMounted(updateDisplayName)
               </transition>
             </Listbox>
 
-            <button @click="shareURL()">
-              <heroicons-outline-share class="h-6 w-6" />
-            </button>
-            <a :href="baseURL">
-              <heroicons-outline-logout class="h-6 w-6" />
-            </a>
-
             <Listbox v-model="locale" as="div" class="relative">
               <ListboxButton
                 class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-20 focus:outline-none"
@@ -124,6 +117,13 @@ onMounted(updateDisplayName)
                 </ListboxOptions>
               </transition>
             </Listbox>
+
+            <button @click="shareURL()">
+              <heroicons-outline-share class="h-6 w-6" />
+            </button>
+            <a :href="baseURL">
+              <heroicons-outline-logout class="h-6 w-6" />
+            </a>
           </div>
         </header>
       </client-only>
