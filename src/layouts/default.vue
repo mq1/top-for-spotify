@@ -118,10 +118,10 @@ onMounted(updateDisplayName)
               </transition>
             </Listbox>
 
-            <button @click="shareURL()">
+            <button class="flex items-center" @click="shareURL()">
               <heroicons-outline-share class="h-6 w-6" />
             </button>
-            <a :href="baseURL">
+            <a class="flex items-center" :href="baseURL">
               <heroicons-outline-logout class="h-6 w-6" />
             </a>
           </div>
