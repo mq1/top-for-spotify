@@ -10,7 +10,7 @@ const getHeaders = () => {
     : {}
 }
 
-const headers = getHeaders()
+const headers: any = getHeaders()
 
 export const getDisplayName = async() => {
   const response = await fetch('https://api.spotify.com/v1/me', { headers } as any)
