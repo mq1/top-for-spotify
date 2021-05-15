@@ -8,7 +8,7 @@ specifiers:
   '@vitejs/plugin-vue': 1.2.2
   '@vue/compiler-sfc': 3.0.11
   '@vue/server-renderer': 3.0.11
-  '@vueuse/core': 4.10.0
+  '@vueuse/core': 4.11.0
   '@vueuse/head': 0.5.1
   eslint: 7.26.0
   inter-ui: 3.18.1
@@ -28,7 +28,7 @@ specifiers:
 
 dependencies:
   '@headlessui/vue': 1.2.0_vue@3.0.11
-  '@vueuse/core': 4.10.0_vue@3.0.11
+  '@vueuse/core': 4.11.0_vue@3.0.11
   '@vueuse/head': 0.5.1_vue@3.0.11
   inter-ui: 3.18.1
   vue: 3.0.11
@@ -1839,10 +1839,10 @@ packages:
   /@vue/shared/3.0.11:
     resolution: {integrity: sha512-b+zB8A2so8eCE0JsxjL24J7vdGl8rzPQ09hZNhystm+KqSbKcAej1A+Hbva1rCMmTTqA+hFnUSDc5kouEo0JzA==}
 
-  /@vueuse/core/4.10.0_vue@3.0.11:
-    resolution: {integrity: sha512-MEJKnp5ZQFTtQnHoUvP/yi6nRbr6S1NcaNe3L6PZi4n9Gm4JiAd5Rx0fS/xhaTKMOzsTbN1gTzoM1Gl3BDbjtA==}
+  /@vueuse/core/4.11.0_vue@3.0.11:
+    resolution: {integrity: sha512-a2/NHE3LjZ73LKGU1Ef2mz11ilIxs4pRIv1OUf98Sfvg6+GqA3R2VzIExswVlU3555GYIErmmJDywEHLsyii6w==}
     dependencies:
-      '@vueuse/shared': 4.10.0_vue@3.0.11
+      '@vueuse/shared': 4.11.0_vue@3.0.11
       vue-demi: 0.9.0_vue@3.0.11
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1857,8 +1857,8 @@ packages:
       vue: 3.0.11
     dev: false
 
-  /@vueuse/shared/4.10.0_vue@3.0.11:
-    resolution: {integrity: sha512-zomWAt6Q2RNa9Wu3POUDJJqyAo6zlf4trsUu9goOQKNKE+G95kTKHQJoj4K3XOkjMktND24xrkvyOVGbp3lqVw==}
+  /@vueuse/shared/4.11.0_vue@3.0.11:
+    resolution: {integrity: sha512-WKyOxTWuAiOLTp9Eg6RYabtZBSiJyt9EgFZEMD8fSlZ1FAckg0Ntya3HLfTDkPBjOqVe3pMdOsAbLwsU+7Fwyw==}
     dependencies:
       vue-demi: 0.9.0_vue@3.0.11
     transitivePeerDependencies:
