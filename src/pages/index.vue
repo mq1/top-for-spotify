@@ -18,6 +18,7 @@ onMounted(() => {
     router.push('login')
 })
 </script>
+
 <template>
   <Obscurity :time-range="props.timeRange" />
   <Mood :time-range="props.timeRange" />

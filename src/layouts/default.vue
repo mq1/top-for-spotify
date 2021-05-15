@@ -128,7 +128,7 @@ onMounted(updateDisplayName)
         </header>
       </client-only>
 
-      <main class="mx-auto mt-32 flex flex-col gap-y-32">
+      <main class="flex-1 pt-32 flex flex-col justify-center gap-y-32">
         <router-view :time-range="timeRange" />
       </main>
 
