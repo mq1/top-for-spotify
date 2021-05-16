@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getArtists } from '~/api'
+import { getArtists } from '~/spotify'
+import type { CardElement } from '~/types'
 
 const { t } = useI18n()
 
@@ -14,7 +15,7 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const artists = ref<any[]>([])
+const artists = ref<CardElement[]>([])
 const updateArtists = () => getArtists(props.timeRange).then(a => artists.value = a)
 
 onMounted(updateArtists)

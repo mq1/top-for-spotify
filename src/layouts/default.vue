@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
 import { useBrowserLocation } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
-import { getDisplayName } from '~/api'
+import { getDisplayName } from '~/spotify'
 
 const { t, availableLocales, locale } = useI18n()
 const location = useBrowserLocation()

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getAvgFeatures } from '~/api'
+import { getAvgFeatures } from '~/spotify'
+import type { AudioFeatures } from '~/types'
 
 const { t } = useI18n()
 
@@ -14,11 +15,10 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const avgFeatures = ref<{ [feature: string]: number }>({})
+const avgFeatures = ref<AudioFeatures>()
 const updateAvgFeatures = () => getAvgFeatures(props.timeRange).then(avg => avgFeatures.value = avg)
 
 onMounted(updateAvgFeatures)
-
 watch(timeRange, updateAvgFeatures)
 </script>
 
@@ -35,28 +35,28 @@ watch(timeRange, updateAvgFeatures)
           🎸
         </div>
         <div>{{ t('acousticness') }}</div>
-        <div>{{ avgFeatures.Acousticness }} %</div>
+        <div>{{ avgFeatures?.acousticness }} %</div>
       </div>
       <div>
         <div class="animate-bounce text-4xl mb-2">
           💃
         </div>
         <div>{{ t('danceability') }}</div>
-        <div>{{ avgFeatures.Danceability }} %</div>
+        <div>{{ avgFeatures?.danceability }} %</div>
       </div>
       <div>
         <div class="animate-zoomzoom text-4xl mb-2">
           ⚡
         </div>
         <div>{{ t('energy') }}</div>
-        <div>{{ avgFeatures.Energy }} %</div>
+        <div>{{ avgFeatures?.energy }} %</div>
       </div>
       <div>
         <div class="animate-wiggle text-4xl mb-2">
           😊
         </div>
-        <div>{{ t('happiness') }}</div>
-        <div>{{ avgFeatures.Happiness }} %</div>
+        <div>{{ t('valence') }}</div>
+        <div>{{ avgFeatures?.valence }} %</div>
       </div>
     </div>
   </div>

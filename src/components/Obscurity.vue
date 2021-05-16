@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, ref, onMounted, toRefs, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getObscurityRating } from '~/api'
+import { getObscurityRating } from '~/spotify'
 
 const { t } = useI18n()
 

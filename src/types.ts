@@ -35,11 +35,9 @@ export interface RawTracks {
   }[]
 }
 
-export interface RawAudioFeatures {
-  audio_features: {
-    acousticness: number
-    danceability: number
-    energy: number
-    valence: number
-  }[]
+export interface AudioFeatures {
+  acousticness: number
+  danceability: number
+  energy: number
+  valence: number
 }
