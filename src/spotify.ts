@@ -1,6 +1,6 @@
 import { useBrowserLocation } from '@vueuse/core'
 import _ from 'underscore'
-import { RawArtists, AudioFeatures, RawTracks } from '~/types'
+import { RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const location = useBrowserLocation()
 
@@ -20,12 +20,13 @@ const headers = getHeaders()
 export const getDisplayName = async() => {
   const response = await fetch('https://api.spotify.com/v1/me', { headers })
   const j = await response.json()
+  const name: string = j.display_name
 
-  return j.display_name
+  return name
 }
 
-const parseObscurityRating = (tracks: RawTracks) => {
-  const obscurities = _.map(tracks.items, track => 100 - track.popularity)
+const parseObscurityRating = (tracks: RawTrack[]) => {
+  const obscurities = _.map(tracks, track => 100 - track.popularity)
   const sum = _.reduce(obscurities, (a, b) => a + b, 0)
   const avg = sum / obscurities.length || 0
   const rounded = Math.round(avg)
@@ -36,13 +37,14 @@ const parseObscurityRating = (tracks: RawTracks) => {
 export const getObscurityRating = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, { headers })
   const j = await response.json()
+  const rating = parseObscurityRating(j.items)
 
-  return parseObscurityRating(j)
+  return rating
 }
 
-const parseArtists = (artists: RawArtists) => {
+const parseArtists = (artists: RawArtist[]) => {
   const parsed = _.map(
-    artists.items,
+    artists,
     artist => ({ name: artist.name, imageURL: artist.images[0].url }),
   )
 
@@ -52,12 +54,13 @@ const parseArtists = (artists: RawArtists) => {
 export const getArtists = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=9&time_range=${timeRange}`, { headers })
   const j = await response.json()
+  const artists = parseArtists(j.items)
 
-  return parseArtists(j)
+  return artists
 }
 
-const parseGenres = (artists: RawArtists) => {
-  const raw = _.map(artists.items, artist => artist.genres)
+const parseGenres = (artists: RawArtist[]) => {
+  const raw = _.map(artists, artist => artist.genres)
   const flattened = _.flatten(raw)
   const scores = _.countBy(flattened)
   const genres = _.pairs(scores)
@@ -70,14 +73,14 @@ const parseGenres = (artists: RawArtists) => {
 
 export const getGenres = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}`, { headers })
-  const artists = await response.json()
-  const genres = parseGenres(artists)
+  const j = await response.json()
+  const genres = parseGenres(j.items)
 
   return genres
 }
 
-const parseTrackIDs = (tracks: RawTracks) => {
-  const ids = _.map(tracks.items, track => track.id)
+const parseTrackIDs = (tracks: RawTrack[]) => {
+  const ids = _.map(tracks, track => track.id)
 
   return ids
 }
@@ -100,7 +103,7 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
 export const getAvgFeatures = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`, { headers })
   const j = await response.json()
-  const trackIDs = parseTrackIDs(j)
+  const trackIDs = parseTrackIDs(j.items)
 
   const response2 = await fetch(`https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`, { headers })
   const j2 = await response2.json()
@@ -109,8 +112,8 @@ export const getAvgFeatures = async(timeRange: string) => {
   return avgFeatures
 }
 
-const parseTracks = (tracks: RawTracks) => {
-  const parsedTracks = _.map(tracks.items, track => ({ name: track.name, imageURL: track.album.images[0].url }))
+const parseTracks = (tracks: RawTrack[]) => {
+  const parsedTracks = _.map(tracks, track => ({ name: track.name, imageURL: track.album.images[0].url }))
 
   return parsedTracks
 }
@@ -118,7 +121,7 @@ const parseTracks = (tracks: RawTracks) => {
 export const getTracks = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=9&time_range=${timeRange}`, { headers })
   const j = await response.json()
-  const tracks = parseTracks(j)
+  const tracks = parseTracks(j.items)
 
   return tracks
 }

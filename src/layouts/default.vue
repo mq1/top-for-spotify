@@ -10,10 +10,9 @@ const location = useBrowserLocation()
 
 const isLoggedIn = location.value.hash !== ''
 
-type TimeRange = 'short_term' | 'long_term'
-const timeRange = ref<TimeRange>('short_term')
+const timeRange = ref<'short_term' | 'long_term'>('short_term')
 
-const displayName = ref('')
+const displayName = ref<string>()
 const updateDisplayName = () => getDisplayName().then(dn => displayName.value = dn)
 
 const shareURL = () => {
@@ -26,7 +25,6 @@ const shareURL = () => {
   }
   else {
     navigator.clipboard.writeText(location.value.href!)
-    // eslint-disable-next-line no-alert
     window.alert('URL copied to clipboard')
   }
 }
