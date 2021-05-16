@@ -1,5 +1,5 @@
 import { useBrowserLocation } from '@vueuse/core'
-import _ from 'underscore'
+import _ from 'lodash'
 import { RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const location = useBrowserLocation()
@@ -63,9 +63,9 @@ const parseGenres = (artists: RawArtist[]) => {
   const raw = _.map(artists, artist => artist.genres)
   const flattened = _.flatten(raw)
   const scores = _.countBy(flattened)
-  const genres = _.pairs(scores)
+  const genres = _.toPairs(scores)
   const sorted = _.sortBy(genres, genre => genre[1])
-  const first10 = _.first(sorted, 10)
+  const first10 = _.slice(sorted, 0, 10)
   const list = _.map(first10, genre => genre[0])
 
   return list
@@ -94,8 +94,8 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
     valence: a.valence + b.valence,
   }))!
 
-  const avgFeatures = _.mapObject(features, val => val / list.length)
-  const percent = _.mapObject(avgFeatures, val => Math.round(val * 100))
+  const avgFeatures = _.mapValues(features, val => val / list.length)
+  const percent = _.mapValues(avgFeatures, val => Math.round(val * 100))
 
   return percent
 }

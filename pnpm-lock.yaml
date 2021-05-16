@@ -5,7 +5,7 @@ specifiers:
   '@headlessui/vue': 1.2.0
   '@iconify/json': 1.1.343
   '@intlify/vite-plugin-vue-i18n': 2.1.2
-  '@types/underscore': 1.11.2
+  '@types/lodash': ^4.14.169
   '@vitejs/plugin-vue': 1.2.2
   '@vue/compiler-sfc': 3.0.11
   '@vue/server-renderer': 3.0.11
@@ -13,8 +13,8 @@ specifiers:
   '@vueuse/head': 0.5.1
   eslint: 7.26.0
   inter-ui: 3.18.1
+  lodash: ^4.17.21
   typescript: 4.2.4
-  underscore: 1.13.1
   vite: 2.3.2
   vite-plugin-components: 0.9.1
   vite-plugin-icons: 0.5.1
@@ -41,13 +41,13 @@ devDependencies:
   '@antfu/eslint-config': 0.6.5_eslint@7.26.0+typescript@4.2.4
   '@iconify/json': 1.1.343
   '@intlify/vite-plugin-vue-i18n': 2.1.2_vite@2.3.2+vue-i18n@9.1.6
-  '@types/underscore': 1.11.2
+  '@types/lodash': 4.14.169
   '@vitejs/plugin-vue': 1.2.2_@vue+compiler-sfc@3.0.11
   '@vue/compiler-sfc': 3.0.11_vue@3.0.11
   '@vue/server-renderer': 3.0.11_vue@3.0.11
   eslint: 7.26.0
+  lodash: 4.17.21
   typescript: 4.2.4
-  underscore: 1.13.1
   vite: 2.3.2
   vite-plugin-components: 0.9.1_vite@2.3.2
   vite-plugin-icons: 0.5.1_445ad0acd1c65346e187200a876939c2
@@ -1580,6 +1580,10 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
+  /@types/lodash/4.14.169:
+    resolution: {integrity: sha512-DvmZHoHTFJ8zhVYwCLWbQ7uAbYQEk52Ev2/ZiQ7Y7gQGeV9pjBqjnQpECMHfKS1rCYAhMI7LHVxwyZLZinJgdw==}
+    dev: true
+
   /@types/node/15.0.3:
     resolution: {integrity: sha512-/WbxFeBU+0F79z9RdEOXH4CsDga+ibi5M8uEYr91u3CkT/pdWcV8MCook+4wDPnZBexRdwWS+PiVZ2xJviAzcQ==}
     dev: true
@@ -1592,10 +1596,6 @@ packages:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 15.0.3
-    dev: true
-
-  /@types/underscore/1.11.2:
-    resolution: {integrity: sha512-Ls2ylbo7++ITrWk2Yc3G/jijwSq5V3GT0tlgVXEl2kKYXY3ImrtmTCoE2uyTWFRI5owMBriloZFWbE1SXOsE7w==}
     dev: true
 
   /@types/unist/2.0.3:
@@ -6010,10 +6010,6 @@ packages:
       has-bigints: 1.0.1
       has-symbols: 1.0.2
       which-boxed-primitive: 1.0.2
-    dev: true
-
-  /underscore/1.13.1:
-    resolution: {integrity: sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==}
     dev: true
 
   /unicode-canonical-property-names-ecmascript/1.0.4:
