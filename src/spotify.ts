@@ -60,18 +60,20 @@ const parseGenres = (artists: RawArtists) => {
   const raw = _.map(artists.items, artist => artist.genres)
   const flattened = _.flatten(raw)
   const scores = _.countBy(flattened)
-  const genres = _.map(scores, (val, key) => ({ name: key, score: val }))
-  const sorted = _.sortBy(genres, genre => genre.score)
+  const genres = _.pairs(scores)
+  const sorted = _.sortBy(genres, genre => genre[1])
   const first10 = _.first(sorted, 10)
+  const list = _.map(first10, genre => genre[0])
 
-  return first10
+  return list
 }
 
 export const getGenres = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}`, { headers })
-  const j = await response.json()
+  const artists = await response.json()
+  const genres = parseGenres(artists)
 
-  return parseGenres(j)
+  return genres
 }
 
 const parseTrackIDs = (tracks: RawTracks) => {

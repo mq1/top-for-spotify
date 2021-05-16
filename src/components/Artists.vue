@@ -15,11 +15,10 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const artists = ref<CardElement[]>([])
+const artists = ref<CardElement[]>()
 const updateArtists = () => getArtists(props.timeRange).then(a => artists.value = a)
 
 onMounted(updateArtists)
-
 watch(timeRange, updateArtists)
 </script>
 

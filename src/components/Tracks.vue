@@ -2,6 +2,7 @@
 import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getTracks } from '~/spotify'
+import type { CardElement } from '~/types'
 
 const { t } = useI18n()
 
@@ -14,11 +15,10 @@ const props = defineProps({
 
 const { timeRange } = toRefs(props)
 
-const tracks = ref<any[]>([])
+const tracks = ref<CardElement[]>()
 const updateTracks = () => getTracks(props.timeRange).then(t => tracks.value = t)
 
 onMounted(updateTracks)
-
 watch(timeRange, updateTracks)
 </script>
 
