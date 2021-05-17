@@ -2,17 +2,15 @@ import { useBrowserLocation } from '@vueuse/core'
 import _ from 'lodash'
 import { RawArtist, AudioFeatures, RawTrack } from '~/types'
 
+const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
+
 const location = useBrowserLocation()
 
 const getHeaders = () => {
   const matches = /#access_token=(.*?)&/.exec(location.value.hash!)
+  const headers = { Authorization: matches !== null ? `Bearer ${matches[1]}` : '' }
 
-  return {
-    Authorization:
-      matches !== null
-        ? `Bearer ${matches[1]}`
-        : '',
-  }
+  return headers
 }
 
 const headers = getHeaders()
@@ -26,9 +24,8 @@ export const getDisplayName = async() => {
 }
 
 const parseObscurityRating = (tracks: RawTrack[]) => {
-  const obscurities = _.map(tracks, track => 100 - track.popularity)
-  const sum = _.reduce(obscurities, (a, b) => a + b, 0)
-  const avg = sum / obscurities.length || 0
+  const obscurities = tracks.map(track => 100 - track.popularity)
+  const avg = average(obscurities)
   const rounded = Math.round(avg)
 
   return rounded
@@ -42,14 +39,8 @@ export const getObscurityRating = async(timeRange: string) => {
   return rating
 }
 
-const parseArtists = (artists: RawArtist[]) => {
-  const parsed = _.map(
-    artists,
-    artist => ({ name: artist.name, imageURL: artist.images[0].url }),
-  )
-
-  return parsed
-}
+const parseArtists = (artists: RawArtist[]) =>
+  artists.map(artist => ({ name: artist.name, imageURL: artist.images[0].url }))
 
 export const getArtists = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/artists?limit=9&time_range=${timeRange}`, { headers })
@@ -60,13 +51,13 @@ export const getArtists = async(timeRange: string) => {
 }
 
 const parseGenres = (artists: RawArtist[]) => {
-  const raw = _.map(artists, artist => artist.genres)
-  const flattened = _.flatten(raw)
+  const raw = artists.map(artist => artist.genres)
+  const flattened = raw.flat()
   const scores = _.countBy(flattened)
   const genres = _.toPairs(scores)
   const sorted = _.sortBy(genres, genre => genre[1])
-  const first10 = _.slice(sorted, 0, 10)
-  const list = _.map(first10, genre => genre[0])
+  const first10 = sorted.slice(0, 10)
+  const list = first10.map(genre => genre[0])
 
   return list
 }
@@ -87,7 +78,7 @@ const parseTrackIDs = (tracks: RawTrack[]) => {
 
 const parseAudioFeatures = (list: AudioFeatures[]) => {
   // TODO refactor
-  const features = _.reduce(list, (a, b) => ({
+  const features = list.reduce((a, b) => ({
     acousticness: a.acousticness + b.acousticness,
     danceability: a.danceability + b.danceability,
     energy: a.energy + b.energy,
@@ -112,11 +103,8 @@ export const getAvgFeatures = async(timeRange: string) => {
   return avgFeatures
 }
 
-const parseTracks = (tracks: RawTrack[]) => {
-  const parsedTracks = _.map(tracks, track => ({ name: track.name, imageURL: track.album.images[0].url }))
-
-  return parsedTracks
-}
+const parseTracks = (tracks: RawTrack[]) =>
+  tracks.map(track => ({ name: track.name, imageURL: track.album.images[0].url }))
 
 export const getTracks = async(timeRange: string) => {
   const response = await fetch(`https://api.spotify.com/v1/me/top/tracks?limit=9&time_range=${timeRange}`, { headers })
