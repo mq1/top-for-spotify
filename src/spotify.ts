@@ -70,11 +70,7 @@ export const getGenres = async(timeRange: string) => {
   return genres
 }
 
-const parseTrackIDs = (tracks: RawTrack[]) => {
-  const ids = _.map(tracks, track => track.id)
-
-  return ids
-}
+const parseTrackIDs = (tracks: RawTrack[]) => tracks.map(track => track.id)
 
 const parseAudioFeatures = (list: AudioFeatures[]) => {
   // TODO refactor
