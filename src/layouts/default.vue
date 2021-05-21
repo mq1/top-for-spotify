@@ -59,7 +59,7 @@ onMounted(updateDisplayName)
                 class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-44 focus:outline-none"
               >
                 <span class="uppercase">{{ t(timeRange) }}</span>
-                <heroicons-outline-selector />
+                <carbon-chevron-down />
               </ListboxButton>
               <transition
                 enter-active-class="transition duration-100 ease-out"
@@ -90,7 +90,7 @@ onMounted(updateDisplayName)
                 class="py-2 px-4 border-2 rounded-full flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-800 w-20 focus:outline-none"
               >
                 <span class="uppercase">{{ locale }}</span>
-                <heroicons-outline-selector />
+                <carbon-chevron-down />
               </ListboxButton>
               <transition
                 enter-active-class="transition duration-100 ease-out"
@@ -117,10 +117,10 @@ onMounted(updateDisplayName)
             </Listbox>
 
             <button class="flex items-center" @click="shareURL()">
-              <heroicons-outline-share class="h-6 w-6" />
+              <carbon-share class="h-6 w-6" />
             </button>
             <a class="flex items-center" :href="baseURL">
-              <heroicons-outline-logout class="h-6 w-6" />
+              <carbon-logout class="h-6 w-6" />
             </a>
           </div>
         </header>
