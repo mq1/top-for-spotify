@@ -1,5 +1,5 @@
 import { useBrowserLocation } from '@vueuse/core'
-import _ from 'lodash'
+import _, { round } from 'lodash'
 import { RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
@@ -73,18 +73,18 @@ export const getGenres = async(timeRange: string) => {
 const parseTrackIDs = (tracks: RawTrack[]) => tracks.map(track => track.id)
 
 const parseAudioFeatures = (list: AudioFeatures[]) => {
-  // TODO refactor
-  const features = list.reduce((a, b) => ({
-    acousticness: a.acousticness + b.acousticness,
-    danceability: a.danceability + b.danceability,
-    energy: a.energy + b.energy,
-    valence: a.valence + b.valence,
-  }))!
+  const features = {
+    acousticness: list.map(track => track.acousticness),
+    danceability: list.map(track => track.danceability),
+    energy: list.map(track => track.energy),
+    valence: list.map(track => track.valence)
+  }
 
-  const avgFeatures = _.mapValues(features, val => val / list.length)
-  const percent = _.mapValues(avgFeatures, val => Math.round(val * 100))
+  const avg = _.mapValues(features, val => average(val))
+  const percent = _.mapValues(avg, val => val * 100)
+  const rounded = _.mapValues(percent, val => val.toFixed())
 
-  return percent
+  return rounded
 }
 
 export const getAvgFeatures = async(timeRange: string) => {
