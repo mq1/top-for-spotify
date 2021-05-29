@@ -1,5 +1,5 @@
 import { useBrowserLocation } from '@vueuse/core'
-import _, { round } from 'lodash'
+import _ from 'lodash'
 import { RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
@@ -77,7 +77,7 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
     acousticness: list.map(track => track.acousticness),
     danceability: list.map(track => track.danceability),
     energy: list.map(track => track.energy),
-    valence: list.map(track => track.valence)
+    valence: list.map(track => track.valence),
   }
 
   const avg = _.mapValues(features, val => average(val))
