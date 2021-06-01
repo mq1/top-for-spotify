@@ -1,6 +1,6 @@
 import { useBrowserLocation } from '@vueuse/core'
 import _ from 'lodash'
-import { RawArtist, AudioFeatures, RawTrack } from '~/types'
+import { User, RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
 
@@ -15,12 +15,11 @@ const getHeaders = () => {
 
 const headers = getHeaders()
 
-export const getDisplayName = async() => {
+export const getUser = async() => {
   const response = await fetch('https://api.spotify.com/v1/me', { headers })
-  const j = await response.json()
-  const name: string = j.display_name
+  const user: User = await response.json()
 
-  return name
+  return user
 }
 
 const parseObscurityRating = (tracks: RawTrack[]) => {

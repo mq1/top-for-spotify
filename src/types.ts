@@ -2,6 +2,13 @@ import { ViteSSGContext } from 'vite-ssg'
 
 export type UserModule = (ctx: ViteSSGContext) => void
 
+export type User = {
+  display_name: string
+  images: { url: string }[]
+}
+
+export type TimeRange = 'short_term' | 'long_term'
+
 export type ScoreBoardElement = {
   name: string
   score: number

@@ -23,13 +23,11 @@ watch(timeRange, updateAvgFeatures)
 </script>
 
 <template>
-  <div class="font-semibold flex flex-col gap-12">
-    <h2
-      class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-extrabold tracking-wider rounded-full py-4 px-6 mb-10"
-    >
+  <div class="box flex flex-col gap-y-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+    <h2 class="text-5xl">
       {{ t('mood') }}
     </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-12 text-lg">
+    <div class="grid grid-cols-2 xl:grid-cols-4 gap-y-12 text-lg">
       <div>
         <div class="animate-spin-slow text-4xl mb-2">
           🎸

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite-plugin-windicss'
+import colors from 'windicss/colors'
 
 export default defineConfig({
   darkMode: 'media',
@@ -7,6 +8,9 @@ export default defineConfig({
       sans: ['Inter var', 'sans-serif'],
     },
     extend: {
+      colors: {
+        primary: colors.green,
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-30deg)' },
@@ -24,4 +28,7 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    require('windicss/plugin/forms'),
+  ],
 })

@@ -1,7 +1,11 @@
 login: Login
 hi: "{name}'s stats"
+locale: Language
+timeRange: Time Range
 short_term: Currently
 long_term: Overall
+share: Share
+logOut: Log out
 
 obscurity: Your obscurity
 

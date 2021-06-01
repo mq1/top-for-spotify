@@ -1,0 +1,31 @@
+body {
+  @apply dark:bg-black dark:text-white text-center;
+}
+
+h1 {
+  @apply text-2xl sm:text-5xl font-bold;
+}
+
+h2 {
+  @apply text-3xl font-bold;
+}
+
+.btn {
+  @apply flex gap-x-2 uppercase text-white font-bold bg-primary-500 transition duration-100 ease-in-out transform hover:scale-105 px-4 py-2 rounded-md shadow-lg;
+}
+
+.btn-lg {
+  @apply text-2xl gap-x-4 px-4 py-4;
+}
+
+.btn-xl {
+  @apply text-7xl px-16 py-8 rounded-2xl shadow-xl;
+}
+
+select {
+  @apply text-xl rounded-full pl-3 pr-10 py-2 border-2 border-primary-500 focus:border-primary-500 dark:bg-black dark:text-white focus:border-2 focus:outline-none focus:ring-0 uppercase;
+}
+
+.box {
+  @apply rounded-xl shadow-md sm:shadow-lg p-4 sm:p-8;
+}

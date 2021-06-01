@@ -1,7 +1,11 @@
 login: Accedi
 hi: Statistiche di {name}
+locale: Lingua
+timeRange: Intervallo di Tempo
 short_term: Attualmente
 long_term: In assoluto
+share: Condividi
+logOut: Esci
 
 obscurity: La tua oscurità
 

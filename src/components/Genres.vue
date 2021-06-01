@@ -22,17 +22,14 @@ watch(timeRange, updateGenres)
 </script>
 
 <template>
-  <div class="flex flex-col gap-12">
-    <h2
-      class="text-4xl sm:text-6xl uppercase bg-gradient-to-r from-green-400 to-blue-500 text-white font-extrabold tracking-wider rounded-full py-4 px-6"
-    >
+  <div class="box flex flex-col gap-y-16 bg-gradient-to-r from-green-400 to-blue-500">
+    <h2 class="text-5xl">
       {{ t('genres') }}
     </h2>
-    <div class="flex flex-col gap-4 text-left text-xl uppercase">
-      <div v-for="(genre, index) in genres" :key="index" class="border-2 rounded-full py-2 px-4">
-        <span class="font-bold">{{ index + 1 }}. </span>
-        <span>{{ genre }}</span>
-      </div>
-    </div>
+    <ol class="list-decimal text-left leading-loose text-2xl ml-8 sm:ml-16">
+      <li v-for="genre in genres" :key="genre">
+        {{ genre }}
+      </li>
+    </ol>
   </div>
 </template>

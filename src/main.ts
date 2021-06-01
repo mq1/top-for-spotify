@@ -4,6 +4,7 @@ import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
 import 'inter-ui'
 import 'virtual:windi.css'
+import './main.css'
 
 const routes = setupLayouts(generatedRoutes)
 
