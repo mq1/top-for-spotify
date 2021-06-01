@@ -89,7 +89,7 @@ onMounted(() => {
     <div class="mx-auto">
       <!-- mobile header -->
       <div class="sm:hidden fixed z-20 bg-white dark:bg-black w-full p-4 flex justify-between items-center border-b-2">
-        <button class="flex flex-col items-center" @click="openDrawer = !openDrawer">
+        <button class="flex flex-col items-center text-xl focus:outline-none" @click="openDrawer = !openDrawer">
           <carbon-menu v-show="!openDrawer" />
           <carbon-close v-show="openDrawer" />
         </button>
