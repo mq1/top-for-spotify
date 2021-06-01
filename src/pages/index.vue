@@ -44,7 +44,7 @@ onMounted(() => {
 
 <template>
   <div class="flex gap-x-8">
-    <div :class="[openDrawer ? '' : 'hidden', 'sm:flex flex flex-col gap-y-8 fixed z-10 sm:w-80 bg-white dark:bg-black']">
+    <div :class="[openDrawer ? '' : 'hidden', 'sm:flex flex flex-col gap-y-8 fixed z-10 sm:w-80 h-full bg-white dark:bg-black']">
       <h1 class="box border">
         TOP for Spotify
       </h1>
