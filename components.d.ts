@@ -4,6 +4,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Artists: typeof import('./src/components/Artists.vue')['default']
+    Drawer: typeof import('./src/components/Drawer.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Genres: typeof import('./src/components/Genres.vue')['default']
     LanguageSelector: typeof import('./src/components/LanguageSelector.vue')['default']
