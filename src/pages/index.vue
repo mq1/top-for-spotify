@@ -40,7 +40,7 @@ onMounted(() => {
         <div />
       </div>
 
-      <main v-if="timeRange" class="mt-24 sm:mt-0 sm:w-xl sm:ml-90 xl:w-5xl xl:ml-0 p-4 sm:p-0 flex flex-col gap-y-16 uppercase font-bold text-white">
+      <main v-if="timeRange" class="mt-16 sm:mt-0 sm:w-xl sm:ml-90 xl:w-5xl xl:ml-0 p-4 sm:p-0 flex flex-col gap-y-16 uppercase font-bold text-white">
         <Obscurity :time-range="timeRange" />
         <Mood :time-range="timeRange" />
         <Genres :time-range="timeRange" />
