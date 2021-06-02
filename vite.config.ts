@@ -26,6 +26,7 @@ export default defineConfig({
     }),
     Layouts(),
     ViteComponents({
+      globalComponentsDeclaration: true,
       customComponentResolvers: [
         ViteIconsResolver({
           componentPrefix: '',
