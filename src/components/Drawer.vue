@@ -40,8 +40,8 @@ timeRange.value = 'short_term'
 </script>
 
 <template>
-  <div class="flex flex flex-col gap-y-8 fixed z-10 sm:w-80 h-full bg-white dark:bg-black">
-    <h1 class="box border">
+  <div class="flex flex flex-col gap-y-8 fixed z-10 sm:w-80 h-full bg-white dark:bg-black p-4 pt-20 sm:p-0 sm:pt-0">
+    <h1 class="hidden sm:block box border">
       TOP for Spotify
     </h1>
 
