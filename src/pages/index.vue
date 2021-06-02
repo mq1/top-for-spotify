@@ -8,7 +8,7 @@ import { getUser } from '~/spotify'
 
 const router = useRouter()
 const location = useBrowserLocation()
-const { t, locale, availableLocales } = useI18n()
+const { t } = useI18n()
 
 const timeRange = ref<TimeRange>('short_term')
 
@@ -49,20 +49,15 @@ onMounted(() => {
         TOP for Spotify
       </h1>
 
-      <div class="box border flex sm:flex-col items-center">
+      <div class="box border flex sm:flex-col gap-4 items-center">
         <img :src="user?.images[0].url" class="rounded-3xl h-32 sm:h-64" />
-        <br />
         <h2>{{ user?.display_name }}</h2>
       </div>
 
       <div class="box border flex flex-col gap-y-8">
         <div class="flex flex-col gap-y-2">
           <label class="text-left ml-2 text-gray-500">{{ t('locale') }}</label>
-          <select v-model="locale">
-            <option v-for="l in availableLocales" :key="l">
-              {{ l }}
-            </option>
-          </select>
+          <LanguageSelector />
         </div>
 
         <div class="flex flex-col gap-y-2">

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useBrowserLocation } from '@vueuse/core'
+import LanguageSelector from '../components/LanguageSelector.vue'
 
-const { t, locale, availableLocales } = useI18n()
+const { t } = useI18n()
 const location = useBrowserLocation()
 
 const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta.env.VITE_SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(location.value.origin + import.meta.env.BASE_URL)}&scope=user-top-read&show_dialog=true`
@@ -18,11 +19,7 @@ const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta
       {{ t('login') }}
     </a>
 
-    <select v-model="locale">
-      <option v-for="l in availableLocales" :key="l">
-        {{ l }}
-      </option>
-    </select>
+    <LanguageSelector />
   </div>
 
   <Footer />

@@ -6,6 +6,7 @@ declare module 'vue' {
     Artists: typeof import('./src/components/Artists.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Genres: typeof import('./src/components/Genres.vue')['default']
+    LanguageSelector: typeof import('./src/components/LanguageSelector.vue')['default']
     Mood: typeof import('./src/components/Mood.vue')['default']
     Obscurity: typeof import('./src/components/Obscurity.vue')['default']
     Tracks: typeof import('./src/components/Tracks.vue')['default']
