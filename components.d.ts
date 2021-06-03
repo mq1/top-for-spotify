@@ -10,6 +10,7 @@ declare module 'vue' {
     LanguageSelector: typeof import('./src/components/LanguageSelector.vue')['default']
     Mood: typeof import('./src/components/Mood.vue')['default']
     Obscurity: typeof import('./src/components/Obscurity.vue')['default']
+    TimeRangeSelector: typeof import('./src/components/TimeRangeSelector.vue')['default']
     Tracks: typeof import('./src/components/Tracks.vue')['default']
   }
 }
