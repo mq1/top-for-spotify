@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useLocalStorage } from '@vueuse/core'
+import { timeRange } from '~/store'
 
 const { t } = useI18n()
-
-const timeRange = useLocalStorage('timeRange', 'short_range')
 </script>
 
 <template>

@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { defineEmit, onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useBrowserLocation, useShare } from '@vueuse/core'
 import { getUser } from '~/spotify'
-import type { TimeRange, User } from '~/types'
+import type { User } from '~/types'
 
 const { t } = useI18n()
 const location = useBrowserLocation()
 const { share, isSupported } = useShare()
 const baseURL = import.meta.env.BASE_URL
-
-const emit = defineEmit(['setTimeRange'])
-
-const timeRange = ref<TimeRange>()
 
 const user = ref<User>()
 const updateUser = () =>
@@ -33,10 +29,6 @@ const shareURL = () => {
 }
 
 onMounted(updateUser)
-watch(timeRange, () => emit('setTimeRange', timeRange.value))
-
-// default time range
-timeRange.value = 'short_term'
 </script>
 
 <template>
@@ -58,11 +50,7 @@ timeRange.value = 'short_term'
 
       <div class="flex flex-col gap-y-2">
         <label class="text-left ml-2 text-gray-500">{{ t('timeRange') }}</label>
-        <select v-model="timeRange">
-          <option v-for="tr in ['short_term', 'long_term']" :key="tr" :value="tr">
-            {{ t(tr) }}
-          </option>
-        </select>
+        <TimeRangeSelector />
       </div>
     </div>
 

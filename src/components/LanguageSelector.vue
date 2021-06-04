@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useLocalStorage } from '@vueuse/core'
+import { locale } from '~/store'
 
-const { locale, availableLocales } = useI18n()
-const localLocale = useLocalStorage('locale', locale.value)
-
-watch(locale, () => localLocale.value = locale.value)
+const { availableLocales } = useI18n()
 </script>
 
 <template>

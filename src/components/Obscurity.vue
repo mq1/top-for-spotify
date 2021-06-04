@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import { defineProps, ref, onMounted, toRefs, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { timeRange } from '~/store'
 import { getObscurityRating } from '~/spotify'
 
 const { t } = useI18n()
 
-const props = defineProps({
-  timeRange: {
-    type: String,
-    required: true,
-  },
-})
-
-const { timeRange } = toRefs(props)
-
 const obscurityRating = ref<string | number>('?')
-const updateObscurityRating = () => getObscurityRating(props.timeRange).then(r => obscurityRating.value = r)
+const updateObscurityRating = () =>
+  getObscurityRating(timeRange.value).then(r => obscurityRating.value = r)
 
 onMounted(updateObscurityRating)
-
 watch(timeRange, updateObscurityRating)
 </script>
 

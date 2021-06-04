@@ -1,22 +1,15 @@
 <script setup lang="ts">
-import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { timeRange } from '~/store'
 import { getAvgFeatures } from '~/spotify'
 import type { AudioFeatures } from '~/types'
 
 const { t } = useI18n()
 
-const props = defineProps({
-  timeRange: {
-    type: String,
-    required: true,
-  },
-})
-
-const { timeRange } = toRefs(props)
-
 const avgFeatures = ref<AudioFeatures>()
-const updateAvgFeatures = () => getAvgFeatures(props.timeRange).then(avg => avgFeatures.value = avg)
+const updateAvgFeatures = () =>
+  getAvgFeatures(timeRange.value).then(avg => avgFeatures.value = avg)
 
 onMounted(updateAvgFeatures)
 watch(timeRange, updateAvgFeatures)

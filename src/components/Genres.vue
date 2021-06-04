@@ -1,21 +1,14 @@
 <script setup lang="ts">
-import { defineProps, ref, toRefs, onMounted, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { timeRange } from '~/store'
 import { getGenres } from '~/spotify'
 
 const { t } = useI18n()
 
-const props = defineProps({
-  timeRange: {
-    type: String,
-    required: true,
-  },
-})
-
-const { timeRange } = toRefs(props)
-
 const genres = ref<string[]>()
-const updateGenres = () => getGenres(props.timeRange).then(g => genres.value = g)
+const updateGenres = () =>
+  getGenres(timeRange.value).then(g => genres.value = g)
 
 onMounted(updateGenres)
 watch(timeRange, updateGenres)

@@ -2,13 +2,11 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useBrowserLocation } from '@vueuse/core'
-import type { TimeRange, User } from '~/types'
 import { getUser } from '~/spotify'
+import type { User } from '~/types'
 
 const router = useRouter()
 const location = useBrowserLocation()
-
-const timeRange = ref<TimeRange>()
 
 const user = ref<User>()
 const updateUser = () => {
@@ -40,12 +38,12 @@ onMounted(() => {
         <div />
       </div>
 
-      <main v-if="timeRange" class="mt-16 sm:mt-0 sm:w-xl sm:ml-90 xl:w-5xl xl:ml-0 p-4 sm:p-0 flex flex-col gap-y-16 uppercase font-bold text-white">
-        <Obscurity :time-range="timeRange" />
-        <Mood :time-range="timeRange" />
-        <Genres :time-range="timeRange" />
-        <Artists :time-range="timeRange" />
-        <Tracks :time-range="timeRange" />
+      <main class="mt-16 sm:mt-0 sm:w-xl sm:ml-90 xl:w-5xl xl:ml-0 p-4 sm:p-0 flex flex-col gap-y-16 uppercase font-bold text-white">
+        <Obscurity />
+        <Mood />
+        <Genres />
+        <Artists />
+        <Tracks />
       </main>
     </div>
   </div>
