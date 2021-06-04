@@ -22,15 +22,17 @@ const logOut = () => {
 }
 
 const shareURL = () => {
+  const url = `${location.value.href}login#access_token=${spotifyToken.value}&token_type=Bearer&expires_in=3600`
+
   if (isSupported) {
     share({
       title: 'top-for-spotify',
       text: `${user.value?.display_name}'s Spotify stats`,
-      url: location.value.href,
+      url,
     })
   }
   else {
-    navigator.clipboard.writeText(location.value.href!)
+    navigator.clipboard.writeText(url)
     window.alert('URL copied to clipboard')
   }
 }
