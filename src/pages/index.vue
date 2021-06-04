@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useBrowserLocation } from '@vueuse/core'
+import { spotifyToken } from '~/store'
 import { getUser } from '~/spotify'
 import type { User } from '~/types'
 
 const router = useRouter()
-const location = useBrowserLocation()
 
 const user = ref<User>()
 const updateUser = () => {
@@ -16,7 +15,7 @@ const updateUser = () => {
 const openDrawer = ref(false)
 
 onMounted(() => {
-  if (location.value.hash === '')
+  if (spotifyToken.value === '')
     router.push('login')
 
   updateUser()
