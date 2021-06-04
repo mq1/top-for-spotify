@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useBrowserLocation } from '@vueuse/core'
 import { saveSpotifyAccessToken } from '~/spotify'
 
-const router = useRouter()
 const { t } = useI18n()
 const location = useBrowserLocation()
 
@@ -14,7 +12,7 @@ const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta
 onMounted(() => {
   if (location.value.hash !== '') {
     saveSpotifyAccessToken()
-    router.push(import.meta.env.BASE_URL)
+    window.location.replace(import.meta.env.BASE_URL)
   }
 })
 </script>
