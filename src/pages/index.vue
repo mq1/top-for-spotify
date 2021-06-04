@@ -25,7 +25,7 @@ onMounted(() => {
 
 <template>
   <div class="flex gap-x-8">
-    <Drawer :class="openDrawer || 'hidden sm:flex'" @setTimeRange="tr => timeRange = tr" />
+    <Drawer :class="openDrawer || 'hidden sm:flex'" />
 
     <div class="mx-auto">
       <!-- mobile header -->
