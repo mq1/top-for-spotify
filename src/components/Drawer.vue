@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { useBrowserLocation, useShare } from '@vueuse/core'
+import { spotifyToken } from '~/store'
 import { getUser } from '~/spotify'
 import type { User } from '~/types'
 
 const { t } = useI18n()
 const location = useBrowserLocation()
+const router = useRouter()
 const { share, isSupported } = useShare()
-const baseURL = import.meta.env.BASE_URL
 
 const user = ref<User>()
 const updateUser = () =>
   getUser().then(u => user.value = u)
+
+const logOut = () => {
+  spotifyToken.value = ''
+  router.push('login')
+}
 
 const shareURL = () => {
   if (isSupported) {
@@ -54,13 +61,13 @@ onMounted(updateUser)
       </div>
     </div>
 
-    <button class="btn btn-lg flex items-center" @click="shareURL()">
+    <button class="btn btn-lg flex items-center" @click="shareURL">
       <carbon-share class="h-6 w-6" /> {{ t('share') }}
     </button>
 
-    <a class="btn btn-lg flex items-center" :href="baseURL">
+    <button class="btn btn-lg flex items-center" @click="logOut">
       <carbon-logout class="h-6 w-6" /> {{ t('logOut') }}
-    </a>
+    </button>
 
     <Footer class="flex-wrap leading-loose" />
   </div>

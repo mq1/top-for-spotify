@@ -8,9 +8,8 @@ import type { User } from '~/types'
 const router = useRouter()
 
 const user = ref<User>()
-const updateUser = () => {
+const updateUser = () =>
   getUser().then(u => user.value = u)
-}
 
 const openDrawer = ref(false)
 
@@ -18,7 +17,13 @@ onMounted(() => {
   if (spotifyToken.value === '')
     router.push('login')
 
-  updateUser()
+  updateUser().then(
+    () => {
+      // if token has expired
+      if ((user.value as any).error.status === 401)
+        router.push('login')
+    },
+  )
 })
 </script>
 
