@@ -81,7 +81,7 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
 
   const avg = _.mapValues(features, val => average(val))
   const percent = _.mapValues(avg, val => val * 100)
-  const rounded = _.mapValues(percent, val => val.toFixed())
+  const rounded = _.mapValues(percent, val => Math.round(val))
 
   return rounded
 }
