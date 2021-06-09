@@ -6,7 +6,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^5.0.1",
+    "@vueuse/core": "^5.0.2",
     "@vueuse/head": "^0.5.1",
     "inter-ui": "^3.18.1",
     "vue": "^3.0.11",
