@@ -14,7 +14,7 @@ specifiers:
   cross-env: 7.0.3
   eslint: 7.30.0
   inter-ui: 3.19.2
-  lodash: ^4.17.21
+  lodash: 4.17.21
   typescript: 4.3.5
   vite: 2.4.1
   vite-plugin-components: 0.12.2
