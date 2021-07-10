@@ -4,6 +4,11 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Artists: typeof import('./src/components/Artists.vue')['default']
+    CarbonClose: typeof import('virtual:vite-icons/carbon/close')['default']
+    CarbonLogoGithub: typeof import('virtual:vite-icons/carbon/logo-github')['default']
+    CarbonLogout: typeof import('virtual:vite-icons/carbon/logout')['default']
+    CarbonMenu: typeof import('virtual:vite-icons/carbon/menu')['default']
+    CarbonShare: typeof import('virtual:vite-icons/carbon/share')['default']
     Drawer: typeof import('./src/components/Drawer.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Genres: typeof import('./src/components/Genres.vue')['default']
