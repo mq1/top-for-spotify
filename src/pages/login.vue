@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useBrowserLocation } from '@vueuse/core'
 import { saveSpotifyAccessToken } from '~/spotify'
