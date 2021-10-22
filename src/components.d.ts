@@ -5,6 +5,11 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Artists: typeof import('./components/Artists.vue')['default']
+    CarbonClose: typeof import('~icons/carbon/close')['default']
+    CarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
+    CarbonLogout: typeof import('~icons/carbon/logout')['default']
+    CarbonMenu: typeof import('~icons/carbon/menu')['default']
+    CarbonShare: typeof import('~icons/carbon/share')['default']
     Drawer: typeof import('./components/Drawer.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Genres: typeof import('./components/Genres.vue')['default']
