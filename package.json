@@ -1,9 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "dev": "vite",
     "build": "cross-env NODE_ENV=production vite-ssg build",
-    "serve": "vite preview"
+    "dev": "vite --port 3333 --open",
+    "lint": "eslint \"**/*.{vue,ts,js}\"",
+    "preview": "vite preview",
+    "preview-https": "serve dist",
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@vueuse/core": "^6.7.3",
