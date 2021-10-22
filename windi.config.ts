@@ -4,9 +4,6 @@ import colors from 'windicss/colors'
 export default defineConfig({
   darkMode: 'media',
   theme: {
-    fontFamily: {
-      sans: ['Inter var', 'sans-serif'],
-    },
     extend: {
       colors: {
         primary: colors.green,
