@@ -2,7 +2,10 @@
 const { t } = useI18n()
 const location = useBrowserLocation()
 
-const loginURL = `https://accounts.spotify.com/authorize?client_id=${import.meta.env.VITE_SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(`${location.value.origin + import.meta.env.BASE_URL}login-callback`)}&scope=user-top-read&show_dialog=true`
+const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+const callback = encodeURIComponent(`${location.value.origin + import.meta.env.BASE_URL}login-callback`)
+
+const loginURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=${callback}&scope=user-top-read&show_dialog=true`
 </script>
 
 <template>
