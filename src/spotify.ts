@@ -1,19 +1,8 @@
-import { useBrowserLocation } from '@vueuse/core'
 import _ from 'lodash'
 import { spotifyToken } from '~/store'
 import { User, RawArtist, AudioFeatures, RawTrack } from '~/types'
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
-
-const location = useBrowserLocation()
-
-const parseSpotifyAccessToken = () =>
-  /#access_token=(.*?)&/.exec(location.value.hash!)![1]
-
-export const saveSpotifyAccessToken = () => {
-  spotifyToken.value = parseSpotifyAccessToken()
-  location.value.hash = ''
-}
 
 const getHeaders = () =>
   ({ Authorization: `Bearer ${spotifyToken.value}` })
