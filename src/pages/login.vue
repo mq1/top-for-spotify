@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useBrowserLocation } from '@vueuse/core'
 import { saveSpotifyAccessToken } from '~/spotify'
 
 const { t } = useI18n()

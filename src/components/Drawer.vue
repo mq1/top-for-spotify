@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
-import { useBrowserLocation, useShare } from '@vueuse/core'
 import { spotifyToken } from '~/store'
 import { getUser } from '~/spotify'
 import type { User } from '~/types'

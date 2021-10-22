@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useHead } from '@vueuse/head'
-import { useI18n } from 'vue-i18n'
 import * as store from '~/store'
 
 // set saved locale

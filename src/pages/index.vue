@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import { spotifyToken } from '~/store'
 import { getUser } from '~/spotify'
 import type { User } from '~/types'

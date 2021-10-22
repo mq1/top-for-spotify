@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { timeRange } from '~/store'
 import { getTracks } from '~/spotify'
 import type { CardElement } from '~/types'
