@@ -21,7 +21,6 @@
     "@iconify-json/carbon": "^1.0.7",
     "@intlify/vite-plugin-vue-i18n": "^2.4.0",
     "@types/lodash": "^4.14.176",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@vitejs/plugin-vue": "^1.9.3",
     "@vue/compiler-sfc": "^3.2.20",
     "@vue/server-renderer": "^3.2.20",
