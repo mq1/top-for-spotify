@@ -12,8 +12,6 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 
 export default defineConfig({
-  base: '/top-for-spotify/',
-
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
