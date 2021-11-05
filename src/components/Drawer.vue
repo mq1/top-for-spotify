@@ -18,7 +18,7 @@ const logOut = () => {
 }
 
 const shareURL = () => {
-  const url = `${location.value.href}login#access_token=${spotifyToken.value}&token_type=Bearer&expires_in=3600`
+  const url = `${location.value.origin}${import.meta.env.BASE_URL}login-callback#access_token=${spotifyToken.value}&token_type=Bearer&expires_in=3600`
 
   if (isSupported) {
     share({
