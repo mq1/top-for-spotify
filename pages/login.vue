@@ -3,10 +3,12 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+const config = useRuntimeConfig()
+
 const loginURL = ref('')
 
 onMounted(() => {
-  const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+  const clientID = config.SPOTIFY_CLIENT_ID
   const callback = encodeURIComponent(`${location.origin}/login-callback`)
 
   loginURL.value = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=${callback}&scope=user-top-read&show_dialog=true`
