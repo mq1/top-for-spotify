@@ -1,11 +1,10 @@
 <script setup lang="ts">
 const spotifyToken = useSpotifyToken()
-const router = useRouter()
 
 onMounted(() => {
   if (spotifyToken.value === '')
-    router.push('/login')
+    window.location.href = '/login'
   else
-    router.push('/me')
+    window.location.href = '/me'
 })
 </script>
