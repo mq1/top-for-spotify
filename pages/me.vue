@@ -2,8 +2,6 @@
 import { getUser } from '~/spotify'
 import type { User } from '~/types'
 
-const router = useRouter()
-
 const user = ref<User>()
 const updateUser = () => getUser().then(u => user.value = u)
 
@@ -11,7 +9,7 @@ onMounted(() => {
   updateUser().then(() => {
     // if token has expired
     if ((user.value as any).error.status === 401)
-      router.push('/login')
+      window.location.href = '/login'
   })
 })
 </script>
