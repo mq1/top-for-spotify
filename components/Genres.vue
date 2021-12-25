@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { timeRange } from '~/store'
 import { getGenres } from '~/spotify'
+import { useI18n } from 'vue-i18n'
+
+const timeRange = useTimeRange()
 
 const { t } = useI18n()
 
@@ -13,11 +15,11 @@ watch(timeRange, updateGenres)
 </script>
 
 <template>
-  <div class="box flex flex-col gap-y-16 bg-gradient-to-r from-green-400 to-blue-500">
-    <h2 class="text-5xl">
+  <div box flex flex-col gap-y-16 bg-gradient-to-r from-green-400 to-blue-500 font-bold uppercase>
+    <h2 text-5xl sm:text-7xl>
       {{ t('genres') }}
     </h2>
-    <ol class="list-decimal text-left leading-loose text-2xl ml-8 sm:ml-16">
+    <ol list-decimal text-left leading-loose text-2xl ml-8>
       <li v-for="genre in genres" :key="genre">
         {{ genre }}
       </li>

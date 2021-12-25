@@ -1,6 +1,7 @@
 import _ from 'lodash'
-import { spotifyToken } from '~/store'
 import type { User, RawArtist, AudioFeatures, RawTrack } from '~/types'
+
+const spotifyToken = useSpotifyToken()
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
 

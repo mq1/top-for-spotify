@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { spotifyToken } from '~/store'
-
+const spotifyToken = useSpotifyToken()
 const router = useRouter()
 
 onMounted(() => {

@@ -1,7 +1,3 @@
-import { ViteSSGContext } from 'vite-ssg'
-
-export type UserModule = (ctx: ViteSSGContext) => void
-
 export type User = {
   display_name: string
   images: { url: string }[]

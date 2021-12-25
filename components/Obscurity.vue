@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { timeRange } from '~/store'
 import { getObscurityRating } from '~/spotify'
+import { useI18n } from 'vue-i18n'
+
+const timeRange = useTimeRange()
 
 const { t } = useI18n()
 
@@ -13,11 +15,11 @@ watch(timeRange, updateObscurityRating)
 </script>
 
 <template>
-  <div class="box flex flex-col gap-y-8 bg-black">
-    <h2 class="text-5xl">
+  <div box flex flex-col gap-y-8 bg-black font-bold>
+    <h2 text-5xl sm:text-7xl uppercase>
       {{ t('obscurity') }}
     </h2>
-    <div class="text-7xl sm:text-9xl">
+    <div text-7xl sm:text-9xl>
       {{ obscurityRating }} %
     </div>
   </div>
