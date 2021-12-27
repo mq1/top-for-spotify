@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { getArtists } from '~/spotify'
 import { useI18n } from 'vue-i18n'
+import { useTimeRangeStore } from '~/stores/timeRange'
 import type { CardElement } from '~/types'
 
-const timeRange = useTimeRange()
+const timeRange = useTimeRangeStore()
 
 const { t } = useI18n()
 
 const artists = ref<CardElement[]>()
 const updateArtists = () =>
-  getArtists(timeRange.value).then(a => artists.value = a)
+  getArtists(timeRange.timeRange).then(a => artists.value = a)
 
 onMounted(updateArtists)
 watch(timeRange, updateArtists)

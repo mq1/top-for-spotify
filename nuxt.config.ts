@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@intlify/nuxt3',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
   ],
   unocss: {
     uno: true,

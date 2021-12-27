@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { getObscurityRating } from '~/spotify'
+import { useTimeRangeStore } from '~/stores/timeRange'
 import { useI18n } from 'vue-i18n'
 
-const timeRange = useTimeRange()
+const timeRange = useTimeRangeStore()
 
 const { t } = useI18n()
 
 const obscurityRating = ref<string | number>('?')
 const updateObscurityRating = () =>
-  getObscurityRating(timeRange.value).then(r => obscurityRating.value = r)
+  getObscurityRating(timeRange.timeRange).then(r => obscurityRating.value = r)
 
 onMounted(updateObscurityRating)
 watch(timeRange, updateObscurityRating)

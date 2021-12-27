@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { getGenres } from '~/spotify'
+import { useTimeRangeStore } from '~/stores/timeRange'
 import { useI18n } from 'vue-i18n'
 
-const timeRange = useTimeRange()
+const timeRange = useTimeRangeStore()
 
 const { t } = useI18n()
 
 const genres = ref<string[]>()
 const updateGenres = () =>
-  getGenres(timeRange.value).then(g => genres.value = g)
+  getGenres(timeRange.timeRange).then(g => genres.value = g)
 
 onMounted(updateGenres)
 watch(timeRange, updateGenres)

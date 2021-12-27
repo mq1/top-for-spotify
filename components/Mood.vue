@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { getAvgFeatures } from '~/spotify'
 import { useI18n } from 'vue-i18n'
+import { useTimeRangeStore } from '~/stores/timeRange'
 import type { AudioFeatures } from '~/types'
 
-const timeRange = useTimeRange()
+const timeRange = useTimeRangeStore()
 
 const { t } = useI18n()
 
 const avgFeatures = ref<AudioFeatures>()
 const updateAvgFeatures = () =>
-  getAvgFeatures(timeRange.value).then(avg => avgFeatures.value = avg)
+  getAvgFeatures(timeRange.timeRange).then(avg => avgFeatures.value = avg)
 
 onMounted(updateAvgFeatures)
 watch(timeRange, updateAvgFeatures)

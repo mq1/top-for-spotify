@@ -3,15 +3,21 @@ lockfileVersion: 5.3
 specifiers:
   '@iconify-json/feather': ^1.0.1
   '@intlify/nuxt3': ^0.1.10
+  '@pinia/nuxt': ^0.1.8
   '@types/lodash': ^4.14.178
   '@unocss/nuxt': ^0.18.0
   '@vueuse/nuxt': ^7.4.1
   lodash: ^4.17.21
   nuxt3: latest
+  pinia: ^2.0.9
+
+dependencies:
+  pinia: 2.0.9
 
 devDependencies:
   '@iconify-json/feather': 1.0.1
   '@intlify/nuxt3': 0.1.10
+  '@pinia/nuxt': 0.1.8_pinia@2.0.9
   '@types/lodash': 4.14.178
   '@unocss/nuxt': 0.18.0
   '@vueuse/nuxt': 7.4.1
@@ -755,6 +761,18 @@ packages:
       - webpack-cli
     dev: true
 
+  /@pinia/nuxt/0.1.8_pinia@2.0.9:
+    resolution: {integrity: sha512-+M1GH/4XQdooOulPL7aYzli6UE1R5rWJtgcPhx2/97yYRLhKZvuIT33OauUCjYZ+tQVs8lyKfzt6S2agqzcmWg==}
+    peerDependencies:
+      pinia: ~2.0.9
+    dependencies:
+      pinia: 2.0.9
+      vue-demi: 0.12.1
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: true
+
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
@@ -1241,7 +1259,6 @@ packages:
 
   /@vue/devtools-api/6.0.0-beta.21.1:
     resolution: {integrity: sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw==}
-    dev: true
 
   /@vue/reactivity-transform/3.2.26:
     resolution: {integrity: sha512-XKMyuCmzNA7nvFlYhdKwD78rcnmPb7q46uoR00zkX6yZrUmcCQ5OikiwUEVbvNhL5hBJuvbSO95jB5zkUon+eQ==}
@@ -4549,6 +4566,22 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /pinia/2.0.9:
+    resolution: {integrity: sha512-iuYdxLJKQ07YPyOHYH05wNG9eKWqkP/4y4GE8+RqEYtz5fwHgPA5kr6zQbg/DoEJGnR2XCm1w1vdt6ppzL9ATg==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.0.0-beta.21.1
+      vue-demi: 0.12.1
+    dev: false
+
   /pkg-dir/4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
@@ -5969,7 +6002,6 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
-    dev: true
 
   /vue-i18n/9.2.0-beta.25:
     resolution: {integrity: sha512-l/A5W5KLuwnI5NHOV0WQrF79BwVku83ed7wHmq5NLm/Uofmsc8qmgJ95zw8EK3fmSBzb3F1NbjxxK2DZcg8c/g==}
