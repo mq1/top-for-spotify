@@ -2,8 +2,12 @@
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
+const storedLocale = useLocale()
 
 useDark()
+
+onMounted(() => locale.value = storedLocale.value)
+watch(locale, () => storedLocale.value = locale.value)
 </script>
 
 <template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-const locale = useLocale()
-const { availableLocales } = useI18n()
+const { locale, availableLocales } = useI18n()
 </script>
 
 <template>
