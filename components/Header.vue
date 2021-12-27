@@ -35,7 +35,7 @@ onMounted(updateUser)
 </script>
 
 <template>
-  <div p-4 sm:p-8 dark:bg-black border-b-2 border-gray-300 dark:border-gray-700 w-full flex flex-wrap gap-y-4 justify-between items-center fixed bg-white>
+  <div p-4 sm:p-8 dark:bg-black border-b-2 border-gray-300 dark:border-gray-700 w-full flex flex-wrap gap-y-4 justify-between items-center fixed z-10 bg-white>
     <h1 text-5xl font-bold>Top for Spotify</h1>
     <div flex items-center gap-x-2>
       <TimeRangeSelector></TimeRangeSelector>
