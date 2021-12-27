@@ -42,7 +42,7 @@ onMounted(updateUser)
       <LanguageSelector></LanguageSelector>
     </div>
     <div flex items-center gap-x-8>
-      <img h-12 rounded-xl shadow-lg :src="user?.images[0].url" />
+      <img h-12 rounded-xl shadow-lg hidden sm:block :src="user?.images[0].url" />
       <button scale-200 i-feather-share @click="shareURL"></button>
       <button scale-200 i-feather-log-out @click="logOut"></button>
     </div>
