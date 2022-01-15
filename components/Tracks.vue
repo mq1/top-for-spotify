@@ -23,7 +23,7 @@ watch(timeRange, updateTracks)
     </h2>
     <div grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-y-16>
       <figure v-for="(track, index) in tracks" :key="index" rounded-2xl shadow-lg bg-white dark:bg-black>
-        <img object-cover w-full h-48 rounded-2xl p-1 :src="track.imageURL">
+        <img object-cover h-48 w-96 rounded-2xl p-1 :src="track.imageURL">
         <figcaption text-black dark:text-white mx-4 my-2>
           {{ index + 1 }}. {{ track.name }}
         </figcaption>
