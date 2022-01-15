@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import type { User, RawArtist, AudioFeatures, RawTrack } from '~/types'
+import type { AudioFeatures, RawArtist, RawTrack, User } from '~/types'
 
 const spotifyToken = useSpotifyToken()
 

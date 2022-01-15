@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getAvgFeatures } from '~/spotify'
 import { useI18n } from 'vue-i18n'
+import { getAvgFeatures } from '~/spotify'
 import { useTimeRangeStore } from '~/stores/timeRange'
 import type { AudioFeatures } from '~/types'
 

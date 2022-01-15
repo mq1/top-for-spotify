@@ -15,15 +15,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <Header></Header>
+  <Header />
 
   <main flex flex-col gap-y-8 text-white mt-44 sm:mt-24 sm:p-8>
-    <Obscurity></Obscurity>
-    <Mood></Mood>
-    <Genres></Genres>
-    <Artists></Artists>
-    <Tracks></Tracks>
+    <Obscurity />
+    <Mood />
+    <Genres />
+    <Artists />
+    <Tracks />
   </main>
 
-  <Footer></Footer>
+  <Footer />
 </template>

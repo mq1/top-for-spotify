@@ -7,7 +7,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <select selector v-model="timeRange.timeRange">
+  <select v-model="timeRange.timeRange" selector>
     <option v-for="tr in ['short_term', 'long_term']" :key="tr" :value="tr">
       {{ t(tr) }}
     </option>

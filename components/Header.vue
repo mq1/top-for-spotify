@@ -27,6 +27,7 @@ const shareURL = () => {
   }
   else {
     navigator.clipboard.writeText(url)
+    // eslint-disable-next-line no-alert
     window.alert('URL copied to clipboard')
   }
 }
@@ -36,15 +37,17 @@ onMounted(updateUser)
 
 <template>
   <div p-4 sm:p-8 dark:bg-black border-b-2 border-gray-300 dark:border-gray-700 w-full flex flex-wrap gap-y-4 justify-between items-center fixed z-10 bg-white>
-    <h1 text-5xl font-bold>Top for Spotify</h1>
+    <h1 text-5xl font-bold>
+      Top for Spotify
+    </h1>
     <div flex items-center gap-x-2>
-      <TimeRangeSelector></TimeRangeSelector>
-      <LanguageSelector></LanguageSelector>
+      <TimeRangeSelector />
+      <LanguageSelector />
     </div>
     <div flex items-center gap-x-8>
-      <img h-12 rounded-xl shadow-lg hidden sm:block :src="user?.images[0].url" />
-      <button scale-200 i-feather-share @click="shareURL"></button>
-      <button scale-200 i-feather-log-out @click="logOut"></button>
+      <img h-12 rounded-xl shadow-lg hidden sm:block :src="user?.images[0].url">
+      <button scale-200 i-feather-share @click="shareURL" />
+      <button scale-200 i-feather-log-out @click="logOut" />
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getArtists } from '~/spotify'
 import { useI18n } from 'vue-i18n'
+import { getArtists } from '~/spotify'
 import { useTimeRangeStore } from '~/stores/timeRange'
 import type { CardElement } from '~/types'
 
@@ -23,7 +23,7 @@ watch(timeRange, updateArtists)
     </h2>
     <div grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-y-16>
       <figure v-for="(artist, index) in artists" :key="index" rounded-2xl shadow-lg bg-white dark:bg-black>
-        <img object-cover w-full rounded-2xl h-48 p-1 :src="artist.imageURL" />
+        <img object-cover w-full rounded-2xl h-48 p-1 :src="artist.imageURL">
         <figcaption text-black dark:text-white mx-4 my-2>
           {{ index + 1 }}. {{ artist.name }}
         </figcaption>

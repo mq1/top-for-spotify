@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { getObscurityRating } from '~/spotify'
 import { useTimeRangeStore } from '~/stores/timeRange'
-import { useI18n } from 'vue-i18n'
 
 const timeRange = useTimeRangeStore()
 

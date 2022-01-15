@@ -1,27 +1,27 @@
-export type User = {
+export interface User {
   display_name: string
   images: { url: string }[]
 }
 
 export type TimeRange = 'short_term' | 'long_term'
 
-export type ScoreBoardElement = {
+export interface ScoreBoardElement {
   name: string
   score: number
 }
 
-export type CardElement = {
+export interface CardElement {
   name: string
   imageURL: string
 }
 
-export type RawArtist = {
+export interface RawArtist {
   name: string
   genres: string[]
   images: { url: string }[]
 }
 
-export type RawTrack = {
+export interface RawTrack {
   id: string
   name: string
   popularity: number
@@ -30,7 +30,7 @@ export type RawTrack = {
   }
 }
 
-export type AudioFeatures = {
+export interface AudioFeatures {
   acousticness: number
   danceability: number
   energy: number

@@ -5,7 +5,7 @@ export const useTimeRangeStore = defineStore('timeRange', () => {
   const timeRange = ref<TimeRange>('short_term')
 
   return {
-    timeRange
+    timeRange,
   }
 })
 

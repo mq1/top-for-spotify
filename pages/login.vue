@@ -16,15 +16,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div></div>
+  <div />
 
   <div flex flex-col items-center gap-y-8>
-    <h1 text-5xl font-bold>TOP for Spotify</h1>
+    <h1 text-5xl font-bold>
+      TOP for Spotify
+    </h1>
 
     <a btn-xl :href="loginURL">
       {{ t('login') }}
     </a>
   </div>
 
-  <Footer></Footer>
+  <Footer />
 </template>

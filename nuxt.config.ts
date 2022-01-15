@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt3'
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   publicRuntimeConfig: {
-    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
   },
   buildModules: [
     '@unocss/nuxt',

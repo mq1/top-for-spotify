@@ -7,7 +7,7 @@
       © 2021 Manuel Quarneti
     </div>
     <div px-2>
-      <a i-feather-github block href="https://github.com/mq1/top-for-spotify"></a>
+      <a i-feather-github block href="https://github.com/mq1/top-for-spotify" />
     </div>
   </footer>
 </template>
