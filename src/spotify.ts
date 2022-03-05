@@ -1,12 +1,11 @@
 import _ from 'lodash'
-import type { AudioFeatures, RawArtist, RawTrack, User } from '~/types'
-
-const spotifyToken = useSpotifyToken()
+import { spotifyToken } from './store/spotifyToken'
+import type { AudioFeatures, RawArtist, RawTrack, User } from './types'
 
 const average = (list: number[]) => list.reduce((prev, curr) => prev + curr) / list.length
 
 const getHeaders = () =>
-  ({ Authorization: `Bearer ${spotifyToken.value}` })
+  ({ Authorization: `Bearer ${spotifyToken.get()}` })
 
 const headers = getHeaders()
 

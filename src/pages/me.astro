@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.astro";
+import Obscurity from "../components/Obscurity.vue";
+import Mood from "../components/Mood.vue";
+import Genres from "../components/Genres.vue";
+import Artists from "../components/Artists.vue";
+import Tracks from "../components/Tracks.vue";
+---
+
+<BaseLayout>
+  <Header client:load />
+
+  <main class="flex flex-col gap-y-8 text-white mt-44 sm:mt-24 sm:p-8">
+    <Obscurity client:load />
+    <Mood client:load />
+    <Genres client:load />
+    <Artists client:load />
+    <Tracks client:load />
+  </main>
+
+  <Footer />
+</BaseLayout>
