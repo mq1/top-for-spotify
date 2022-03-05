@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 import { useBrowserLocation, useShare } from "@vueuse/core";
 import { useStore } from "@nanostores/vue";
 import { spotifyToken as st, resetSpotifyToken } from "../store/spotifyToken";
-import { getUser } from "../spotify";
-import type { User } from "../types";
+import { user as u, updateUser } from "../store/user";
 import TimeRangeSelector from "./TimeRangeSelector.vue";
 
 const spotifyToken = useStore(st);
 const location = useBrowserLocation();
 const { share, isSupported } = useShare();
 
-const user = ref<User>();
-const updateUser = () => getUser().then((u) => (user.value = u));
+const user = useStore(u);
 
 const logOut = () => {
   resetSpotifyToken();

@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { onMounted, watch } from "vue";
 import { useStore } from "@nanostores/vue";
+import { genres as g, updateGenres } from "../store/genres";
 import { timeRange as tr } from "../store/timeRange";
-import { getGenres } from "../spotify";
 
 const timeRange = useStore(tr);
-
-const genres = ref<string[]>();
-const updateGenres = () =>
-  getGenres(timeRange.value).then((g) => (genres.value = g));
+const genres = useStore(g);
 
 onMounted(updateGenres);
 watch(timeRange, updateGenres);

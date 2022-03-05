@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
-import { getTracks } from "../spotify";
+import { onMounted, watch } from "vue";
 import { useStore } from "@nanostores/vue";
+import { tracks as t, updateTracks } from "../store/tracks";
 import { timeRange as tr } from "../store/timeRange";
-import type { CardElement } from "../types";
 
 const timeRange = useStore(tr);
-
-const tracks = ref<CardElement[]>();
-const updateTracks = () =>
-  getTracks(timeRange.value).then((t) => (tracks.value = t));
+const tracks = useStore(t);
 
 onMounted(updateTracks);
 watch(timeRange, updateTracks);

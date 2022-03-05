@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { onMounted, watch } from "vue";
 import { useStore } from "@nanostores/vue";
+import { obscurity, updateObscurityRating } from "../store/obscurity";
 import { timeRange as tr } from "../store/timeRange";
-import { getObscurityRating } from "../spotify";
 
 const timeRange = useStore(tr);
-
-const obscurityRating = ref(0);
-const updateObscurityRating = () =>
-  getObscurityRating(timeRange.value).then((r) => (obscurityRating.value = r));
+const obscurityRating = useStore(obscurity);
 
 onMounted(updateObscurityRating);
 watch(timeRange, updateObscurityRating);

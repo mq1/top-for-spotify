@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { onMounted, watch } from "vue";
 import { useStore } from "@nanostores/vue";
+import { avgFeatures as avg, updateAvgFeatures } from "../store/mood";
 import { timeRange as tr } from "../store/timeRange";
-import { getAvgFeatures } from "../spotify";
-import type { AudioFeatures } from "../types";
 
 const timeRange = useStore(tr);
-
-const avgFeatures = ref<AudioFeatures>();
-const updateAvgFeatures = () =>
-  getAvgFeatures(timeRange.value).then((avg) => (avgFeatures.value = avg));
+const avgFeatures = useStore(avg);
 
 onMounted(updateAvgFeatures);
 watch(timeRange, updateAvgFeatures);
