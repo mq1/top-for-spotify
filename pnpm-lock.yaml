@@ -5,6 +5,7 @@ specifiers:
   '@nanostores/vue': ^0.5.5
   '@types/lodash': ^4.14.179
   '@vueuse/core': ^7.7.0
+  animated-tailwindcss: ^3.2.7
   astro: ^0.23.4
   astro-icon: ^0.6.0
   autoprefixer: ^10.4.2
@@ -21,6 +22,7 @@ dependencies:
 
 devDependencies:
   '@types/lodash': 4.14.179
+  animated-tailwindcss: 3.2.7_postcss@8.4.7+tailwindcss@3.0.23
   astro: 0.23.4
   astro-icon: 0.6.0
   autoprefixer: 10.4.2_postcss@8.4.7
@@ -799,6 +801,18 @@ packages:
     hasBin: true
     dev: true
 
+  /animated-tailwindcss/3.2.7_postcss@8.4.7+tailwindcss@3.0.23:
+    resolution: {integrity: sha512-Fvg/AYgLINgZNnbh09fxOQ6wrgp6gwy3jeBktMcf7fZcroyJMSYc4FxLy1Wqo7DAnwSe7jA6oTLJKbWkwd06cQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      postcss: ^8
+      tailwindcss: ^3
+    dependencies:
+      csstype: 3.0.11
+      postcss: 8.4.7
+      tailwindcss: 3.0.23_autoprefixer@10.4.2
+    dev: true
+
   /ansi-regex/6.0.1:
     resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
     engines: {node: '>=12'}
@@ -1171,6 +1185,10 @@ packages:
 
   /csstype/2.6.19:
     resolution: {integrity: sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==}
+    dev: true
+
+  /csstype/3.0.11:
+    resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
     dev: true
 
   /data-uri-to-buffer/4.0.0:
