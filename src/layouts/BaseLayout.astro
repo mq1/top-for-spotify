@@ -3,6 +3,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const title = "Top for Spotify";
+
+const { isLoggedIn } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ const title = "Top for Spotify";
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between gap-y-8 dark:bg-black dark:text-white">
-  <Header />
+  <Header isLoggedIn={isLoggedIn} />
   <div />
   <slot />
   <Footer />

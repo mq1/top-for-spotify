@@ -8,17 +8,17 @@ import ShareButton from "./ShareButton.vue";
 const { isLoggedIn } = Astro.props;
 ---
 
-<div class="flex gap-x-4 mt-4 fixed z-10 bg-white">
+<div class="flex justify-center gap-x-4 p-4 fixed z-10 bg-white dark:bg-black w-full">
   <h1 class="text-5xl font-bold">Top for Spotify</h1>
   {() => {
     if (isLoggedIn)
       return (
-        <TimeRangeSelector />
-        <UserImage />
-        <LogoutButton>
+        <TimeRangeSelector client:load />
+        <UserImage client:load />
+        <LogoutButton client:load>
           <Icon class="h-6" name="feather:log-out" />
         </LogoutButton>
-        <ShareButton>
+        <ShareButton client:load>
           <Icon class="h-6" name="feather:share" />
         </ShareButton>
       )
