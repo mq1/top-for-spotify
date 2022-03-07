@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon";
+import TimeRangeSelector from "./TimeRangeSelector.vue";
+import UserImage from "./UserImage.vue";
+import LogoutButton from "./LogoutButton.vue";
+import ShareButton from "./ShareButton.vue";
+
+const { isLoggedIn } = Astro.props;
+---
+
+<div class="flex gap-x-4 mt-4 fixed z-10 bg-white">
+  <h1 class="text-5xl font-bold">Top for Spotify</h1>
+  {() => {
+    if (isLoggedIn)
+      return (
+        <TimeRangeSelector />
+        <UserImage />
+        <LogoutButton>
+          <Icon class="h-6" name="feather:log-out" />
+        </LogoutButton>
+        <ShareButton>
+          <Icon class="h-6" name="feather:share" />
+        </ShareButton>
+      )
+  }}
+  
+</div>

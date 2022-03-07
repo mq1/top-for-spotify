@@ -1,23 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Footer from '../components/Footer.astro';
 
 const clientID = import.meta.env.PUBLIC_SPOTIFY_CLIENT_ID;
-const callback = encodeURIComponent(`${Astro.request.url}login-callback`)
+const callback = encodeURIComponent(`${Astro.request.url}login-callback`);
 
-const loginURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=${callback}&scope=user-top-read&show_dialog=true`
+const loginURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&redirect_uri=${callback}&scope=user-top-read&show_dialog=true`;
 ---
 
 <BaseLayout>
-  <div />
-
-  <div class="flex flex-col items-center gap-y-8">
-    <h1 class="text-5xl font-bold">
-      TOP for Spotify
-    </h1>
-
-    <a href={loginURL} class="btn-xl">Login</a>
-  </div>
-
-  <Footer />
+  <a href={loginURL} class="btn-xl">Login</a>
 </BaseLayout>
