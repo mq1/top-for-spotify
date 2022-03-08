@@ -50,3 +50,5 @@ export const avgFeatures = atom<AudioFeatures>();
 export const updateAvgFeatures = action(avgFeatures, "update", async (a) => {
   a.set(await getAvgFeatures(timeRange.get()));
 });
+
+timeRange.listen(updateAvgFeatures);

@@ -12,9 +12,9 @@ const parseObscurityRating = (tracks: RawTrack[]) => {
   return rounded;
 };
 
-const getObscurityRating = async (timeRange: string) => {
+const getObscurityRating = async () => {
   const response = await fetch(
-    `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`,
+    `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange.get()}`,
     { headers: headers.get() }
   );
   const j = await response.json();
@@ -25,5 +25,7 @@ const getObscurityRating = async (timeRange: string) => {
 
 export const obscurity = atom(0);
 export const updateObscurityRating = action(obscurity, "update", async (o) => {
-  o.set(await getObscurityRating(timeRange.get()));
+  o.set(await getObscurityRating());
 });
+
+timeRange.listen(updateObscurityRating);

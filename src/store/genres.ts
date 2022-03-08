@@ -31,3 +31,5 @@ export const genres = atom<string[]>([]);
 export const updateGenres = action(genres, "update", async (g) => {
   g.set(await getGenres(timeRange.get()));
 });
+
+timeRange.listen(updateGenres);

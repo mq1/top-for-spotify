@@ -33,3 +33,5 @@ export const tracks = atom<CardElement[]>();
 export const updateTracks = action(tracks, "update", async (t) => {
   t.set(await getTracks(timeRange.get()));
 });
+
+timeRange.listen(updateTracks);

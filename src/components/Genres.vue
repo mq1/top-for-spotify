@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { onMounted, watch } from "vue";
+import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
 import { genres as g, updateGenres } from "../store/genres";
-import { timeRange as tr } from "../store/timeRange";
 
-const timeRange = useStore(tr);
 const genres = useStore(g);
 
 onMounted(updateGenres);
-watch(timeRange, updateGenres);
 </script>
 
 <template>

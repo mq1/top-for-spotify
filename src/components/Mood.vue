@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { onMounted, watch } from "vue";
+import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
 import { avgFeatures as avg, updateAvgFeatures } from "../store/mood";
-import { timeRange as tr } from "../store/timeRange";
 
-const timeRange = useStore(tr);
 const avgFeatures = useStore(avg);
 
 onMounted(updateAvgFeatures);
-watch(timeRange, updateAvgFeatures);
 </script>
 
 <template>

@@ -30,3 +30,5 @@ export const artists = atom<CardElement[]>([]);
 export const updateArtists = action(artists, "update", async (a) => {
   a.set(await getArtists(timeRange.get()));
 });
+
+timeRange.listen(updateArtists);
