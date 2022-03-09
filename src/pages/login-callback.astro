@@ -1,6 +1,8 @@
-<script>
+<script type="module" hoist>
+import { spotifyToken } from "../store/spotifyToken";
+
 const token = /#access_token=(.*?)&/.exec(window.location.hash)[1];
-localStorage.setItem("spotify-token", token);
+spotifyToken.set(token);
 
 window.location.href = "/me";
 </script>
