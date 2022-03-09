@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { action, atom } from "nanostores";
+import { action, atom, onMount, task } from "nanostores";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
@@ -24,8 +24,15 @@ const getObscurityRating = async () => {
 };
 
 export const obscurity = atom(0);
-export const updateObscurityRating = action(obscurity, "update", async (o) => {
-  o.set(await getObscurityRating());
+
+const updateObscurityRating = action(obscurity, "update", async (o) => {
+  if (!import.meta.env.SSR) {
+    o.set(await getObscurityRating());
+  }
 });
 
 timeRange.listen(updateObscurityRating);
+
+onMount(obscurity, () => {
+  task(updateObscurityRating);
+});

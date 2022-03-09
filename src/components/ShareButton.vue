@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useBrowserLocation, useShare } from "@vueuse/core";
 import { useStore } from "@nanostores/vue";
-import { user as u, updateUser } from "../store/user";
+import { user as u } from "../store/user";
 import { spotifyToken as st } from "../store/spotifyToken";
 
 const user = useStore(u);
@@ -24,8 +23,6 @@ const shareURL = () => {
     window.alert("URL copied to clipboard");
   }
 };
-
-onMounted(updateUser);
 </script>
 
 <template>

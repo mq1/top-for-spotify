@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { avgFeatures as avg, updateAvgFeatures } from "../store/mood";
+import { avgFeatures as avg } from "../store/mood";
 
 const avgFeatures = useStore(avg);
-
-onMounted(updateAvgFeatures);
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { headers } from "./spotifyToken";
 import type { RawArtist } from "./artists";
-import { action, atom } from "nanostores";
+import { action, atom, onMount, task } from "nanostores";
 import { timeRange } from "./timeRange";
 
 const parseGenres = (artists: RawArtist[]) => {
@@ -28,8 +28,15 @@ const getGenres = async (timeRange: string) => {
 };
 
 export const genres = atom<string[]>([]);
-export const updateGenres = action(genres, "update", async (g) => {
-  g.set(await getGenres(timeRange.get()));
+
+const updateGenres = action(genres, "update", async (g) => {
+  if (!import.meta.env.SSR) {
+    g.set(await getGenres(timeRange.get()));
+  }
 });
 
 timeRange.listen(updateGenres);
+
+onMount(genres, () => {
+  task(updateGenres);
+});

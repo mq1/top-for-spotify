@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { genres as g, updateGenres } from "../store/genres";
+import { genres as g } from "../store/genres";
 
 const genres = useStore(g);
-
-onMounted(updateGenres);
 </script>
 
 <template>

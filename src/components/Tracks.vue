@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { tracks as t, updateTracks } from "../store/tracks";
+import { tracks as t } from "../store/tracks";
 
 const tracks = useStore(t);
-
-onMounted(updateTracks);
 </script>
 
 <template>

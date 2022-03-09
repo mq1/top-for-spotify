@@ -1,4 +1,4 @@
-import { action, atom } from "nanostores";
+import { action, atom, onMount, task } from "nanostores";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { CardElement } from "../types";
@@ -30,8 +30,15 @@ const getTracks = async (timeRange: string) => {
 };
 
 export const tracks = atom<CardElement[]>();
-export const updateTracks = action(tracks, "update", async (t) => {
-  t.set(await getTracks(timeRange.get()));
+
+const updateTracks = action(tracks, "update", async (t) => {
+  if (!import.meta.env.SSR) {
+    t.set(await getTracks(timeRange.get()));
+  }
 });
 
 timeRange.listen(updateTracks);
+
+onMount(tracks, () => {
+  task(updateTracks);
+});

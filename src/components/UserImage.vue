@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { user as u, updateUser } from "../store/user";
+import { user as u } from "../store/user";
 
 const user = useStore(u);
-
-onMounted(updateUser);
 </script>
 
 <template>

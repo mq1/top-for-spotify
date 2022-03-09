@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { artists as a, updateArtists } from "../store/artists";
+import { artists as a } from "../store/artists";
 
 const artists = useStore(a);
-
-onMounted(updateArtists);
 </script>
 
 <template>

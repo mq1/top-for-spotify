@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 import { useStore } from "@nanostores/vue";
-import { obscurity, updateObscurityRating } from "../store/obscurity";
+import { obscurity } from "../store/obscurity";
 
 const obscurityRating = useStore(obscurity);
-
-onMounted(updateObscurityRating);
 </script>
 
 <template>

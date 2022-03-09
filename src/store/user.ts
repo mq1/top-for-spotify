@@ -1,4 +1,4 @@
-import { action, atom } from "nanostores";
+import { action, atom, onMount, task } from "nanostores";
 import { headers } from "./spotifyToken";
 
 interface User {
@@ -16,6 +16,13 @@ const getUser = async () => {
 };
 
 export const user = atom<User>();
-export const updateUser = action(user, "update", async (u) => {
-  u.set(await getUser());
+
+const updateUser = action(user, "update", async (u) => {
+  if (!import.meta.env.SSR) {
+    u.set(await getUser());
+  }
+});
+
+onMount(user, () => {
+  task(updateUser);
 });

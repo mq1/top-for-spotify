@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { action, atom } from "nanostores";
+import { action, atom, onMount, task } from "nanostores";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
@@ -47,8 +47,15 @@ const getAvgFeatures = async (timeRange: string) => {
 };
 
 export const avgFeatures = atom<AudioFeatures>();
-export const updateAvgFeatures = action(avgFeatures, "update", async (a) => {
-  a.set(await getAvgFeatures(timeRange.get()));
+
+const updateAvgFeatures = action(avgFeatures, "update", async (a) => {
+  if (!import.meta.env.SSR) {
+    a.set(await getAvgFeatures(timeRange.get()));
+  }
 });
 
 timeRange.listen(updateAvgFeatures);
+
+onMount(avgFeatures, () => {
+  task(updateAvgFeatures);
+});
