@@ -1,11 +1,6 @@
-export type TimeRange = 'short_term' | 'long_term'
-
-export interface ScoreBoardElement {
-  name: string
-  score: number
-}
+export type TimeRange = "short_term" | "long_term";
 
 export interface CardElement {
-  name: string
-  imageURL: string
+  name: string;
+  imageURL: string;
 }
