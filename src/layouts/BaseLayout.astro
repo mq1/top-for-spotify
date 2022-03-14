@@ -2,6 +2,8 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+import "../styles/global.css";
+
 const title = "Top for Spotify";
 
 const { isLoggedIn } = Astro.props;
@@ -15,9 +17,6 @@ const { isLoggedIn } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A simple Spotify stats viewer">
   <title>{title}</title>
-  <style global>
-    @import "../styles/global.css";
-  </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between gap-y-8 dark:bg-black dark:text-white">
   <Header isLoggedIn={isLoggedIn} />
