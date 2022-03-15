@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@astrojs/renderer-vue': ^0.4.0
-  '@nanostores/persistent': ^0.5.2
   '@nanostores/vue': ^0.5.5
   '@types/lodash': ^4.14.180
   '@vueuse/core': ^8.0.1
@@ -18,7 +17,6 @@ specifiers:
   tailwindcss: ^3.0.23
 
 dependencies:
-  '@nanostores/persistent': 0.5.2_nanostores@0.5.12
   '@nanostores/vue': 0.5.5_nanostores@0.5.12
   '@vueuse/core': 8.0.1
   nanostores: 0.5.12
@@ -438,15 +436,6 @@ packages:
   /@ljharb/has-package-exports-patterns/0.0.1:
     resolution: {integrity: sha512-J4HxcjHI8EzVwXj2HKfZrwnWv4wmOhGxSHyxDQLhiL4ibwRoIkYBqsacZUXFUWQzJtW6QC+FKSNy8HqKjkEqaQ==}
     dev: true
-
-  /@nanostores/persistent/0.5.2_nanostores@0.5.12:
-    resolution: {integrity: sha512-0q+tk9Jza66sIZiuDKq/MAFylqWCRPAjkXuwIpyhz6FD9ht35jTXIp1Idh/f1qDSdpyn4shiXsQVgdN4r/VMfQ==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
-    peerDependencies:
-      nanostores: ^0.5.0
-    dependencies:
-      nanostores: 0.5.12
-    dev: false
 
   /@nanostores/vue/0.5.5_nanostores@0.5.12:
     resolution: {integrity: sha512-hqmTe9Fi09o94MO6dLYCMzlRMTpyXUGhYx42vYv2CxhY0lPFkyySyljXBOZk1my0bkBz2STDMVe7WILwjZiwFA==}

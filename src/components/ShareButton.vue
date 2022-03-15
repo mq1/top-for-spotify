@@ -11,7 +11,7 @@ const location = useBrowserLocation();
 const { share, isSupported } = useShare();
 
 const shareURL = () => {
-  const url = `${location.value.origin}/login-callback#access_token=${spotifyToken.value}&token_type=Bearer&expires_in=3600`;
+  const url = `${location.value.origin}/me#access_token=${spotifyToken.value}&token_type=Bearer&expires_in=3600`;
   if (isSupported) {
     share({
       title: "top-for-spotify",
