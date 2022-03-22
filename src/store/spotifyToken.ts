@@ -8,10 +8,8 @@ export const headers = computed(spotifyToken, (st) => ({
 }));
 
 onMount(spotifyToken, () => {
-  if (!import.meta.env.SSR) {
-    spotifyToken.set(/#access_token=(.*?)&/.exec(window.location.hash)[1]);
+  spotifyToken.set(/#access_token=(.*?)&/.exec(window.location.hash)[1]);
 
-    // remove hash
-    history.pushState("", document.title, window.location.pathname + window.location.search);
-  }
+  // remove hash
+  //history.pushState("", document.title, window.location.pathname + window.location.search);
 });

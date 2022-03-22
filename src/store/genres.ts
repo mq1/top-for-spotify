@@ -30,9 +30,7 @@ const getGenres = async (timeRange: string) => {
 export const genres = atom<string[]>([]);
 
 const updateGenres = action(genres, "update", async (g) => {
-  if (!import.meta.env.SSR) {
-    g.set(await getGenres(timeRange.get()));
-  }
+  g.set(await getGenres(timeRange.get()));
 });
 
 timeRange.listen(updateGenres);

@@ -1,14 +1,14 @@
 ---
 import { Icon } from "astro-icon";
-import TimeRangeSelector from "./TimeRangeSelector.vue";
-import UserImage from "./UserImage.vue";
-import LogoutButton from "./LogoutButton.vue";
-import ShareButton from "./ShareButton.vue";
+import TimeRangeSelector from "./TimeRangeSelector.tsx";
+import UserImage from "./UserImage.tsx";
+import LogoutButton from "./LogoutButton.tsx";
+import ShareButton from "./ShareButton.tsx";
 
 const { isLoggedIn } = Astro.props;
 ---
 
-<div class="flex flex-wrap justify-center gap-4 p-4 fixed z-10 bg-white dark:bg-black w-full border-b-2 border-gray-500">
+<div class="flex flex-wrap justify-center gap-4 p-4 fixed z-10 bg-white dark:bg-black w-full border-b-2 border-gray-200 dark:border-gray-700">
   <h1 class="text-5xl font-bold">Top for Spotify</h1>
   {() => {
     if (isLoggedIn)

@@ -29,9 +29,7 @@ const getArtists = async (timeRange: string) => {
 export const artists = atom<CardElement[]>([]);
 
 const updateArtists = action(artists, "update", async (a) => {
-  if (!import.meta.env.SSR) {
-    a.set(await getArtists(timeRange.get()));
-  }
+  a.set(await getArtists(timeRange.get()));
 });
 
 timeRange.listen(updateArtists);

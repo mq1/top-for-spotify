@@ -49,9 +49,7 @@ const getAvgFeatures = async (timeRange: string) => {
 export const avgFeatures = atom<AudioFeatures>();
 
 const updateAvgFeatures = action(avgFeatures, "update", async (a) => {
-  if (!import.meta.env.SSR) {
-    a.set(await getAvgFeatures(timeRange.get()));
-  }
+  a.set(await getAvgFeatures(timeRange.get()));
 });
 
 timeRange.listen(updateAvgFeatures);

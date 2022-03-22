@@ -18,9 +18,7 @@ const getUser = async () => {
 export const user = atom<User>();
 
 const updateUser = action(user, "update", async (u) => {
-  if (!import.meta.env.SSR) {
-    u.set(await getUser());
-  }
+  u.set(await getUser());
 });
 
 onMount(user, () => {

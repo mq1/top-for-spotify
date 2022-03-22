@@ -29,12 +29,10 @@ const getTracks = async (timeRange: string) => {
   return tracks;
 };
 
-export const tracks = atom<CardElement[]>();
+export const tracks = atom<CardElement[]>([]);
 
 const updateTracks = action(tracks, "update", async (t) => {
-  if (!import.meta.env.SSR) {
-    t.set(await getTracks(timeRange.get()));
-  }
+  t.set(await getTracks(timeRange.get()));
 });
 
 timeRange.listen(updateTracks);
