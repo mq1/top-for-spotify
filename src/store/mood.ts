@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { mapValues, mean } from "lodash-es";
 import { action, atom, onMount, task } from "nanostores";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
@@ -21,9 +21,9 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
     valence: list.map((track) => track.valence),
   };
 
-  const avg = _.mapValues(features, _.mean);
-  const percent = _.mapValues(avg, (val) => val * 100);
-  const rounded = _.mapValues(percent, (val) => Math.round(val));
+  const avg = mapValues(features, mean);
+  const percent = mapValues(avg, (val) => val * 100);
+  const rounded = mapValues(percent, (val) => Math.round(val));
 
   return rounded;
 };

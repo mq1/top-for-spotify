@@ -1,12 +1,12 @@
-import _ from "lodash";
+import { mean } from "lodash-es";
 import { action, atom, onMount, task } from "nanostores";
-import { headers, spotifyToken } from "./spotifyToken";
+import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
 
 const parseObscurityRating = (tracks: RawTrack[]) => {
   const obscurities = tracks.map((track) => 100 - track.popularity);
-  const avg = _.mean(obscurities);
+  const avg = mean(obscurities);
   const rounded = Math.round(avg);
 
   return rounded;
