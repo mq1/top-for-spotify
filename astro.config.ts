@@ -1,6 +1,6 @@
-import type { AstroUserConfig } from "astro";
+import { defineConfig } from "astro/config";
 
-const config: AstroUserConfig = {
+export default defineConfig({
   buildOptions: {
     site: "https://top-for-spotify.mq1.eu",
   },
@@ -10,6 +10,4 @@ const config: AstroUserConfig = {
       external: ["svgo"],
     },
   },
-};
-
-export default config;
+});
