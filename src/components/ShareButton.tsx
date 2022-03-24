@@ -1,8 +1,9 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { user as u } from "../store/user";
 import { spotifyToken as st } from "../store/spotifyToken";
 
-const ShareButton = (props) => {
+const ShareButton: FunctionalComponent = (props) => {
   const user = import.meta.env.SSR ? undefined : useStore(u);
   const spotifyToken = import.meta.env.SSR ? "" : useStore(st);
 

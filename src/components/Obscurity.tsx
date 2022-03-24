@@ -1,7 +1,8 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { obscurity } from "../store/obscurity";
 
-const Obscurity = () => {
+const Obscurity: FunctionalComponent = () => {
   const obscurityRating = import.meta.env.SSR ? 0 : useStore(obscurity);
 
   return (

@@ -1,7 +1,8 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { user as u } from "../store/user";
 
-const UserImage = () => {
+const UserImage: FunctionalComponent = () => {
   const user = import.meta.env.SSR ? undefined : useStore(u);
 
   return (

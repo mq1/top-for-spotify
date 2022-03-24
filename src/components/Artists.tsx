@@ -1,7 +1,8 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { artists as a } from "../store/artists";
 
-const Artists = () => {
+const Artists: FunctionalComponent = () => {
   const artists = import.meta.env.SSR ? [] : useStore(a);
 
   return (

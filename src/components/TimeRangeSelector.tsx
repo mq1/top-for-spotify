@@ -1,7 +1,8 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { timeRange as tr } from "../store/timeRange";
 
-const TimeRangeSelector = () => {
+const TimeRangeSelector: FunctionalComponent = () => {
   const timeRange = import.meta.env.SSR ? "" : useStore(tr);
 
   return (

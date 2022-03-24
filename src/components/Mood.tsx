@@ -1,7 +1,8 @@
+import type { FunctionalComponent } from "preact";
 import { useStore } from "@nanostores/preact";
 import { avgFeatures as avg } from "../store/mood";
 
-const Mood = () => {
+const Mood: FunctionalComponent = () => {
   const avgFeatures = import.meta.env.SSR ? undefined : useStore(avg);
 
   return (
