@@ -29,7 +29,7 @@ const Mood: FunctionalComponent = () => {
         <div class="flex items-center gap-x-4 sm:gap-x-8 text-xl sm:text-4xl">
           <div class="animate-swing animate-infinite">😊</div>
           <div>{ avgFeatures?.valence }%</div>
-          <div>Valence</div>
+          <div>Happiness</div>
         </div>
       </div>
     </div>
