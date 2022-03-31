@@ -9,7 +9,7 @@ const TimeRangeSelector: FunctionalComponent = () => {
     <select
       value={timeRange}
       onInput={(e) => tr.set(e.target.value)}
-      class="selector"
+      class="border-2 rounded-lg p-2 border-green-500 bg-white dark:bg-black sm:text-xl"
     >
       <option key="short_term" value="short_term">
         Short term
