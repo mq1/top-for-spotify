@@ -1,4 +1,5 @@
 import type { FunctionalComponent } from "preact";
+import Box from "./Box";
 import { useStore } from "@nanostores/preact";
 import { artists as a } from "../store/artists";
 
@@ -6,7 +7,7 @@ const Artists: FunctionalComponent = () => {
   const artists = import.meta.env.SSR ? [] : useStore(a);
 
   return (
-    <div class="box flex flex-col gap-y-16 bg-gradient-to-r from-yellow-400 to-pink-500 font-bold uppercase">
+    <Box className="flex flex-col gap-y-16 bg-gradient-to-r from-yellow-400 to-pink-500 font-bold uppercase">
       <h2 class="text-5xl sm:text-7xl text-white">Artists</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-y-16">
         {artists.map((artist, index) => (
@@ -21,7 +22,7 @@ const Artists: FunctionalComponent = () => {
           </figure>
         ))}
       </div>
-    </div>
+    </Box>
   );
 };
 
