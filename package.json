@@ -8,10 +8,10 @@
   },
   "devDependencies": {
     "@astrojs/preact": "^0.0.2",
-    "@astrojs/tailwind": "^0.0.2",
+    "@astrojs/tailwind": "^0.1.0",
     "@types/lodash-es": "^4.17.6",
     "animated-tailwindcss": "^3.2.7",
-    "astro": "^0.25.4",
+    "astro": "^0.26.1",
     "astro-icon": "^0.6.1",
     "autoprefixer": "^10.4.4",
     "lodash-es": "^4.17.21",
