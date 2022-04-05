@@ -1,5 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
 
 const clientID = import.meta.env.PUBLIC_SPOTIFY_CLIENT_ID;
 const callback = encodeURIComponent(`${Astro.request.url}me`);
@@ -8,5 +9,7 @@ const loginURL = `https://accounts.spotify.com/authorize?client_id=${clientID}&r
 ---
 
 <BaseLayout>
-  <a href={loginURL} class="gap-x-2 uppercase text-white font-bold bg-green-500 transition duration-100 ease-in-out transform hover:scale-105 text-7xl px-16 py-8 rounded-2xl shadow-xl">Login</a>
+  <a href={loginURL}>
+    <Button>Login</Button>
+  </a>
 </BaseLayout>

@@ -8,8 +8,8 @@ import ShareButton from "./ShareButton.tsx";
 const { isLoggedIn } = Astro.props;
 ---
 
-<div class="flex flex-wrap justify-center gap-4 p-4 fixed z-10 bg-white dark:bg-black w-full border-b-2 border-gray-200 dark:border-gray-700">
-  <h1 class="text-5xl font-bold">Top for Spotify</h1>
+<div class="flex flex-wrap justify-center items-center gap-4 p-4 fixed z-10 bg-white dark:bg-black w-full border-b-2 border-gray-200 dark:border-gray-700">
+  <h1 class="text-3xl font-bold">Top for Spotify</h1>
   {() => {
     if (isLoggedIn)
       return (
