@@ -8,7 +8,7 @@ const UserImage: FunctionalComponent = () => {
   return (
     <img
       src={user?.images[0].url}
-      class="h-12 rounded-xl shadow-lg hidden sm:block"
+      class="h-12 rounded-xl shadow-lg"
     />
   );
 };
