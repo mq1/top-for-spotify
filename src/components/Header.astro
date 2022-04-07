@@ -9,18 +9,20 @@ const { isLoggedIn } = Astro.props;
 ---
 
 <div class="flex flex-wrap justify-between items-center gap-4 p-4 fixed z-10 bg-white dark:bg-black w-full border-b-2 border-gray-200 dark:border-gray-700">
-  {() => {
-    if (isLoggedIn)
-      return (
-        <TimeRangeSelector client:load />
-      )
+  <div>
+    {() => {
+      if (isLoggedIn)
+        return (
+          <TimeRangeSelector client:load />
+        )
+      }
     }
-  }
+  </div>
   <h1 class="text-3xl font-bold hidden sm:block">Top for Spotify</h1>
-  {() => {
-    if (isLoggedIn)
-      return (
-        <div class="flex gap-4">
+  <div class="flex gap-4">
+    {() => {
+      if (isLoggedIn)
+        return (
           <UserImage client:load />
           <ShareButton client:load>
             <Icon class="h-6" name="feather:share" />
@@ -28,7 +30,7 @@ const { isLoggedIn } = Astro.props;
           <LogoutButton client:load>
             <Icon class="h-6" name="feather:log-out" />
           </LogoutButton>
-        </div>
-      )
-  }}
+        )
+    }}
+  </div>
 </div>
