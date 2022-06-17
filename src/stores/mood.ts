@@ -1,5 +1,5 @@
 import { mapValues, mean } from "lodash-es";
-import { action, atom, onMount, task } from "nanostores";
+import { derived } from "svelte/store";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
@@ -28,32 +28,28 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
   return rounded;
 };
 
-const getAvgFeatures = async (timeRange: string) => {
+const fetchAvgFeatures = async (timeRange: string, headers: any) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`,
-    { headers: headers.get() }
+    { headers: headers }
   );
-  const j = await response.json();
-  const trackIDs = parseTrackIDs(j.items);
+  const data = await response.json();
+  const trackIDs = parseTrackIDs(data.items);
 
   const response2 = await fetch(
     `https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`,
-    { headers: headers.get() }
+    { headers: headers }
   );
-  const j2 = await response2.json();
-  const avgFeatures = parseAudioFeatures(j2.audio_features);
+  const data2 = await response2.json();
+  const avgFeatures = parseAudioFeatures(data2.audio_features);
 
   return avgFeatures;
 };
 
-export const avgFeatures = atom<AudioFeatures>();
-
-const updateAvgFeatures = action(avgFeatures, "update", async (a) => {
-  a.set(await getAvgFeatures(timeRange.get()));
-});
-
-timeRange.listen(updateAvgFeatures);
-
-onMount(avgFeatures, () => {
-  task(updateAvgFeatures);
-});
+export const avgFeatures = derived(
+  [timeRange, headers],
+  ([$timeRange, $headers], set) => {
+    fetchAvgFeatures($timeRange, $headers).then(set);
+  },
+  {} as AudioFeatures
+);

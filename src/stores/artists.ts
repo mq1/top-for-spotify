@@ -1,4 +1,4 @@
-import { action, atom, onMount, task } from "nanostores";
+import { derived } from "svelte/store";
 import { headers } from "./spotifyToken";
 import { timeRange } from "./timeRange";
 import type { CardElement } from "../types";
@@ -15,25 +15,20 @@ const parseArtists = (artists: RawArtist[]) =>
     imageURL: artist.images[0].url,
   }));
 
-const getArtists = async (timeRange: string) => {
+const fetchArtists = async (timeRange: string, headers: any) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/artists?limit=9&time_range=${timeRange}`,
-    { headers: headers.get() }
+    { headers }
   );
-  const j = await response.json();
-  const artists = parseArtists(j.items);
+  const data = await response.json();
 
-  return artists;
+  return parseArtists(data.items);
 };
 
-export const artists = atom<CardElement[]>([]);
-
-const updateArtists = action(artists, "update", async (a) => {
-  a.set(await getArtists(timeRange.get()));
-});
-
-timeRange.listen(updateArtists);
-
-onMount(artists, () => {
-  task(updateArtists);
-});
+export const artists = derived(
+  [timeRange, headers],
+  ([$timeRange, $headers], set) => {
+    fetchArtists($timeRange, $headers).then(set);
+  },
+  [] as CardElement[]
+);

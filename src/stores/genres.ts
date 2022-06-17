@@ -1,7 +1,7 @@
 import { countBy, toPairs, sortBy } from "lodash-es";
 import { headers } from "./spotifyToken";
 import type { RawArtist } from "./artists";
-import { action, atom, onMount, task } from "nanostores";
+import { derived } from "svelte/store";
 import { timeRange } from "./timeRange";
 
 const parseGenres = (artists: RawArtist[]) => {
@@ -16,25 +16,20 @@ const parseGenres = (artists: RawArtist[]) => {
   return list;
 };
 
-const getGenres = async (timeRange: string) => {
+const fetchGenres = async (timeRange: string, headers: any) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}`,
-    { headers: headers.get() }
+    { headers }
   );
-  const j = await response.json();
-  const genres = parseGenres(j.items);
+  const data = await response.json();
 
-  return genres;
+  return parseGenres(data.items);
 };
 
-export const genres = atom<string[]>([]);
-
-const updateGenres = action(genres, "update", async (g) => {
-  g.set(await getGenres(timeRange.get()));
-});
-
-timeRange.listen(updateGenres);
-
-onMount(genres, () => {
-  task(updateGenres);
-});
+export const genres = derived(
+  [timeRange, headers],
+  ([$timeRange, $headers], set) => {
+    fetchGenres($timeRange, $headers).then(set);
+  },
+  [] as string[]
+);
