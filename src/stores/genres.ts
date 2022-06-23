@@ -1,8 +1,8 @@
 import { countBy, toPairs, sortBy } from "lodash-es";
-import { headers } from "./spotifyToken";
-import type { RawArtist } from "./artists";
+import { headers } from "../lib/spotifyToken";
 import { derived } from "svelte/store";
 import { timeRange } from "./timeRange";
+import type { RawArtist } from "./artists";
 
 const parseGenres = (artists: RawArtist[]) => {
   const raw = artists.map((artist) => artist.genres);
@@ -16,7 +16,7 @@ const parseGenres = (artists: RawArtist[]) => {
   return list;
 };
 
-const fetchGenres = async (timeRange: string, headers: any) => {
+const fetchGenres = async (timeRange: string) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}`,
     { headers }
@@ -26,10 +26,6 @@ const fetchGenres = async (timeRange: string, headers: any) => {
   return parseGenres(data.items);
 };
 
-export const genres = derived(
-  [timeRange, headers],
-  ([$timeRange, $headers], set) => {
-    fetchGenres($timeRange, $headers).then(set);
-  },
-  [] as string[]
+export const genres = derived(timeRange, ($timeRange) =>
+  fetchGenres($timeRange)
 );

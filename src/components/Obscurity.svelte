@@ -3,7 +3,9 @@
   import { obscurity } from "../stores/obscurity";
 </script>
 
-<Box className="flex flex-col gap-y-8 bg-black font-bold text-white">
-  <h2 class="text-5xl sm:text-7xl uppercase">Obscurity</h2>
-  <div class="text-7xl sm:text-9xl">{$obscurity} %</div>
-</Box>
+{#await $obscurity then obscurity}
+  <Box className="flex flex-col gap-y-8 bg-black font-bold text-white">
+    <h2 class="text-5xl sm:text-7xl uppercase">Obscurity</h2>
+    <div class="text-7xl sm:text-9xl">{obscurity} %</div>
+  </Box>
+{/await}

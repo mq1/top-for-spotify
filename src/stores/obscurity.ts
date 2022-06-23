@@ -1,6 +1,6 @@
 import { mean } from "lodash-es";
 import { derived } from "svelte/store";
-import { headers } from "./spotifyToken";
+import { headers } from "../lib/spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
 
@@ -12,10 +12,10 @@ const parseObscurityRating = (tracks: RawTrack[]) => {
   return rounded;
 };
 
-const fetchObscurity = async (timeRange: string, headers: any) => {
+const fetchObscurity = async (timeRange: string) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`,
-    { headers: headers }
+    { headers }
   );
   const data = await response.json();
   const rating = parseObscurityRating(data.items);
@@ -23,10 +23,6 @@ const fetchObscurity = async (timeRange: string, headers: any) => {
   return rating;
 };
 
-export const obscurity = derived(
-  [timeRange, headers],
-  ([$timeRange, $headers], set) => {
-    fetchObscurity($timeRange, $headers).then(set);
-  },
-  0
+export const obscurity = derived(timeRange, ($timeRange) =>
+  fetchObscurity($timeRange)
 );

@@ -1,7 +1,6 @@
 import { derived } from "svelte/store";
-import { headers } from "./spotifyToken";
+import { headers } from "../lib/spotifyToken";
 import { timeRange } from "./timeRange";
-import type { CardElement } from "../types";
 
 export interface RawTrack {
   id: string;
@@ -18,7 +17,7 @@ const parseTracks = (tracks: RawTrack[]) =>
     imageURL: track.album.images[0].url,
   }));
 
-const fetchTracks = async (timeRange: string, headers: any) => {
+const fetchTracks = async (timeRange: string) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/tracks?limit=9&time_range=${timeRange}`,
     { headers }
@@ -29,10 +28,6 @@ const fetchTracks = async (timeRange: string, headers: any) => {
   return tracks;
 };
 
-export const tracks = derived(
-  [timeRange, headers],
-  ([$timeRange, $headers], set) => {
-    fetchTracks($timeRange, $headers).then(set);
-  },
-  [] as CardElement[]
+export const tracks = derived(timeRange, ($timeRange) =>
+  fetchTracks($timeRange)
 );

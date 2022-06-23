@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { timeRange, timeRanges } from "../stores/timeRange";
+  import { timeRange } from "../stores/timeRange";
 </script>
 
 <select
   bind:value={$timeRange}
   class="border-2 rounded-lg p-2 border-green-500 bg-white dark:bg-black sm:text-xl capitalize"
 >
-  {#each timeRanges as tr}
-    <option value={tr}>
-      {tr.replace("_", " ")}
-    </option>
-  {/each}
+  <option value="short_term">Short Term</option>
+  <option value="long_term">Long Term</option>
 </select>

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { user } from "../stores/user";
+  import { user } from "../lib/user";
 </script>
 
-{#if $user}
+{#await user then user}
   <img
-    src={$user.images[0].url}
+    src={user.images[0].url}
     class="h-12 rounded-xl shadow-lg"
-    alt={$user.display_name}
+    alt={user.display_name}
   />
-{/if}
+{/await}

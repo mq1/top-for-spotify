@@ -1,6 +1,6 @@
 import { mapValues, mean } from "lodash-es";
 import { derived } from "svelte/store";
-import { headers } from "./spotifyToken";
+import { headers } from "../lib/spotifyToken";
 import { timeRange } from "./timeRange";
 import type { RawTrack } from "./tracks";
 
@@ -28,17 +28,17 @@ const parseAudioFeatures = (list: AudioFeatures[]) => {
   return rounded;
 };
 
-const fetchAvgFeatures = async (timeRange: string, headers: any) => {
+const fetchAvgFeatures = async (timeRange: string) => {
   const response = await fetch(
     `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}`,
-    { headers: headers }
+    { headers }
   );
   const data = await response.json();
   const trackIDs = parseTrackIDs(data.items);
 
   const response2 = await fetch(
     `https://api.spotify.com/v1/audio-features?ids=${trackIDs.join()}`,
-    { headers: headers }
+    { headers }
   );
   const data2 = await response2.json();
   const avgFeatures = parseAudioFeatures(data2.audio_features);
@@ -46,10 +46,6 @@ const fetchAvgFeatures = async (timeRange: string, headers: any) => {
   return avgFeatures;
 };
 
-export const avgFeatures = derived(
-  [timeRange, headers],
-  ([$timeRange, $headers], set) => {
-    fetchAvgFeatures($timeRange, $headers).then(set);
-  },
-  {} as AudioFeatures
+export const avgFeatures = derived(timeRange, ($timeRange) =>
+  fetchAvgFeatures($timeRange)
 );
