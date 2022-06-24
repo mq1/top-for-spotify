@@ -1,5 +1,8 @@
-const withAnimations = require("animated-tailwindcss");
-
-module.exports = withAnimations({
-  content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
-});
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	theme: {
+		extend: {}
+	},
+	plugins: []
+};
