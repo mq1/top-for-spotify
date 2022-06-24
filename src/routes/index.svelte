@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Button from '$lib/Button.svelte';
 
 	const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
 	const callback = encodeURIComponent(`${$page.url.href}me`);
@@ -9,5 +8,5 @@
 </script>
 
 <a href={loginURL}>
-	<Button>Login</Button>
+	<button class="btn btn-primary btn-lg">Login</button>
 </a>

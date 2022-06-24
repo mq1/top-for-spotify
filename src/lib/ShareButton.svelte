@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { user } from '$lib/stores/user';
+	import IconShare from '~icons/feather/share';
 
 	const shareURL = async () => {
 		const u = await $user;
@@ -17,6 +18,6 @@
 	};
 </script>
 
-<button on:click={shareURL}>
-	<slot />
+<button on:click={shareURL} class="btn btn-ghost btn-circle">
+	<IconShare />
 </button>
