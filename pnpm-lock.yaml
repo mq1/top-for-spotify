@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@iconify-json/feather': ^1.1.1
+  '@iconify-json/feather': ^1.1.2
   '@sveltejs/adapter-auto': 1.0.0-next.52
   '@sveltejs/adapter-static': 1.0.0-next.34
   '@sveltejs/kit': 1.0.0-next.354
@@ -19,15 +19,15 @@ specifiers:
   prettier: ^2.7.1
   prettier-plugin-svelte: ^2.7.0
   svelte: ^3.48.0
-  svelte-check: ^2.7.2
+  svelte-check: ^2.8.0
   svelte-preprocess: ^4.10.7
   tailwindcss: ^3.1.4
   tslib: ^2.4.0
   typescript: ^4.7.4
-  unplugin-icons: ^0.14.5
+  unplugin-icons: ^0.14.6
 
 devDependencies:
-  '@iconify-json/feather': 1.1.1
+  '@iconify-json/feather': 1.1.2
   '@sveltejs/adapter-auto': 1.0.0-next.52
   '@sveltejs/adapter-static': 1.0.0-next.34
   '@sveltejs/kit': 1.0.0-next.354_svelte@3.48.0
@@ -45,12 +45,12 @@ devDependencies:
   prettier: 2.7.1
   prettier-plugin-svelte: 2.7.0_nakrehnrzdf7fdea5k3a4dfy4m
   svelte: 3.48.0
-  svelte-check: 2.7.2_s3dopqgs4h45owyu2kxaf6kyfu
+  svelte-check: 2.8.0_s3dopqgs4h45owyu2kxaf6kyfu
   svelte-preprocess: 4.10.7_jr4mgafwdbjtobsadg2hrd5qfy
   tailwindcss: 3.1.4
   tslib: 2.4.0
   typescript: 4.7.4
-  unplugin-icons: 0.14.5
+  unplugin-icons: 0.14.6
 
 packages:
 
@@ -101,8 +101,8 @@ packages:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
 
-  /@iconify-json/feather/1.1.1:
-    resolution: {integrity: sha512-x5eJsdlZK34+jNuFSaSizj1PyRCbSbSIWex+g32IbeeGsXaCnA31Xrkom/LkWscYL67A42Jq/QdeUITMvmqE5w==}
+  /@iconify-json/feather/1.1.2:
+    resolution: {integrity: sha512-Tc/0PGE/u04+v9rRHS+2oP2NfDPLrUKGRm6V8mqmB+F+C6gRPEYLdgIxuV1+NGVa+UiGF0zURP7WQaxvuMVULQ==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
@@ -2406,8 +2406,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/2.7.2_s3dopqgs4h45owyu2kxaf6kyfu:
-    resolution: {integrity: sha512-TuVX4YtXHbRM8sVuK5Jk+mKWdm3f0d6hvAC6qCTp8yUszGZewpEBCo2V5fRWZCiz+0J4OCiDHOS+DFMxv39rJA==}
+  /svelte-check/2.8.0_s3dopqgs4h45owyu2kxaf6kyfu:
+    resolution: {integrity: sha512-HRL66BxffMAZusqe5I5k26mRWQ+BobGd9Rxm3onh7ZVu0nTk8YTKJ9vu3LVPjUGLU9IX7zS+jmwPVhJYdXJ8vg==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
@@ -2614,8 +2614,8 @@ packages:
     hasBin: true
     dev: true
 
-  /unplugin-icons/0.14.5:
-    resolution: {integrity: sha512-fxi/fuBZXtZu64L8iAPj+ecu/rnSvTbfR14RO44xIWdsI/Ohpzs9Gve7+nHIgD6JFrdtCfzGnXWBEVPbMGWX3A==}
+  /unplugin-icons/0.14.6:
+    resolution: {integrity: sha512-8sxDiL4l+TV4zufZfrskgHZZSDFoGOCBgYsefRMM4inQ3Z6KhgMSuNyew7U7D/xG//rwxgD7bN+Dv+YAZEEfEw==}
     peerDependencies:
       '@svgr/core': '>=5.5.0'
       '@vue/compiler-sfc': ^3.0.2
