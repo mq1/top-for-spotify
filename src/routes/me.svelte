@@ -1,10 +1,13 @@
 <script lang="ts">
+	import Header from '$lib/Header.svelte';
 	import Obscurity from '$lib/Obscurity.svelte';
 	import Mood from '$lib/Mood.svelte';
 	import Genres from '$lib/Genres.svelte';
 	import Artists from '$lib/Artists.svelte';
 	import Tracks from '$lib/Tracks.svelte';
 </script>
+
+<Header />
 
 <main class="max-w-5xl flex flex-col gap-y-8 px-8 mt-32">
 	<Obscurity />
