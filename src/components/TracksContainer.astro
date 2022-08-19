@@ -1,0 +1,12 @@
+---
+import Tracks from "./Tracks.svelte";
+---
+
+<div
+	class="p-16 rounded-3xl w-full flex flex-col gap-y-16 bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 font-bold uppercase"
+>
+	<h2 class="text-5xl sm:text-7xl text-white">Tracks</h2>
+	<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-y-16">
+		<Tracks client:only />
+	</div>
+</div>

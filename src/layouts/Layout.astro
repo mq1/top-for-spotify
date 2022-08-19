@@ -1,0 +1,28 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="h-screen flex flex-col items-center justify-between">
+		<div />
+		<div>
+			<slot />
+		</div>
+		<footer class="p-4 flex gap-x-2">
+			<p>GPL-3.0-only Licensed</p> |
+			<p>Copyright &copy; 2021-present Manuel Quarneti</p> |
+			<a href="https://github.com/mq1/mq1.eu" class="underline hover:text-violet-600 transition transform-gpu ease-in-out">Source code</a>
+		</footer>
+	</body>
+</html>

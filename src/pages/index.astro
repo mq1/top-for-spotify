@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+
+const baseUrl = "https://accounts.spotify.com";
+const params = new URLSearchParams({
+	client_id: import.meta.env.PUBLIC_SPOTIFY_CLIENT_ID,
+	response_type: "token",
+	redirect_uri: import.meta.env.DEV ? "http://localhost:3000/me" : "https://top-for-spotify.mq1.eu/me",
+	scope: "user-top-read",
+	show_dialog: "true",
+});
+
+const loginUrl = new URL("/authorize", baseUrl);
+loginUrl.search = params.toString();
+---
+
+<Layout title="Top for Spotify | Login">
+	<main class="flex flex-col items-center gap-y-8">
+		<h1 class="text-5xl uppercase font-bold">Top for Spotify</h1>
+		<Button>
+			<a href={loginUrl} class="text-xl">Login with Spotify</a>
+		</Button>
+	</main>
+</Layout>
