@@ -9,9 +9,9 @@ import ArtistsContainer from "../components/ArtistsContainer.astro";
 ---
 
 <Layout title="Top for Spotify | My stats">
-	<main class="flex flex-col items-center gap-y-8 m-8">
+	<main class="flex flex-col items-center gap-y-8 m-8 max-w-5xl">
         <a href="/" class="hover:scale-105 transition transform-gpu ease-in-out">
-            <h1 class="text-5xl uppercase font-bold">Top for Spotify</h1>
+            <h1 class="text-5xl uppercase font-bold text-center">Top for Spotify</h1>
         </a>
         <TimeRangeSelector client:load />
         <ObscurityContainer />
