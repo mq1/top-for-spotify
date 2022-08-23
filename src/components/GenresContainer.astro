@@ -1,12 +1,20 @@
 ---
 import Genres from './Genres.svelte';
+import UserName from './UserName.svelte';
 ---
 
-<div
-    class="p-8 sm:p-16 rounded-3xl w-full flex flex-col gap-y-16 bg-gradient-to-r from-green-400 to-blue-500 font-bold text-white uppercase"
->
-    <h2 class="text-5xl sm:text-7xl">Genres</h2>
-    <ol class="list-decimal text-left text-2xl sm:text-4xl ml-8">
-        <Genres client:only />
-    </ol>
+<div class="flex flex-col items-center gap-y-2 border-2 pb-2 rounded-3xl">
+    <div id="genres" class="p-4 rounded-3xl w-72 h-128 flex flex-col justify-between bg-gradient-to-r from-green-400 to-blue-500 font-bold text-white">
+        <UserName client:only />
+        <div class="flex flex-col gap-y-4 uppercase">
+            <h2 class="text-5xl">Genres</h2>
+            <ol class="list-decimal text-left text-xl ml-8">
+                <Genres client:only />
+            </ol>
+        </div>
+        <h2 class="text-right">Top for Spotify</h2>
+    </div>
+    <button onclick="share('genres')" class="text-white bg-green-500 px-4 py-2 rounded-xl">
+        Share ↗️
+    </button>
 </div>

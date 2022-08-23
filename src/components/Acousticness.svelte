@@ -3,7 +3,7 @@
 </script>
 
 {#await $avgFeatures then avgFeatures}
-	<div class="flex items-center gap-x-4 sm:gap-x-8 text-2xl sm:text-4xl">
+	<div class="flex items-center gap-x-2 text-xl">
         <div>🎸</div>
         <div>{avgFeatures.acousticness}%</div>
         <div>Acousticness</div>

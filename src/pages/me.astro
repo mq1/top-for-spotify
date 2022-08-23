@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TimeRangeSelector from "../components/TimeRangeSelector.svelte";
-import ObscurityContainer from "../components/ObscurityContainer.astro";
 import TracksContainer from "../components/TracksContainer.astro";
 import MoodContainer from "../components/MoodContainer.astro";
 import GenresContainer from "../components/GenresContainer.astro";
@@ -9,15 +8,23 @@ import ArtistsContainer from "../components/ArtistsContainer.astro";
 ---
 
 <Layout title="Top for Spotify | My stats">
-	<main class="flex flex-col items-center gap-y-8 sm:m-8 max-w-5xl">
+	<main class="flex flex-col items-center gap-y-8">
         <a href="/" class="hover:scale-105 transition transform-gpu ease-in-out mt-8">
             <h1 class="text-5xl uppercase font-bold text-center">Top for Spotify</h1>
         </a>
         <TimeRangeSelector client:load />
-        <ObscurityContainer />
-        <MoodContainer />
-        <GenresContainer />
-        <ArtistsContainer />
-        <TracksContainer />
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+            <MoodContainer />
+            <GenresContainer />
+            <ArtistsContainer />
+            <TracksContainer />
+        </div>
 	</main>
 </Layout>
+
+<script>
+    import share from "../lib/share.js";
+
+    // @ts-ignore
+    window.share = share;
+</script>

@@ -4,13 +4,13 @@
 
 {#await $artists then artists}
     {#each artists as artist, i}
-        <figure class="rounded-2xl shadow-lg bg-white dark:bg-black">
+        <figure class="rounded-2xl shadow-lg bg-white flex items-center gap-x-2">
             <img
-                class="object-cover h-48 w-96 rounded-2xl p-1"
+                class="object-cover h-8 w-8 rounded-full p-1"
                 src={artist.imageURL}
                 alt={artist.name}
             />
-            <figcaption class="text-black dark:text-white mx-4 my-2">
+            <figcaption class="text-black font-medium">
                 {i + 1}. {artist.name}
             </figcaption>
         </figure>

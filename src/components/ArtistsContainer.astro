@@ -1,12 +1,18 @@
 ---
 import Artists from "./Artists.svelte";
+import UserName from './UserName.svelte';
 ---
 
-<div
-    class="p-8 sm:p-16 rounded-3xl w-full flex flex-col gap-y-16 bg-gradient-to-r from-yellow-400 to-pink-500 font-bold uppercase"
->
-    <h2 class="text-5xl sm:text-7xl text-white">Artists</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-y-16">
-        <Artists client:only />
+<div class="flex flex-col items-center gap-y-2 border-2 pb-2 rounded-3xl">
+    <div id="artists" class="p-4 rounded-3xl w-72 h-128 flex flex-col justify-between bg-gradient-to-r from-yellow-400 to-pink-500 font-bold text-white">
+        <UserName client:only />
+        <div class="flex flex-col gap-y-2">
+            <h2 class="text-5xl uppercase">Artists</h2>
+            <Artists client:only />
+        </div>
+        <h2 class="text-right">Top for Spotify</h2>
     </div>
+    <button onclick="share('mood')" class="text-white bg-green-500 px-4 py-2 rounded-xl">
+        Share ↗️
+    </button>
 </div>

@@ -6,6 +6,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.2
   '@types/lodash-es': ^4.17.6
   astro: ^1.0.7
+  html-to-image: ^1.10.4
   lodash-es: ^4.17.21
   svelte: ^3.49.0
 
@@ -15,6 +16,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.2
   '@types/lodash-es': 4.17.6
   astro: 1.0.7
+  html-to-image: 1.10.4
   lodash-es: 4.17.21
   svelte: 3.49.0
 
@@ -1697,6 +1699,10 @@ packages:
 
   /html-escaper/3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
+    dev: true
+
+  /html-to-image/1.10.4:
+    resolution: {integrity: sha512-nJ9uiWCkD/egDN0F6wzbCfpjc/1ZChutABD3SgnRRwNlZpUhhCFK/dRuVAmyEFgrQFacYW5hyURRLlSdZw8cgQ==}
     dev: true
 
   /html-void-elements/2.0.1:

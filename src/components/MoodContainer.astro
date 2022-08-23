@@ -3,14 +3,24 @@ import Acousticness from './Acousticness.svelte';
 import Danceability from './Danceability.svelte';
 import Energy from './Energy.svelte';
 import Happiness from './Happiness.svelte';
+import Obscurity from './Obscurity.svelte';
+import UserName from './UserName.svelte';
 ---
 
-<div class="p-8 sm:p-16 rounded-3xl w-full flex flex-col gap-y-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold text-white uppercase">
-    <h2 class="text-5xl sm:text-7xl">Mood</h2>
-    <div class="flex flex-col gap-y-4">
-        <Acousticness client:only />
-        <Danceability client:only />
-        <Energy client:only />
-        <Happiness client:only />
+<div class="flex flex-col items-center gap-y-2 border-2 pb-2 rounded-3xl">
+    <div id="mood" class="p-4 rounded-3xl w-72 h-128 flex flex-col justify-between bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 font-bold text-white">
+        <UserName client:only />
+        <div class="flex flex-col uppercase">
+            <h2 class="text-5xl mb-4">Mood</h2>
+            <Obscurity client:only />
+            <Acousticness client:only />
+            <Danceability client:only />
+            <Energy client:only />
+            <Happiness client:only />
+        </div>
+        <h2 class="text-right">Top for Spotify</h2>
     </div>
+    <button onclick="share('mood')" class="text-white bg-green-500 px-4 py-2 rounded-xl">
+        Share ↗️
+    </button>
 </div>

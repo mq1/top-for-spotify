@@ -3,5 +3,9 @@
 </script>
 
 {#await $obscurity then obscurity}
-	<div class="text-7xl sm:text-9xl font-bold">{obscurity} %</div>
+	<div class="flex items-center gap-x-2 text-xl">
+		<div>❔</div>
+		<div>{obscurity}%</div>
+		<div>Obscurity</div>
+	</div>
 {/await}
