@@ -12,8 +12,8 @@
     "@astrojs/tailwind": "^1.0.0",
     "@tailwindcss/forms": "^0.5.2",
     "@types/lodash-es": "^4.17.6",
-    "astro": "^1.0.6",
+    "astro": "^1.0.7",
     "lodash-es": "^4.17.21",
-    "svelte": "^3.46.4"
+    "svelte": "^3.49.0"
   }
 }
