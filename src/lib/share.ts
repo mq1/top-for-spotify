@@ -1,26 +1,22 @@
 import html2canvas from "html2canvas";
 
-
 const share = async (id: string) => {
     const canvas = await html2canvas(document.getElementById(id)!);
+    const dataUrl = canvas.toDataURL();
+    const blob = await (await fetch(dataUrl)).blob();
+    const image = new File([blob], `${id}.png`, { type: blob.type });
 
-    canvas.toBlob(async (blob) => {
-        const files = [new File([blob!], 'image.png', { type: blob!.type })]
-        const shareData = {
-            files,
-            title: `My ${id}`,
-            text: `My ${id}`,
-        }
-
-        if (navigator.canShare(shareData)) {
-            await navigator.share(shareData);
-        } else {
-            let link = document.createElement('a');
-            link.download = `${id}.png`;
-            link.href = canvas.toDataURL();
-            link.click();
-        }
-    });
+    if (navigator.canShare && navigator.canShare({ files: [image] })) {
+        await navigator.share({
+            files: [image],
+            title: id,
+        });
+    } else {
+        let link = document.createElement("a");
+        link.download = `${id}.png`;
+        link.href = dataUrl;
+        link.click();
+    }
 };
 
 export default share;
