@@ -12,7 +12,7 @@ const share = async (id: string) => {
         link.click();
     } else {
         canvas.toBlob(async (blob) => {
-            const files = [new File([blob!], `${id}.png`, { type: blob!.type })];
+            const files = [new File([blob!], `${id}.png`, { type: "image/png" })];
 
             navigator.share({
                 files: files,
