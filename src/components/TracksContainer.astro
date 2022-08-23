@@ -4,15 +4,15 @@ import UserName from './UserName.svelte';
 ---
 
 <div class="flex flex-col items-center gap-y-2 border-2 pb-2 rounded-3xl">
-	<div id="tracks" class="p-4 rounded-3xl w-72 h-128 flex flex-col justify-between bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 font-bold text-white">
+	<div id="Top Tracks" class="p-4 rounded-3xl w-72 h-128 flex flex-col justify-between bg-gradient-to-r from-pink-400 via-blue-500 to-green-500 font-bold text-white">
 		<UserName client:only />
 		<div class="flex flex-col gap-y-2">
-			<h2 class="text-5xl uppercase">Tracks</h2>
+			<h2 class="text-4xl uppercase">Top Tracks</h2>
 			<Tracks client:only />
 		</div>
 		<h2 class="text-right">Top for Spotify</h2>
 	</div>
-	<button onclick="share('mood')" class="text-white bg-green-500 px-4 py-2 rounded-xl">
+	<button onclick="share('Top Tracks')" class="text-white bg-green-500 px-4 py-2 rounded-xl">
         Share ↗️
     </button>
 </div>
