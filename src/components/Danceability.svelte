@@ -3,7 +3,7 @@
 </script>
 
 {#await $avgFeatures then avgFeatures}
-    <div class="flex items-center gap-x-4 sm:gap-x-8 text-xl sm:text-4xl">
+    <div class="flex items-center gap-x-4 sm:gap-x-8 text-2xl sm:text-4xl">
         <div>💃</div>
         <div>{avgFeatures.danceability}%</div>
         <div>Danceability</div>
