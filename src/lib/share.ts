@@ -15,7 +15,7 @@ const share = async (id: string) => {
         });
     } else {
         let link = document.createElement('a');
-        link.download = `${id}.png`;
+        link.download = `${id}.jpeg`;
         link.href = dataUrl;
         link.click();
     }
