@@ -1,35 +1,25 @@
-import { toPng, toBlob } from 'html-to-image';
+import html2canvas from "html2canvas";
 
 
-const share = (id: string) => {
-    const node = document.getElementById(id)!;
+const share = async (id: string) => {
+    const canvas = await html2canvas(document.getElementById(id)!);
 
     if (!navigator.canShare) {
-        toPng(node)
-            .then((dataUrl) => {
-                let link = document.createElement('a');
-                link.download = `${id}.png`;
-                link.href = dataUrl;
-                link.click();
-            })
-            .catch((error) => {
-                console.error('oops, something went wrong!', error);
-            });
+        const dataUrl = canvas.toDataURL("image/png");
+        let link = document.createElement('a');
+        link.download = `${id}.png`;
+        link.href = dataUrl;
+        link.click();
     } else {
-        toBlob(node)
-            .then((blob) => {
-                // @ts-ignore
-                const files = [new File([blob], `${id}.png`, { type: blob.type })];
+        canvas.toBlob(async (blob) => {
+            const files = [new File([blob!], `${id}.png`, { type: blob!.type })];
 
-                navigator.share({
-                    files: files,
-                    title: `My ${id}`,
-                    text: `My ${id}`,
-                });
-            })
-            .catch((error) => {
-                console.error('oops, something went wrong!', error);
+            navigator.share({
+                files: files,
+                title: `My ${id}`,
+                text: `My ${id}`,
             });
+        })
     }
 };
 

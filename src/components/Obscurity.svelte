@@ -4,7 +4,7 @@
 
 {#await $obscurity then obscurity}
 	<div class="flex items-center gap-x-2 text-xl">
-		<div>❔</div>
+		<div>🌃</div>
 		<div>{obscurity}%</div>
 		<div>Obscurity</div>
 	</div>
